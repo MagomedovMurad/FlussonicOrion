@@ -1,0 +1,69 @@
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FlussonnicOrion
+{
+    public class HttpServer
+    {
+        private HttpListener _httpListener;
+        private bool _started;
+        public event EventHandler<string> DataReceived;
+
+        public void Start(params string[] addresses)
+        {
+            Task.Run(async () =>
+            {
+                try
+                {
+                    if (_started)
+                        return;
+
+                    _httpListener = new HttpListener();
+                    foreach (var address in addresses)
+                        _httpListener.Prefixes.Add(address);
+
+                    _httpListener.Start();
+                    _started = true;
+                    while (_started)
+                    {
+                        try
+                        {
+                            HttpListenerContext context = await _httpListener.GetContextAsync();
+                            HttpListenerRequest request = context.Request;
+
+                            var requestData = GetStreamData(request.InputStream, request.ContentEncoding);
+                            DataReceived?.BeginInvoke(this, requestData, emptyCallBack => { }, null);
+                            context.Response.StatusCode = 200;
+                            context.Response.Close();
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            });
+        }
+
+        public void Stop()
+        {
+            _started = false;
+        }
+
+        private string GetStreamData(Stream stream, Encoding encoding)
+        {
+            using (var streamReader = new StreamReader(stream, encoding))
+            {
+                return streamReader.ReadToEnd();
+            }
+        }
+
+    }
+}
