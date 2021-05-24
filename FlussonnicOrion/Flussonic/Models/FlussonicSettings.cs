@@ -9,6 +9,7 @@ namespace FlussonnicOrion.Flussonic.Models
 {
     public class FlussonicSettings
     {
+        public bool IsServerMode { get; set; }
         public IPAddress IPAddress { get; set; }
         public int Port { get; set; }
     }

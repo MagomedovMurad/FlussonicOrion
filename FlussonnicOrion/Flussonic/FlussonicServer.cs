@@ -14,7 +14,7 @@ namespace FlussonnicOrion
         {
             _httpServer = new HttpServer();
             _httpServer.DataReceived += HttpServer_DataReceived;
-            _httpServer.Start("http://127.0.0.1:80/flussonic_event/");
+            _httpServer.Start("http://127.0.0.1:80/flussonic_event/"); //TODO: порт должен быть настраиваемый
         }
 
         public void Stop()

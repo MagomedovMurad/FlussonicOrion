@@ -1,11 +1,10 @@
 ﻿using FlussonnicOrion.OrionPro.Enums;
+using FlussonnicOrion.OrionPro.Models;
 using Orion;
 using System;
 using System.Linq;
-using System.Net;
 using System.Security.Cryptography;
 using System.ServiceModel;
-using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -16,12 +15,8 @@ namespace FlussonnicOrion.OrionPro
     {
         private OrionProClient _client;
         private EndpointAddress _remoteAddress;
-        private string _userName;
-        private string _password;
-        private string _tokenLogin;
-        private string _tokenPassword;
+        private OrionSettings _settings;
         private string _token;
-
         private Timer _timer;
 
         public OrionClient()
@@ -30,48 +25,34 @@ namespace FlussonnicOrion.OrionPro
 
         #region Initialize
 
-        public async Task Initialize(IPAddress ip, 
-                                     int port = 8090, 
-                                     string userName = null, 
-                                     string password = null,
-                                     string tokenLogin = null,
-                                     string tokenPassword = null,
-                                     bool IsTokenRequired = true,
-                                     int tokenLifetime = 300)
+        public async Task Initialize(OrionSettings settings)
         {
-            _userName = userName;
-            _password = password;
-            _tokenLogin = tokenLogin;
-            _tokenPassword = tokenPassword;
-            _remoteAddress = new EndpointAddress($"http://{ip}:{port}/soap/IOrionPro");
+            _remoteAddress = new EndpointAddress($"http://{settings.IPAddress}:{settings.Port}/soap/IOrionPro");
 
             InitializeClient();
-            if (IsTokenRequired)
-                await InitializeToken(tokenLifetime);
+            await InitializeToken(_settings.TokenLifetime);
         }
-
         private void InitializeClient()
         {
             var binding = CreateBinding();
 
             _client = new OrionProClient(binding, _remoteAddress);
-            if (_userName != null && _password != null)
+            if (_settings.ModuleUserName!= null && _settings.ModulePassword != null)
             {
-                _client.ClientCredentials.UserName.UserName = _userName;
-                _client.ClientCredentials.UserName.Password = _password;
+                _client.ClientCredentials.UserName.UserName = _settings.ModuleUserName;
+                _client.ClientCredentials.UserName.Password = _settings.ModulePassword;
             }
         }
         private async Task InitializeToken(int tokenLifetime)
         {
-            var hash = GetMd5Hash(_tokenPassword);
-            var response = await _client.GetLoginTokenAsync(_tokenLogin, hash);
+            var hash = GetMd5Hash(_settings.EmployeePassword);
+            var response = await _client.GetLoginTokenAsync(_settings.EmployeeUserName, hash);
             if (!CheckResponse(response.@return.Success, response.@return.ServiceError))
                 return;
 
             _token = response.@return.OperationResult;
             StartTokenExpirationExtending(tokenLifetime);
         }
-
 
         private BasicHttpBinding CreateBinding()
         {

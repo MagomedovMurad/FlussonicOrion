@@ -10,5 +10,6 @@ namespace FlussonnicOrion.OrionPro.Models
         public string ModulePassword { get; set; }
         public string EmployeeUserName { get; set; }
         public string EmployeePassword { get; set; }
+        public int TokenLifetime { get; set; }
     }
 }
