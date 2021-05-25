@@ -1,10 +1,11 @@
-﻿using System.Net;
+﻿using Newtonsoft.Json;
+using System.Net;
 
 namespace FlussonnicOrion.OrionPro.Models
 {
     public class OrionSettings
     {
-        public IPAddress IPAddress { get; set; }
+        public string IPAddress { get; set; }
         public int Port { get; set; }
         public string ModuleUserName { get; set; }
         public string ModulePassword { get; set; }

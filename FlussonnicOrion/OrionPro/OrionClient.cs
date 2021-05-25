@@ -27,6 +27,7 @@ namespace FlussonnicOrion.OrionPro
 
         public async Task Initialize(OrionSettings settings)
         {
+            _settings = settings;
             _remoteAddress = new EndpointAddress($"http://{settings.IPAddress}:{settings.Port}/soap/IOrionPro");
 
             InitializeClient();
@@ -129,8 +130,8 @@ namespace FlussonnicOrion.OrionPro
                 var t = _client.GetPersonPassListAsync(tpersondata, _token).Result;
                 var cars = await _client.GetCarsAsync(_token);
                 var items = await _client.GetItemsAsync(_token);
-                await ControlAccesspoint(1, 0, ActionType.Entry, 2);
-                 //  await AddExternalEvent(2, 2, "Тестовое событие");
+                await ControlAccesspoint(1, 4, ActionType.Passage, 1);
+               // await AddExternalEvent(2, 2, "Тестовое событие");
 
                 //var tt2 = _client.GetPersonsCountAsync(null).Result;
                 //var tt1 = _client.GetPersonsAsync(true, 0, 0, null, false, true, null).Result;

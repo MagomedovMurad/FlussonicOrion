@@ -36,14 +36,14 @@ namespace FlussonnicOrion
         {
             var defaultSettings = GetDefaultSettings();
             var stringDefaultSettings = JsonConvert.SerializeObject(defaultSettings);
-            File.WriteAllText("settings.txt", stringDefaultSettings);
+            File.WriteAllText("./settings.txt", stringDefaultSettings);
         }
          
         private ServiceSettings GetDefaultSettings()
         {
             var orionSettings = new OrionSettings
             {
-                IPAddress = IPAddress.Parse("127.0.0.1"),
+                IPAddress = "127.0.0.1",
                 Port = 8090,
                 ModuleUserName = "admin",
                 ModulePassword = "password",
@@ -54,7 +54,7 @@ namespace FlussonnicOrion
 
             var flussonicSettings = new FlussonicSettings
             {
-                IPAddress = IPAddress.Parse("127.0.0.1"),
+                IPAddress = "127.0.0.1",
                 Port = 80
             };
 

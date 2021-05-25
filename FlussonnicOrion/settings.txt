@@ -1,0 +1,18 @@
+{
+    "OrionSettings": 
+    {
+        "IPAddress": "172.20.5.51",
+        "Port": 8090,
+        "ModuleUserName": "admin",
+        "ModulePassword": "password",
+        "EmployeeUserName": "admin123",
+        "EmployeePassword": "password",
+        "TokenLifetime": 300
+    },
+    "FlussonicSettings": 
+    {
+        "IsServerMode": false,
+        "IPAddress": "127.0.0.1",
+        "Port": 80
+    }
+}
