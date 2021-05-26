@@ -8,13 +8,20 @@ namespace FlussonnicOrion
     public class FlussonicServer: IFlussonic
     {
         private HttpServer _httpServer;
+        private int _port;
         public event EventHandler<FlussonicEvent> NewEvent;
+
+
+        public FlussonicServer(int port)
+        {
+            _port = port;
+        }
 
         public void Start()
         {
             _httpServer = new HttpServer();
             _httpServer.DataReceived += HttpServer_DataReceived;
-            _httpServer.Start("http://172.23.0.128:26038/flussonic_event/"); //TODO: порт должен быть настраиваемый
+            _httpServer.Start($"http://+:{_port}/flussonic_event/");
         }
 
         public void Stop()

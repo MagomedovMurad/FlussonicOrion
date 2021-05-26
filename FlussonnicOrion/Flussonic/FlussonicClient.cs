@@ -9,10 +9,20 @@ namespace FlussonnicOrion.Flussonic
     {
         private FlussonicApi _flussonicApi;
         private Timer _timer;
+        private string _ipAddress;
+        private int _port;
+
         public event EventHandler<FlussonicEvent> NewEvent;
+
+        public FlussonicClient(string ipAddress, int port)
+        {
+            _ipAddress = ipAddress;
+            _port = port;
+        }
 
         public void Start()
         {
+            _flussonicApi = new FlussonicApi(_ipAddress, _port);
             _timer = new Timer();
             _timer.Elapsed += Timer_Elapsed;
             _timer.Start();

@@ -10,7 +10,9 @@ namespace FlussonnicOrion.Flussonic.Models
     public class FlussonicSettings
     {
         public bool IsServerMode { get; set; }
-        public string IPAddress { get; set; }
-        public int Port { get; set; }
+        public int ServerPort {get; set;}
+        public string WatcherIPAddress { get; set; }
+        public int WatcherPort { get; set; }
+        public Dictionary<string, int> CamToBarier { get; set; }
     }
 }

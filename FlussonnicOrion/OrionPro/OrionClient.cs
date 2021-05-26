@@ -162,7 +162,7 @@ namespace FlussonnicOrion.OrionPro
             var yy = tt.@return.OperationResult;
         }
 
-        public async Task<bool> ControlAccesspoint(int accesspointId, int commandId, ActionType action, int personId)
+        public async Task<bool> ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
         {
             var accesspoint = new TItem()
             {
@@ -170,7 +170,7 @@ namespace FlussonnicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
-            var response = await _client.ControlItemsAsync(_token, new[] { accesspoint }, commandId, (int)action, personId);
+            var response = await _client.ControlItemsAsync(_token, new[] { accesspoint }, (int)commandId, (int)action, personId);
             var result = response.@return.OperationResult;
             return response.@return.Success && result.Select(x => x.ItemId).Contains(accesspointId);
         }

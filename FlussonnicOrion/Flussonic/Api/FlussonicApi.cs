@@ -7,7 +7,10 @@ namespace FlussonnicOrion.Api
 {
     public class FlussonicApi
     {
-        public FlussonicApi()
+        private string _ipAddress;
+        private int _port;
+
+        public FlussonicApi(string ipAddress, int port)
         { 
             
         }

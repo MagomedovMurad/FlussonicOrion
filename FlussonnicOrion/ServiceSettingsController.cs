@@ -1,9 +1,9 @@
 ﻿using FlussonnicOrion.Flussonic.Models;
 using FlussonnicOrion.OrionPro.Models;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 
 namespace FlussonnicOrion
 {
@@ -12,24 +12,30 @@ namespace FlussonnicOrion
         private const string _fileName = "settings.txt";
         public ServiceSettings Settings { get; set; }
 
-        public void Initialize()
+        public ServiceSettings Initialize()
         {
             var exist = File.Exists(_fileName);
             if (exist)
             {
-                LoadSettings();
+                bool success = LoadSettings();
+                if (!success)
+                {
+                    File.Delete(_fileName);
+                }
             }
             else
             {
                 WriteDefaultSettings();
                 LoadSettings();
             }
+            return Settings;
         }
 
-        public void LoadSettings()
+        public bool LoadSettings()
         {
-            var stringSettings =  File.ReadAllText(_fileName);
+            var stringSettings = File.ReadAllText(_fileName);
             Settings = JsonConvert.DeserializeObject<ServiceSettings>(stringSettings);
+            return true;
         }
 
         private void WriteDefaultSettings()
@@ -54,8 +60,15 @@ namespace FlussonnicOrion
 
             var flussonicSettings = new FlussonicSettings
             {
-                IPAddress = "127.0.0.1",
-                Port = 80
+                IsServerMode = true,
+                ServerPort = 26038,
+                WatcherIPAddress = "127.0.0.1",
+                WatcherPort= 80,
+                CamToBarier = new Dictionary<string, int>
+                {
+                    {"cam1", 1 },
+                    {"cam2", 2 },
+                }
             };
 
             var serviceSettings = new ServiceSettings
