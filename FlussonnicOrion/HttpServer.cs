@@ -35,7 +35,7 @@ namespace FlussonnicOrion
                             HttpListenerRequest request = context.Request;
 
                             var requestData = GetStreamData(request.InputStream, request.ContentEncoding);
-                            DataReceived?.BeginInvoke(this, requestData, emptyCallBack => { }, null);
+                            Task.Run(() => DataReceived?.Invoke(this, requestData));
                             context.Response.StatusCode = 200;
                             context.Response.Close();
                         }

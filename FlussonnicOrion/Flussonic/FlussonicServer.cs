@@ -14,7 +14,7 @@ namespace FlussonnicOrion
         {
             _httpServer = new HttpServer();
             _httpServer.DataReceived += HttpServer_DataReceived;
-            _httpServer.Start("http://127.0.0.1:80/flussonic_event/"); //TODO: порт должен быть настраиваемый
+            _httpServer.Start("http://172.23.0.128:26038/flussonic_event/"); //TODO: порт должен быть настраиваемый
         }
 
         public void Stop()
@@ -25,8 +25,16 @@ namespace FlussonnicOrion
 
         private void HttpServer_DataReceived(object sender, string data)
         {
-            var flussonicEvent = JsonConvert.DeserializeObject<FlussonicEvent>(data);
-            NewEvent?.Invoke(this, flussonicEvent);
+            try
+            {
+                var flussonicEvents = JsonConvert.DeserializeObject<FlussonicEvent[]>(data);
+                foreach (var flussonicEvent in flussonicEvents)
+                    NewEvent?.Invoke(this, flussonicEvent);
+            }
+            catch (Exception ex)
+            { 
+            
+            }
         }
     }
 }

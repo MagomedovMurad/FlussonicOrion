@@ -1,3 +1,4 @@
+using FlussonnicOrion.Api;
 using FlussonnicOrion.OrionPro;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -21,14 +22,16 @@ namespace FlussonnicOrion
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var t = new OrionClient();
-            var settingsController = new ServiceSettingsController();
-            settingsController.Initialize();
-            //await t.Initialize(IPAddress.Parse("10.21.101.19"), userName: "skip", password: "master123");
-            await t.Initialize(settingsController.Settings.OrionSettings); // IPAddress.Parse("172.20.5.51"), userName: "admin", password: "password", tokenLogin: "admin123", tokenPassword: "password", IsTokenRequired: true);
-            await t.Test();
-            //var tt = new FlussonicServer();
-            //tt.Start();
+            //var api = new FlussonicApi();
+            //api.ExecuteRequest("http://10.21.48.160/vsaas/api/v2/events?type=activity&source=plate_detector");
+            //var t = new OrionClient();
+            //var settingsController = new ServiceSettingsController();
+            //settingsController.Initialize();
+            ////await t.Initialize(IPAddress.Parse("10.21.101.19"), userName: "skip", password: "master123");
+            //await t.Initialize(settingsController.Settings.OrionSettings); // IPAddress.Parse("172.20.5.51"), userName: "admin", password: "password", tokenLogin: "admin123", tokenPassword: "password", IsTokenRequired: true);
+            //await t.Test();
+            var tt = new FlussonicServer();
+            tt.Start();
             _logger.LogError("Test");
             Console.ReadKey();
         }

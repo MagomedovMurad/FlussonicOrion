@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FlussonnicOrion.Flussonic.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +11,26 @@ namespace FlussonnicOrion.Models
 {
     public class FlussonicEvent
     {
-        public Guid Id { get; set; }
-        public int StartAt { get; set; }
-        public int EndAt { get; set; }
-        public FlussonicEventType Type { get; set; }
+        [JsonProperty(propertyName: "id")]
+        public string Id { get; set; }
+
+        [JsonProperty(propertyName: "camera_id")]
         public string CameraId { get; set; }
-        public string ObjectId { get; set; }
-        public string ExtData { get; set; }
-        public string Source { get; set; }
-        public int SourceId { get; set; }
+
+        [JsonProperty(propertyName: "start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty(propertyName: "end_at")]
+        public string EndAt { get; set; }
+
+        [JsonProperty(propertyName: "object_class")]
         public string ObjectClass { get; set; }
-        public string EventData { get; set; }
+
+        [JsonProperty(propertyName: "object_id")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty(propertyName: "object_action")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ObjectAction ObjectAction { get; set; }
     }
 }
