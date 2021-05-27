@@ -50,8 +50,8 @@ namespace FlussonnicOrion
 
             //TODO: определить имеет ли человек доступ
 
-            _orion.ControlAccesspoint(value, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, );
-            _orion.AddExternalEvent(б);
+            _orion.ControlAccesspoint(value, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 5);
+            //_orion.AddExternalEvent();
         }
     }
 }

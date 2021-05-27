@@ -129,8 +129,8 @@ namespace FlussonnicOrion.OrionPro
                 };
                 var t = _client.GetPersonPassListAsync(tpersondata, _token).Result;
                 var cars = await _client.GetCarsAsync(_token);
-                var items = await _client.GetItemsAsync(_token);
-                await ControlAccesspoint(1, 4, ActionType.Passage, 1);
+                var items = await _client.GetItemsAsync(null);
+                await ControlAccesspoint(1, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 1);
                // await AddExternalEvent(2, 2, "Тестовое событие");
 
                 //var tt2 = _client.GetPersonsCountAsync(null).Result;
@@ -170,6 +170,7 @@ namespace FlussonnicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
+            var items = await _client.GetItemsAsync(_token);
             var response = await _client.ControlItemsAsync(_token, new[] { accesspoint }, (int)commandId, (int)action, personId);
             var result = response.@return.OperationResult;
             return response.@return.Success && result.Select(x => x.ItemId).Contains(accesspointId);
