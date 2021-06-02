@@ -2,7 +2,9 @@
 using FlussonnicOrion.OrionPro.Models;
 using Orion;
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -46,13 +48,20 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task InitializeToken(int tokenLifetime)
         {
-            var hash = GetMd5Hash(_settings.EmployeePassword);
-            var response = await _client.GetLoginTokenAsync(_settings.EmployeeUserName, hash);
-            if (!CheckResponse(response.@return.Success, response.@return.ServiceError))
-                return;
+            try
+            {
+                var hash = GetMd5Hash(_settings.EmployeePassword);
+                var response = await _client.GetLoginTokenAsync(_settings.EmployeeUserName, hash);
+                if (!CheckResponse(response.@return.Success, response.@return.ServiceError))
+                    return;
 
-            _token = response.@return.OperationResult;
-            StartTokenExpirationExtending(tokenLifetime);
+                _token = response.@return.OperationResult;
+                StartTokenExpirationExtending(tokenLifetime);
+            }
+            catch (Exception ex)
+            { 
+                
+            }
         }
 
         private BasicHttpBinding CreateBinding()
@@ -115,28 +124,92 @@ namespace FlussonnicOrion.OrionPro
             }
         }
 
+        public async Task<TVisitData[]> GetVisits()
+        {
+            return await Execute<GetVisitsResponse, TVisitData[]>(_client.GetVisitsAsync(_token));
+        }
+
+        public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)
+        {
+            return await Execute<GetPersonsResponse, TPersonData[]>(_client.GetPersonsAsync(withoutPhoto, offset, count, filter, isEmployees, isVisitors, _token));
+        }
+        public async Task<int> GetPersonsCount()
+        {
+            return await Execute<GetPersonsCountResponse, int>(_client.GetPersonsCountAsync(_token));
+        }
+
+        public async Task<TTimeWindow[]> GetTimeWindows()
+        {
+           return await Execute<GetTimeWindowsResponse, TTimeWindow[]>(_client.GetTimeWindowsAsync(_token));
+        }
+
+        public async Task<TKeyData> GetKeyData(string code, int codeType)
+        { 
+            return await Execute<GetKeyDataResponse, TKeyData> (_client.GetKeyDataAsync(code, codeType, _token));
+        }
+
+        public async Task<TAccessLevel> GetAccessLevelById(int id)
+        {
+            return await Execute<GetAccessLevelByIdResponse, TAccessLevel>(_client.GetAccessLevelByIdAsync(id, _token));
+        }
+
+        private async Task<Y> Execute<T,Y>(Task<T> task)
+        {
+            try
+            {
+                var result = await task;
+
+                var @return = result.GetType().GetField("return").GetValue(result);
+                var returnProps = @return.GetType().GetProperties();
+
+                Y operationResult = (Y)returnProps.Single(x => x.Name.Equals("OperationResult")).GetValue(@return);
+                bool success = (bool)returnProps.Single(x => x.Name.Equals("Success")).GetValue(@return);
+                TServiceError serviceError = (TServiceError)returnProps.Single(x => x.Name.Equals("ServiceError")).GetValue(@return);
+
+                if (!success && serviceError != null)
+                {
+                    var message = $"Ошибка сервера (код {serviceError.ErrorCode}): {serviceError.Description}";
+                    var innerException = new Exception(serviceError.InnerExceptionMessage);
+                    throw new InvalidOperationException(message, innerException);
+                }
+
+                return operationResult;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при выполнении метода: {ex}");
+                return default;
+            }
+        }
+
         public async Task Test()
         {
             try
             {
-                var key = _client.GetKeyDataAsync("Е340РХ126", 5, _token).Result;
-                var person = _client.GetPersonByPassAsync("Е340РХ126", true, 5, _token).Result;
-                var tt = _client.GetPersonByIdAsync(2, true, _token).Result;
-                var tpersondata = new TPersonData()
-                {
-                    Id = 2, 
-                    Photo = new byte[0]
-                };
-                var t = _client.GetPersonPassListAsync(tpersondata, _token).Result;
-                var cars = await _client.GetCarsAsync(_token);
-                var items = await _client.GetItemsAsync(null);
-                await ControlAccesspoint(1, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 1);
-               // await AddExternalEvent(2, 2, "Тестовое событие");
+                await GetVisits();
+                //var g = await _client.GetTimeWindowsAsync(_token);
 
-                //var tt2 = _client.GetPersonsCountAsync(null).Result;
-                //var tt1 = _client.GetPersonsAsync(true, 0, 0, null, false, true, null).Result;
+                //var key = _client.GetKeyDataAsync("Е340РХ126", 5, _token).Result;
+                //var person = _client.GetPersonByPassAsync("Е340РХ126", true, 5, _token).Result;
+                //var tt = _client.GetPersonByIdAsync(2, true, _token).Result;
+                //var tpersondata = new TPersonData()
+                //{
+                //    Id = 1,
+                //    Photo = new byte[0]
+                //};
+                //var t = _client.GetPersonPassListAsync(tpersondata, _token).Result;
+                //var cars = await _client.GetCarsAsync(_token);
+                //var items = await _client.GetItemsForLoginAsync(_token, "admin123", null);
+                //var items3 = await _client.GetItemsAsync(_token);
+                //var i1111temsStates = await _client.GetItemsStatesAsync(_token, null);
+                //await AddExternalEvent();
+                // await ControlAccesspoint(1, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 2);
+                // await AddExternalEvent(2, 2, "Тестовое событие");
+
+                // var tt2 = _client.GetPersonsCountAsync(null).Result;
+                //var tt1 = _client.GetPersonsAsync(true, 0, 0, null, false, false, null).Result;
                 //var tt = _client.GetCarsAsync(null).Result;
-                //var t = _client.GetKeysAsync(0, 50, null).Result;
+                //var t7 = _client.GetKeysAsync(0, 50, null).Result;
             }
             catch (Exception ex)
             { 
@@ -145,18 +218,18 @@ namespace FlussonnicOrion.OrionPro
         }
 
 
-        public async Task AddExternalEvent(int keyId, int personId, string text)
+        public async Task AddExternalEvent()
         {
             var externalEvent = new TExternalEvent()
             {
-                Id = 12,
+                Id = 300,
                 ItemId = 1,
                 ItemType = ItemType.ACCESSPOINT.ToString(),
-                Event = 2,
-                KeyId = keyId,
-                PersonId = personId,
+                Event = 1,
+                KeyId = 0,
+                PersonId = 0,
                 TimeStamp = DateTime.Now,
-                Text = text
+                Text = "Тестовое внешнее событие"
             };
             var tt = await _client.AddExternalEventAsync(externalEvent, _token);
             var yy = tt.@return.OperationResult;

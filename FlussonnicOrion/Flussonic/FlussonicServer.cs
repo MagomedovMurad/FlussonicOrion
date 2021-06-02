@@ -34,9 +34,14 @@ namespace FlussonnicOrion
         {
             try
             {
+                Console.WriteLine(data);
+                Console.WriteLine();
+
                 var flussonicEvents = JsonConvert.DeserializeObject<FlussonicEvent[]>(data);
                 foreach (var flussonicEvent in flussonicEvents)
+                {
                     NewEvent?.Invoke(this, flussonicEvent);
+                }
             }
             catch (Exception ex)
             { 

@@ -32,12 +32,15 @@ namespace FlussonnicOrion
             _orion = new OrionClient();
             await _orion.Initialize(_serviceSettingsController.Settings.OrionSettings);
 
+
+
             _flussonic = isServerMode ? new FlussonicServer(settings.FlussonicSettings.ServerPort) : 
                                         new FlussonicClient(settings.FlussonicSettings.WatcherIPAddress, settings.FlussonicSettings.WatcherPort);
             _flussonic.Start();
             _flussonic.NewEvent += Flussonic_NewEvent;
 
-            //(IPAddress.Parse("172.20.5.51"), 8090, userName: "admin", password: "password", tokenLogin: "admin123", tokenPassword: "password");
+            var cache = new DbCache(_orion);
+            await cache.Initialize();
         }
 
         private void Flussonic_NewEvent(object sender, Models.FlussonicEvent e)

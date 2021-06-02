@@ -1,10 +1,10 @@
 {
     "OrionSettings": 
     {
-        "IPAddress": "127.0.0.1",
+        "IPAddress": "10.21.101.19",
         "Port": 8090,
-        "ModuleUserName": "admin",
-        "ModulePassword": "password",
+        "ModuleUserName": "skip",
+        "ModulePassword": "master123",
         "EmployeeUserName": "admin123",
         "EmployeePassword": "password",
         "TokenLifetime": 300
