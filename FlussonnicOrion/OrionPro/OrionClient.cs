@@ -2,9 +2,7 @@
 using FlussonnicOrion.OrionPro.Models;
 using Orion;
 using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -48,20 +46,9 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task InitializeToken(int tokenLifetime)
         {
-            try
-            {
-                var hash = GetMd5Hash(_settings.EmployeePassword);
-                var response = await _client.GetLoginTokenAsync(_settings.EmployeeUserName, hash);
-                if (!CheckResponse(response.@return.Success, response.@return.ServiceError))
-                    return;
-
-                _token = response.@return.OperationResult;
-                StartTokenExpirationExtending(tokenLifetime);
-            }
-            catch (Exception ex)
-            { 
-                
-            }
+            var hash = GetMd5Hash(_settings.EmployeePassword);
+            _token = await Execute<GetLoginTokenResponse, string>(_client.GetLoginTokenAsync(_settings.EmployeeUserName, hash));
+            StartTokenExpirationExtending(tokenLifetime);
         }
 
         private BasicHttpBinding CreateBinding()
@@ -80,24 +67,32 @@ namespace FlussonnicOrion.OrionPro
             _timer.Interval = tokenLifetime * 1000;
             _timer.Start();
         }
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            ExtendTokenExpiration();
+            _timer.Enabled = false;
+            await ExtendTokenExpiration();
+            _timer.Enabled = true;
         }
         private async Task ExtendTokenExpiration()
         {
-            var response = await _client.ExtendTokenExpirationAsync(_token);
-            if (CheckResponse(response.@return.Success, response.@return.ServiceError))
-                _token = response.@return.OperationResult;
+            _token = await Execute<ExtendTokenExpirationResponse, string>(_client.ExtendTokenExpirationAsync(_token));
         }
         private string GetMd5Hash(string data)
         {
-            using (var md5 = MD5.Create())
+            try
             {
-                var sourceBytes = Encoding.UTF8.GetBytes(data);
-                var hashBytes = md5.ComputeHash(sourceBytes);
-                var hash = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
-                return hash;
+                using (var md5 = MD5.Create())
+                {
+                    var sourceBytes = Encoding.UTF8.GetBytes(data);
+                    var hashBytes = md5.ComputeHash(sourceBytes);
+                    var hash = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
+                    return hash;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при расчете хэша: {ex}");
+                return null;
             }
         }
 
@@ -182,6 +177,11 @@ namespace FlussonnicOrion.OrionPro
             }
         }
 
+
+
+
+
+
         public async Task Test()
         {
             try
@@ -216,7 +216,6 @@ namespace FlussonnicOrion.OrionPro
             
             }
         }
-
 
         public async Task AddExternalEvent()
         {

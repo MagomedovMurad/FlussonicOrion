@@ -39,8 +39,8 @@ namespace FlussonnicOrion
             _flussonic.Start();
             _flussonic.NewEvent += Flussonic_NewEvent;
 
-            var cache = new DbCache(_orion);
-            await cache.Initialize();
+            //var cache = new InterimCache(_orion);
+            //await cache.Initialize();
         }
 
         private void Flussonic_NewEvent(object sender, Models.FlussonicEvent e)
