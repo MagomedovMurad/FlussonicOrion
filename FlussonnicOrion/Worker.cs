@@ -29,7 +29,7 @@ namespace FlussonnicOrion
             settingsController.Initialize();
             //await t.Initialize(IPAddress.Parse("10.21.101.19"), userName: "skip", password: "master123");
             await t.Initialize(settingsController.Settings.OrionSettings); // IPAddress.Parse("172.20.5.51"), userName: "admin", password: "password", tokenLogin: "admin123", tokenPassword: "password", IsTokenRequired: true);
-            //await t.Test();
+            await t.Test();
            
             //var tt = new FlussonicServer(26038);
             //tt.NewEvent += Tt_NewEvent;

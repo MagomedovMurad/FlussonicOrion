@@ -38,7 +38,7 @@ namespace FlussonnicOrion.OrionPro
             var binding = CreateBinding();
 
             _client = new OrionProClient(binding, _remoteAddress);
-            if (_settings.ModuleUserName!= null && _settings.ModulePassword != null)
+            if (_settings.ModuleUserName != null && _settings.ModulePassword != null)
             {
                 _client.ClientCredentials.UserName.UserName = _settings.ModuleUserName;
                 _client.ClientCredentials.UserName.Password = _settings.ModulePassword;
@@ -135,18 +135,44 @@ namespace FlussonnicOrion.OrionPro
 
         public async Task<TTimeWindow[]> GetTimeWindows()
         {
-           return await Execute<GetTimeWindowsResponse, TTimeWindow[]>(_client.GetTimeWindowsAsync(_token));
+            return await Execute<GetTimeWindowsResponse, TTimeWindow[]>(_client.GetTimeWindowsAsync(_token));
         }
 
         public async Task<TKeyData> GetKeyData(string code, int codeType)
-        { 
-            return await Execute<GetKeyDataResponse, TKeyData> (_client.GetKeyDataAsync(code, codeType, _token));
+        {
+            return await Execute<GetKeyDataResponse, TKeyData>(_client.GetKeyDataAsync(code, codeType, _token));
+        }
+
+        public async Task<TKeyData[]> GetKeys(int offset, int count)
+        {
+            return await Execute<GetKeysResponse, TKeyData[]>(_client.GetKeysAsync(offset, count, _token));
+        }
+
+        public async Task<int> GetKeysCount()
+        {
+            return await Execute<GetKeysCountResponse, int>(_client.GetKeysCountAsync(_token));
         }
 
         public async Task<TAccessLevel> GetAccessLevelById(int id)
         {
             return await Execute<GetAccessLevelByIdResponse, TAccessLevel>(_client.GetAccessLevelByIdAsync(id, _token));
         }
+
+        public async Task<int> GetAccessLevelsCount()
+        {
+            return await Execute<GetAccessLevelsCountResponse, int>(_client.GetAccessLevelsCountAsync(_token));
+        }
+
+        public async Task<TAccessLevel[]> GetAccessLevels(int offset, int count)
+        {
+            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>(_client.GetAccessLevelsAsync(offset, count,_token));
+        }
+
+        public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
+        {
+            return await Execute<GetCompaniesResponse, TCompany[]>(_client.GetCompaniesAsync(isEmployees, isVisitors, _token));
+        }
+
 
         private async Task<Y> Execute<T,Y>(Task<T> task)
         {
@@ -186,26 +212,8 @@ namespace FlussonnicOrion.OrionPro
         {
             try
             {
-                await GetVisits();
-                //var g = await _client.GetTimeWindowsAsync(_token);
-
-                //var key = _client.GetKeyDataAsync("Е340РХ126", 5, _token).Result;
-                //var person = _client.GetPersonByPassAsync("Е340РХ126", true, 5, _token).Result;
-                //var tt = _client.GetPersonByIdAsync(2, true, _token).Result;
-                //var tpersondata = new TPersonData()
-                //{
-                //    Id = 1,
-                //    Photo = new byte[0]
-                //};
-                //var t = _client.GetPersonPassListAsync(tpersondata, _token).Result;
-                //var cars = await _client.GetCarsAsync(_token);
-                //var items = await _client.GetItemsForLoginAsync(_token, "admin123", null);
-                //var items3 = await _client.GetItemsAsync(_token);
-                //var i1111temsStates = await _client.GetItemsStatesAsync(_token, null);
-                //await AddExternalEvent();
-                // await ControlAccesspoint(1, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 2);
-                // await AddExternalEvent(2, 2, "Тестовое событие");
-
+                var t = await _client.GetCompaniesAsync(true, false, _token); 
+             
                 // var tt2 = _client.GetPersonsCountAsync(null).Result;
                 //var tt1 = _client.GetPersonsAsync(true, 0, 0, null, false, false, null).Result;
                 //var tt = _client.GetCarsAsync(null).Result;
