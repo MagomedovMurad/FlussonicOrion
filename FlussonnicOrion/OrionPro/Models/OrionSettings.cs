@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Net;
+﻿using System.Collections.Generic;
 
 namespace FlussonnicOrion.OrionPro.Models
 {
@@ -12,5 +11,8 @@ namespace FlussonnicOrion.OrionPro.Models
         public string EmployeeUserName { get; set; }
         public string EmployeePassword { get; set; }
         public int TokenLifetime { get; set; }
+        public int EmployeesUpdatingInterval { get; set; }
+        public int VisitorsUpdatingInterval { get; set; }
+        public Dictionary<string, int> VideSourceToAccessPoint { get; set; }
     }
 }

@@ -11,13 +11,40 @@ using System.Timers;
 
 namespace FlussonnicOrion.OrionPro
 {
-    public class OrionClient
+    public interface IOrionClient
     {
+        Task Initialize(OrionSettings settings);
+        void Dispose();
+
+        #region Queries
+        Task<TVisitData[]> GetVisits();
+        Task<int> GetPersonsCount();
+        Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors);
+        Task<TTimeWindow[]> GetTimeWindows();
+        Task<TKeyData> GetKeyData(string code, int codeType);
+        Task<TKeyData[]> GetKeys(int offset, int count);
+        Task<int> GetKeysCount();
+        Task<TAccessLevel> GetAccessLevelById(int id);
+        Task<int> GetAccessLevelsCount();
+        Task<TAccessLevel[]> GetAccessLevels(int offset, int count);
+        Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors);
+        #endregion
+
+        #region Commands
+        Task AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text);
+        Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId);
+        #endregion
+    }
+
+    public class OrionClient: IOrionClient
+    {
+        #region Fields
         private OrionProClient _client;
         private EndpointAddress _remoteAddress;
         private OrionSettings _settings;
-        private string _token;
         private Timer _timer;
+        private string _token;
+        #endregion
 
         public OrionClient()
         {
@@ -98,26 +125,7 @@ namespace FlussonnicOrion.OrionPro
 
         #endregion
 
-        #region Utils
-        private bool CheckResponse(bool isSucces, TServiceError error)
-        {
-            if (isSucces)
-                return true;
-
-            Console.WriteLine($"Error code: {error.ErrorCode}. {error.Description}. InnerException: {error.InnerExceptionMessage}");
-            return false;
-        }
-        #endregion
-
-        public void Dispose()
-        {
-            if (_timer != null)
-            {
-                _timer.Elapsed -= Timer_Elapsed;
-                _timer.Stop();
-                _timer.Dispose();
-            }
-        }
+        #region Queries
 
         public async Task<TVisitData[]> GetVisits()
         {
@@ -173,8 +181,40 @@ namespace FlussonnicOrion.OrionPro
             return await Execute<GetCompaniesResponse, TCompany[]>(_client.GetCompaniesAsync(isEmployees, isVisitors, _token));
         }
 
+        #endregion
 
-        private async Task<Y> Execute<T,Y>(Task<T> task)
+        #region Commands
+        public async Task AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text)
+        {
+            var externalEvent = new TExternalEvent()
+            {
+                Id = id,
+                ItemId = itemId,
+                ItemType = itemType.ToString(),
+                Event = eventTypeId,
+                KeyId = keyId,
+                PersonId = personId,
+                TimeStamp = DateTime.Now,
+                Text = text
+            };
+
+            await Execute<AddExternalEventResponse, TExternalEvent>(_client.AddExternalEventAsync(externalEvent, _token));
+        }
+
+        public async Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
+        {
+            var accesspoint = new TItem()
+            {
+                ItemId = accesspointId,
+                ItemType = ItemType.ACCESSPOINT.ToString(),
+                Timestamp = DateTime.Now
+            };
+            await Execute<ControlItemsResponse, TItem>(_client.ControlItemsAsync(_token, new[] { accesspoint }, (int)commandId, (int)action, personId));
+        }
+        #endregion
+
+        #region Utils
+        private async Task<Y> Execute<T, Y>(Task<T> task)
         {
             try
             {
@@ -203,57 +243,16 @@ namespace FlussonnicOrion.OrionPro
             }
         }
 
-
-
-
-
-
-        public async Task Test()
+        public void Dispose()
         {
-            try
+            if (_timer != null)
             {
-                var t = await _client.GetCompaniesAsync(true, false, _token); 
-             
-                // var tt2 = _client.GetPersonsCountAsync(null).Result;
-                //var tt1 = _client.GetPersonsAsync(true, 0, 0, null, false, false, null).Result;
-                //var tt = _client.GetCarsAsync(null).Result;
-                //var t7 = _client.GetKeysAsync(0, 50, null).Result;
+                _timer.Elapsed -= Timer_Elapsed;
+                _timer.Stop();
+                _timer.Dispose();
             }
-            catch (Exception ex)
-            { 
-            
-            }
+            _client?.Close();
         }
-
-        public async Task AddExternalEvent()
-        {
-            var externalEvent = new TExternalEvent()
-            {
-                Id = 300,
-                ItemId = 1,
-                ItemType = ItemType.ACCESSPOINT.ToString(),
-                Event = 1,
-                KeyId = 0,
-                PersonId = 0,
-                TimeStamp = DateTime.Now,
-                Text = "Тестовое внешнее событие"
-            };
-            var tt = await _client.AddExternalEventAsync(externalEvent, _token);
-            var yy = tt.@return.OperationResult;
-        }
-
-        public async Task<bool> ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
-        {
-            var accesspoint = new TItem()
-            {
-                ItemId = accesspointId,
-                ItemType = ItemType.ACCESSPOINT.ToString(),
-                Timestamp = DateTime.Now
-            };
-            var items = await _client.GetItemsAsync(_token);
-            var response = await _client.ControlItemsAsync(_token, new[] { accesspoint }, (int)commandId, (int)action, personId);
-            var result = response.@return.OperationResult;
-            return response.@return.Success && result.Select(x => x.ItemId).Contains(accesspointId);
-        }
+        #endregion
     }
 }

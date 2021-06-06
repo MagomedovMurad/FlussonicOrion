@@ -1,60 +1,100 @@
-﻿using FlussonnicOrion.Flussonic;
+﻿using FlussonnicOrion.Controllers;
+using FlussonnicOrion.Flussonic;
+using FlussonnicOrion.Flussonic.Enums;
 using FlussonnicOrion.OrionPro;
 using FlussonnicOrion.OrionPro.Enums;
-using System;
+using FlussonnicOrion.Utils;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FlussonnicOrion
 {
-    public class Controller
+    public interface IController
     {
-        private ServiceSettingsController _serviceSettingsController;
+        Task Initialize();
+        void Dispose();
+    }
+
+    public class Controller: IController
+    {
+        private readonly ILogger<Controller> _logger;
+
+        private IServiceSettingsController _serviceSettingsController;
         private IFlussonic _flussonic;
-        private OrionClient _orion;
+        private IOrionClient _orionClient;
+        private IOrionCache _orionCache;
+        private IAccessController _accessController;
 
         private Dictionary<string, int> _camerasToBariers;
 
-        public Controller()
+        public Controller(ILogger<Controller> logger, 
+                          IOrionClient orionClient, 
+                          IOrionCache orionCache, 
+                          IServiceScopeFactory scopeFactory,
+                          IServiceSettingsController serviceSettingsController)
         {
+            _logger = logger;
+            _orionClient = orionClient;
+            _orionCache = orionCache;
+            _accessController = scopeFactory.Resolve<IAccessController>();
+            _serviceSettingsController = serviceSettingsController;
         }
 
-        private async Task Initialize()
+        public async Task Initialize()
         {
-            _serviceSettingsController = new ServiceSettingsController();
             _serviceSettingsController.Initialize();
 
-            var settings = _serviceSettingsController.Settings;
-            _camerasToBariers = settings.FlussonicSettings.CamToBarier;
-            var isServerMode = settings.FlussonicSettings.IsServerMode;
+            var orionSettings = _serviceSettingsController.Settings.OrionSettings;
+            var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
 
-            _orion = new OrionClient();
-            await _orion.Initialize(_serviceSettingsController.Settings.OrionSettings);
+            _camerasToBariers = orionSettings.VideSourceToAccessPoint;
+            await _orionClient.Initialize(orionSettings);
+            _orionCache.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
 
-
-
-            _flussonic = isServerMode ? new FlussonicServer(settings.FlussonicSettings.ServerPort) : 
-                                        new FlussonicClient(settings.FlussonicSettings.WatcherIPAddress, settings.FlussonicSettings.WatcherPort);
+            _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort) : 
+                                        new FlussonicClient(flussonicSettings.WatcherIPAddress,
+                                                            flussonicSettings.WatcherPort);
             _flussonic.Start();
             _flussonic.NewEvent += Flussonic_NewEvent;
-
-            //var cache = new InterimCache(_orion);
-            //await cache.Initialize();
+            _logger.LogInformation("Controller инициализирован");
         }
+
+        public void Dispose()
+        {
+            _flussonic.Stop();
+            _orionClient.Dispose();
+            _orionCache.Dispose();
+        }        
 
         private void Flussonic_NewEvent(object sender, Models.FlussonicEvent e)
         {
-            //TODO: отфильтровать по типу события и т.д
+            Task.Run(async () =>
+            {
+                if (e.ObjectClass != ObjectClass.Vehicle)
+                    return;
 
-            var isSuccess = _camerasToBariers.TryGetValue(e.CameraId, out int value);
-            if (!isSuccess)
-                return;
+                if (e.ObjectAction != ObjectAction.Enter)
+                    return;
 
-            //TODO: определить имеет ли человек доступ
+                var isSuccess = _camerasToBariers.TryGetValue(e.CameraId, out int itemId);
+                if (!isSuccess)
+                    return;
 
-            _orion.ControlAccesspoint(value, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, 5);
-            //_orion.AddExternalEvent();
+                var accessResults = _accessController.CheckAccess(e.ObjectId, itemId);
+                var allowedAccessResult = accessResults.FirstOrDefault(x => x.AccessAllowed);
+
+                if (allowedAccessResult != null)
+                    await _orionClient.ControlAccesspoint(itemId, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, allowedAccessResult.PersonId);
+
+                foreach (var accessResult in accessResults)
+                {
+                    var text = $"Гос. номер {e.ObjectId}. Доступ {(accessResult.AccessAllowed ? "разрешен" : "запрещен")}. {accessResult.PersonData}";
+                    await _orionClient.AddExternalEvent(0, itemId, ItemType.ACCESSPOINT, 1651, accessResult.KeyId, accessResult.PersonId, text);
+                }
+            });
         }
     }
 }

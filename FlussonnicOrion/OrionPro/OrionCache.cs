@@ -9,9 +9,22 @@ using System.Timers;
 
 namespace FlussonnicOrion.OrionPro
 {
-    public class OrionCache
+    public interface IOrionCache
     {
-        private readonly OrionClient _orionClient;
+        void Initialize(int employeeInterval, int visitorsInterval);
+        void Dispose();
+
+        IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber);
+        IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber);
+        TPersonData GetPerson(int id);
+        TAccessLevel GetAccessLevel(int id);
+        TTimeWindow GetTimeWindow(int id);
+        TCompany GetCompany(int id);
+    }
+
+    public class OrionCache: IOrionCache
+    {
+        private readonly IOrionClient _orionClient;
 
         #region Timers
         private System.Timers.Timer _personsTimer;
@@ -55,7 +68,7 @@ namespace FlussonnicOrion.OrionPro
             { "У", "Y"},
             { "Х", "X"}
         };
-        public OrionCache(OrionClient orionClient)
+        public OrionCache(IOrionClient orionClient)
         {
             _orionClient = orionClient;
         }
@@ -75,6 +88,15 @@ namespace FlussonnicOrion.OrionPro
             TimeWindowsUpdater(this, null);
             KeysUpdater(this, null);
             AccessLevelsUpdater(this, null);
+        }
+        public void Dispose()
+        {
+            _personsTimer.Dispose();
+            _visitorsTimer.Dispose();
+            _timeWindowsTimer.Dispose();
+            _keysTimer.Dispose();
+            _accessLevelsTimer.Dispose();
+            _companiesTimer.Dispose();
         }
 
         public IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber)
@@ -228,6 +250,9 @@ namespace FlussonnicOrion.OrionPro
 
         private System.Timers.Timer CreateTimer(int interval, ElapsedEventHandler handler)
         {
+            if (interval == 0)
+                interval = 1;
+
             var timer = new System.Timers.Timer(interval * 1000);
             timer.Elapsed += handler;
             timer.AutoReset = false;

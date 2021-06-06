@@ -44,8 +44,8 @@ namespace FlussonnicOrion
                 }
             }
             catch (Exception ex)
-            { 
-            
+            {
+                Console.WriteLine(ex);
             }
         }
     }

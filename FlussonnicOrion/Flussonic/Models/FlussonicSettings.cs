@@ -13,6 +13,5 @@ namespace FlussonnicOrion.Flussonic.Models
         public int ServerPort {get; set;}
         public string WatcherIPAddress { get; set; }
         public int WatcherPort { get; set; }
-        public Dictionary<string, int> CamToBarier { get; set; }
     }
 }

@@ -1,11 +1,6 @@
-﻿using FlussonnicOrion.Flussonic.Models;
+﻿using FlussonnicOrion.Flussonic.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlussonnicOrion.Models
 {
@@ -24,7 +19,8 @@ namespace FlussonnicOrion.Models
         public string EndAt { get; set; }
 
         [JsonProperty(propertyName: "object_class")]
-        public string ObjectClass { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ObjectClass ObjectClass { get; set; }
 
         [JsonProperty(propertyName: "object_id")]
         public string ObjectId { get; set; }

@@ -1,3 +1,5 @@
+using FlussonnicOrion.Controllers;
+using FlussonnicOrion.OrionPro;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -16,9 +18,15 @@ namespace FlussonnicOrion
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseWindowsService()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>();
+                    services.AddHostedService<Worker>()
+                            .AddSingleton<IController, Controller>()
+                            .AddSingleton<IServiceSettingsController, ServiceSettingsController>()
+                            .AddSingleton<IOrionClient, OrionClient>()
+                            .AddSingleton<IOrionCache, OrionCache>()
+                            .AddScoped<IAccessController, AccessController>();
                 });
     }
 }

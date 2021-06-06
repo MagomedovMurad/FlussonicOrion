@@ -7,7 +7,14 @@ using System.IO;
 
 namespace FlussonnicOrion
 {
-    public class ServiceSettingsController
+    public interface IServiceSettingsController
+    {
+        ServiceSettings Settings { get; }
+        ServiceSettings Initialize();
+        bool LoadSettings();
+    }
+
+    public class ServiceSettingsController: IServiceSettingsController
     {
         private const string _fileName = "settings.txt";
         public ServiceSettings Settings { get; set; }
@@ -55,7 +62,14 @@ namespace FlussonnicOrion
                 ModulePassword = "password",
                 EmployeeUserName = "admin123",
                 EmployeePassword = "password123",
-                TokenLifetime = 300
+                TokenLifetime = 300,
+                EmployeesUpdatingInterval = 60,
+                VisitorsUpdatingInterval = 60,
+                VideSourceToAccessPoint = new Dictionary<string, int>
+                {
+                    {"cam1", 1 },
+                    {"cam2", 2 },
+                }
             };
 
             var flussonicSettings = new FlussonicSettings
@@ -63,12 +77,7 @@ namespace FlussonnicOrion
                 IsServerMode = true,
                 ServerPort = 26038,
                 WatcherIPAddress = "127.0.0.1",
-                WatcherPort= 80,
-                CamToBarier = new Dictionary<string, int>
-                {
-                    {"cam1", 1 },
-                    {"cam2", 2 },
-                }
+                WatcherPort= 80
             };
 
             var serviceSettings = new ServiceSettings

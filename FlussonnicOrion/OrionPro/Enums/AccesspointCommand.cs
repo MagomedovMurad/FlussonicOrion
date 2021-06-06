@@ -44,7 +44,7 @@ namespace FlussonnicOrion.OrionPro.Enums
         ExitBan = 6,
 
         /// <summary>
-        /// открытие доступа
+        /// Открытие доступа
         /// </summary>
         OpeningAccess
     }
