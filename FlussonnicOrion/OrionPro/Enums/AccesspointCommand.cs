@@ -24,7 +24,7 @@ namespace FlussonnicOrion.OrionPro.Enums
         LoginPermission = 2,
 
         /// <summary>
-        /// Разрешение входа
+        /// Разрешение выхода
         /// </summary>
         OutputResolution = 3,
 

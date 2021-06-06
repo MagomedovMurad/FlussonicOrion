@@ -230,7 +230,7 @@ namespace FlussonnicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
-            await Execute<ControlItemsResponse, TItem>((ControlItemsDel)_client.ControlItemsAsync, false, _token, new[] { accesspoint }, (int)commandId, (int)action, personId);
+            await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, false, _token, new[] { accesspoint }, (int)commandId, (int)action, personId);
         }
         #endregion
 

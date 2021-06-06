@@ -52,7 +52,7 @@ namespace FlussonnicOrion.Controllers
             _orionCache.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
 
             var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
-            _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort) : 
+            _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort, _logger) : 
                                         new FlussonicClient(flussonicSettings.WatcherIPAddress,
                                                             flussonicSettings.WatcherPort);
             _flussonic.Start();
@@ -70,6 +70,7 @@ namespace FlussonnicOrion.Controllers
         {
             Task.Run(async () =>
             {
+                _logger.LogInformation($"Новое событие от камеры: {e.CameraId}. Гос. номер: {e.ObjectId}. Action: {e.ObjectAction}");
                 if (e.ObjectClass != ObjectClass.Vehicle)
                     return;
 

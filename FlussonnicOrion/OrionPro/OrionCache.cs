@@ -201,7 +201,6 @@ namespace FlussonnicOrion.OrionPro
 
         private async Task<IEnumerable<TPersonData>> LoadPersons()
         {
-            _logger.LogInformation("Получение списка TPerson");
             var allPersons = new List<TPersonData>();
             var personsCount = await _orionClient.GetPersonsCount();
 
@@ -221,7 +220,6 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task<IEnumerable<TVisitData>> LoadVisitors()
         {
-            _logger.LogInformation("Получение списка TVisit");
             var visitors = await _orionClient.GetVisits();
             if (visitors == null)
             {
@@ -234,7 +232,6 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task<IEnumerable<TKeyData>> LoadKeys()
         {
-            _logger.LogInformation("Получение списка TKeyData");
             var allKeys = new List<TKeyData>();
             var keysCount = await _orionClient.GetKeysCount();
 
@@ -256,7 +253,6 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task<IEnumerable<TAccessLevel>> LoadAccessLevels()
         {
-            _logger.LogInformation("Получение списка TAccessLevel");
             var allAccessLevels = new List<TAccessLevel>();
             var accessLevelsCount = await _orionClient.GetAccessLevelsCount();
 
