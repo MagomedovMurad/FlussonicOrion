@@ -1,8 +1,10 @@
 ﻿using FlussonnicOrion.OrionPro.Enums;
 using FlussonnicOrion.OrionPro.Models;
+using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -36,9 +38,10 @@ namespace FlussonnicOrion.OrionPro
         #endregion
     }
 
-    public class OrionClient: IOrionClient
+    public class OrionClient : IOrionClient
     {
         #region Fields
+        private readonly ILogger<IOrionClient> _logger;
         private OrionProClient _client;
         private EndpointAddress _remoteAddress;
         private OrionSettings _settings;
@@ -46,8 +49,9 @@ namespace FlussonnicOrion.OrionPro
         private string _token;
         #endregion
 
-        public OrionClient()
+        public OrionClient(ILogger<IOrionClient> logger)
         {
+            _logger = logger;
         }
 
         #region Initialize
@@ -59,6 +63,7 @@ namespace FlussonnicOrion.OrionPro
 
             InitializeClient();
             await InitializeToken(_settings.TokenLifetime);
+            _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
         private void InitializeClient()
         {
@@ -73,8 +78,9 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task InitializeToken(int tokenLifetime)
         {
+            StopTokenExpirationExtending();
             var hash = GetMd5Hash(_settings.EmployeePassword);
-            _token = await Execute<GetLoginTokenResponse, string>(_client.GetLoginTokenAsync(_settings.EmployeeUserName, hash));
+            _token = await Execute<GetLoginTokenResponse, string>((GetLoginTokenDel)_client.GetLoginTokenAsync, false, _settings.EmployeeUserName, hash);
             StartTokenExpirationExtending(tokenLifetime);
         }
 
@@ -94,6 +100,15 @@ namespace FlussonnicOrion.OrionPro
             _timer.Interval = tokenLifetime * 1000;
             _timer.Start();
         }
+        private void StopTokenExpirationExtending()
+        {
+            if (_timer == null)
+                return;
+
+            _timer.Elapsed -= Timer_Elapsed;
+            _timer.Dispose();
+        }
+
         private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _timer.Enabled = false;
@@ -102,7 +117,7 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task ExtendTokenExpiration()
         {
-            _token = await Execute<ExtendTokenExpirationResponse, string>(_client.ExtendTokenExpirationAsync(_token));
+            _token = await Execute<ExtendTokenExpirationResponse, string>((ExtendTokenExpirationDel)_client.ExtendTokenExpirationAsync, false, _token);
         }
         private string GetMd5Hash(string data)
         {
@@ -126,59 +141,66 @@ namespace FlussonnicOrion.OrionPro
         #endregion
 
         #region Queries
-
+        #region Delegetes
+        private delegate Task<GetLoginTokenResponse> GetLoginTokenDel(string Login, string Md5Passw);
+        private delegate Task<ExtendTokenExpirationResponse> ExtendTokenExpirationDel(string token);
+        private delegate Task<GetVisitsResponse> GetVisitsDel(string token);
+        private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
+        private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string token);
+        private delegate Task<GetTimeWindowsResponse> GetTimeWindowsDel(string token);
+        private delegate Task<GetKeyDataResponse> GetKeyDataDel(string code, int codeType, string token);
+        private delegate Task<GetKeysResponse> GetKeysDel(int offset, int count, string token);
+        private delegate Task<GetKeysCountResponse> GetKeysCountDel(string token);
+        private delegate Task<GetAccessLevelByIdResponse> GetAccessLevelByIdDel(int id, string token);
+        private delegate Task<GetAccessLevelsCountResponse> GetAccessLevelsCountDel(string token);
+        private delegate Task<GetAccessLevelsResponse> GetAccessLevelsDel(int offset, int count, string token);
+        private delegate Task<GetCompaniesResponse> GetCompaniesDel(bool isEmployees, bool isVisitors, string token);
+        private delegate Task<AddExternalEventResponse> AddExternalEventDel(TExternalEvent externalEvent, string token);
+        private delegate Task<ControlItemsResponse> ControlItemsDel(string token, TItem[] item, int command, int action, int personId);
+        #endregion
         public async Task<TVisitData[]> GetVisits()
         {
-            return await Execute<GetVisitsResponse, TVisitData[]>(_client.GetVisitsAsync(_token));
+            return await Execute<GetVisitsResponse, TVisitData[]>((GetVisitsDel)_client.GetVisitsAsync, false, _token);
         }
-
         public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)
         {
-            return await Execute<GetPersonsResponse, TPersonData[]>(_client.GetPersonsAsync(withoutPhoto, offset, count, filter, isEmployees, isVisitors, _token));
+            return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors, _token);
         }
         public async Task<int> GetPersonsCount()
         {
-            return await Execute<GetPersonsCountResponse, int>(_client.GetPersonsCountAsync(_token));
+            return await Execute<GetPersonsCountResponse, int>((GetPersonsCountDel)_client.GetPersonsCountAsync, false, _token);
         }
-
         public async Task<TTimeWindow[]> GetTimeWindows()
         {
-            return await Execute<GetTimeWindowsResponse, TTimeWindow[]>(_client.GetTimeWindowsAsync(_token));
+            return await Execute<GetTimeWindowsResponse, TTimeWindow[]>((GetTimeWindowsDel)_client.GetTimeWindowsAsync, false, _token);
         }
-
         public async Task<TKeyData> GetKeyData(string code, int codeType)
         {
-            return await Execute<GetKeyDataResponse, TKeyData>(_client.GetKeyDataAsync(code, codeType, _token));
+            return await Execute<GetKeyDataResponse, TKeyData>((GetKeyDataDel)_client.GetKeyDataAsync, false, code, codeType, _token);
         }
-
         public async Task<TKeyData[]> GetKeys(int offset, int count)
         {
-            return await Execute<GetKeysResponse, TKeyData[]>(_client.GetKeysAsync(offset, count, _token));
+            return await Execute<GetKeysResponse, TKeyData[]>((GetKeysDel)_client.GetKeysAsync, false, offset, count, _token);
         }
-
         public async Task<int> GetKeysCount()
         {
-            return await Execute<GetKeysCountResponse, int>(_client.GetKeysCountAsync(_token));
+            return await Execute<GetKeysCountResponse, int>((GetKeysCountDel)_client.GetKeysCountAsync, false, _token);
         }
-
         public async Task<TAccessLevel> GetAccessLevelById(int id)
         {
-            return await Execute<GetAccessLevelByIdResponse, TAccessLevel>(_client.GetAccessLevelByIdAsync(id, _token));
+            return await Execute<GetAccessLevelByIdResponse, TAccessLevel>((GetAccessLevelByIdDel)_client.GetAccessLevelByIdAsync, false, id, _token);
         }
-
         public async Task<int> GetAccessLevelsCount()
         {
-            return await Execute<GetAccessLevelsCountResponse, int>(_client.GetAccessLevelsCountAsync(_token));
+            return await Execute<GetAccessLevelsCountResponse, int>((GetAccessLevelsCountDel)_client.GetAccessLevelsCountAsync, false, _token);
         }
-
         public async Task<TAccessLevel[]> GetAccessLevels(int offset, int count)
         {
-            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>(_client.GetAccessLevelsAsync(offset, count,_token));
+            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count,_token);
         }
-
         public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
         {
-            return await Execute<GetCompaniesResponse, TCompany[]>(_client.GetCompaniesAsync(isEmployees, isVisitors, _token));
+            return await Execute<GetCompaniesResponse, TCompany[]>((GetCompaniesDel)_client.GetCompaniesAsync, false, isEmployees, isVisitors, _token);
         }
 
         #endregion
@@ -198,9 +220,8 @@ namespace FlussonnicOrion.OrionPro
                 Text = text
             };
 
-            await Execute<AddExternalEventResponse, TExternalEvent>(_client.AddExternalEventAsync(externalEvent, _token));
+            await Execute<AddExternalEventResponse, TExternalEvent>((AddExternalEventDel)_client.AddExternalEventAsync, false, externalEvent, _token);
         }
-
         public async Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
         {
             var accesspoint = new TItem()
@@ -209,36 +230,49 @@ namespace FlussonnicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
-            await Execute<ControlItemsResponse, TItem>(_client.ControlItemsAsync(_token, new[] { accesspoint }, (int)commandId, (int)action, personId));
+            await Execute<ControlItemsResponse, TItem>((ControlItemsDel)_client.ControlItemsAsync, false, _token, new[] { accesspoint }, (int)commandId, (int)action, personId);
         }
         #endregion
 
         #region Utils
-        private async Task<Y> Execute<T, Y>(Task<T> task)
+
+        private RequestResult<T> ParseResult<T>(object result)
         {
+            var @return = result.GetType().GetField("return").GetValue(result);
+            var returnProps = @return.GetType().GetProperties();
+            T operationResult = (T)returnProps.Single(x => x.Name.Equals("OperationResult")).GetValue(@return);
+
+            bool success = (bool)returnProps.Single(x => x.Name.Equals("Success")).GetValue(@return);
+            TServiceError serviceError = (TServiceError)returnProps.Single(x => x.Name.Equals("ServiceError")).GetValue(@return);
+
+            return new RequestResult<T>() { Result = operationResult, IsSuccess = success, ServiceError = serviceError };
+        }
+
+        private async Task<T> Execute<Y,T>(Delegate @delegate, bool isRepeat, params object[] args)
+        { 
             try
             {
-                var result = await task;
+                Y result = await (@delegate.DynamicInvoke(args) as Task<Y>);
+                var parsedResult = ParseResult<T>(result);
 
-                var @return = result.GetType().GetField("return").GetValue(result);
-                var returnProps = @return.GetType().GetProperties();
-
-                Y operationResult = (Y)returnProps.Single(x => x.Name.Equals("OperationResult")).GetValue(@return);
-                bool success = (bool)returnProps.Single(x => x.Name.Equals("Success")).GetValue(@return);
-                TServiceError serviceError = (TServiceError)returnProps.Single(x => x.Name.Equals("ServiceError")).GetValue(@return);
-
-                if (!success && serviceError != null)
+                if (!parsedResult.IsSuccess && parsedResult.ServiceError != null)
                 {
-                    var message = $"Ошибка сервера (код {serviceError.ErrorCode}): {serviceError.Description}";
-                    var innerException = new Exception(serviceError.InnerExceptionMessage);
+                    if (parsedResult.ServiceError.InnerExceptionMessage == "Token not found" && !isRepeat)
+                    {
+                        await InitializeToken(_settings.TokenLifetime);
+                        return await Execute<Y,T>(@delegate, true, args);
+                    }
+
+                    var message = $"Ошибка сервера (код {parsedResult.ServiceError.ErrorCode}): {parsedResult.ServiceError.Description}";
+                    var innerException = new Exception(parsedResult.ServiceError.InnerExceptionMessage);
                     throw new InvalidOperationException(message, innerException);
                 }
 
-                return operationResult;
+                return parsedResult.Result;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при выполнении метода: {ex}");
+                _logger.LogError(ex, $"Ошибка при выполнении метода {@delegate.Method.Name}:");
                 return default;
             }
         }
@@ -254,5 +288,12 @@ namespace FlussonnicOrion.OrionPro
             _client?.Close();
         }
         #endregion
+    }
+
+    public class RequestResult<T>
+    { 
+        public T Result { get; set; }
+        public bool IsSuccess { get; set; }
+        public TServiceError ServiceError { get; set; }
     }
 }
