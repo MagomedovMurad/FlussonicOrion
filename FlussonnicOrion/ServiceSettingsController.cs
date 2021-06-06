@@ -1,5 +1,6 @@
 ﻿using FlussonnicOrion.Flussonic.Models;
 using FlussonnicOrion.OrionPro.Models;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,40 +17,59 @@ namespace FlussonnicOrion
 
     public class ServiceSettingsController: IServiceSettingsController
     {
+        private ILogger<IServiceSettingsController> _logger;
         private const string _fileName = "settings.txt";
         public ServiceSettings Settings { get; set; }
+
+        public ServiceSettingsController(ILogger<IServiceSettingsController> logger)
+        {
+            _logger = logger;
+        }
 
         public ServiceSettings Initialize()
         {
             var exist = File.Exists(_fileName);
-            if (exist)
-            {
-                bool success = LoadSettings();
-                if (!success)
-                {
-                    File.Delete(_fileName);
-                }
-            }
-            else
-            {
+  
+            if(!exist)
                 WriteDefaultSettings();
-                LoadSettings();
+
+            bool success = LoadSettings();
+            if (!success)
+            {
+                Settings = GetDefaultSettings();
+                _logger.LogError("Не удалось загрузить настройки из конфигурационного файла. Используются настройки по умолчанию");
             }
+
             return Settings;
         }
 
         public bool LoadSettings()
         {
-            var stringSettings = File.ReadAllText(_fileName);
-            Settings = JsonConvert.DeserializeObject<ServiceSettings>(stringSettings);
-            return true;
+            try
+            {
+                var stringSettings = File.ReadAllText(_fileName);
+                Settings = JsonConvert.DeserializeObject<ServiceSettings>(stringSettings);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при чтении настроек из файла конфигурации");
+                return false;
+            }
         }
 
         private void WriteDefaultSettings()
         {
-            var defaultSettings = GetDefaultSettings();
-            var stringDefaultSettings = JsonConvert.SerializeObject(defaultSettings);
-            File.WriteAllText("./settings.txt", stringDefaultSettings);
+            try
+            {
+                var defaultSettings = GetDefaultSettings();
+                var stringDefaultSettings = JsonConvert.SerializeObject(defaultSettings);
+                File.WriteAllText("./settings.txt", stringDefaultSettings);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при создании конфигурационного файла с настройками по умолчанию");
+            }
         }
          
         private ServiceSettings GetDefaultSettings()

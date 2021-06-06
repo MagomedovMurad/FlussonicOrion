@@ -22,7 +22,7 @@ namespace FlussonnicOrion
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>()
-                            .AddSingleton<IController, Controller>()
+                            .AddSingleton<ILogicController, LogicController>()
                             .AddSingleton<IServiceSettingsController, ServiceSettingsController>()
                             .AddSingleton<IOrionClient, OrionClient>()
                             .AddSingleton<IOrionCache, OrionCache>()

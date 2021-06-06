@@ -1,4 +1,5 @@
 ﻿using FlussonnicOrion.OrionPro.Enums;
+using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace FlussonnicOrion.OrionPro
 
     public class OrionCache: IOrionCache
     {
+        private readonly ILogger<IOrionCache> _logger;
         private readonly IOrionClient _orionClient;
 
         #region Timers
@@ -68,13 +70,15 @@ namespace FlussonnicOrion.OrionPro
             { "У", "Y"},
             { "Х", "X"}
         };
-        public OrionCache(IOrionClient orionClient)
+        public OrionCache(IOrionClient orionClient, ILogger<IOrionCache> logger)
         {
             _orionClient = orionClient;
+            _logger = logger;
         }
 
         public void Initialize(int employeeInterval, int visitorsInterval)
         {
+            _logger.LogInformation("Запуск инициализации кэша данных Орион");
             _personsTimer = CreateTimer(employeeInterval, PersonUpdater);
             _keysTimer = CreateTimer(employeeInterval, KeysUpdater);
             _timeWindowsTimer = CreateTimer(employeeInterval, TimeWindowsUpdater);
@@ -88,6 +92,8 @@ namespace FlussonnicOrion.OrionPro
             TimeWindowsUpdater(this, null);
             KeysUpdater(this, null);
             AccessLevelsUpdater(this, null);
+            CompaniesUpdater(this, null);
+            _logger.LogInformation("Кэш данных Орион инициализирован");
         }
         public void Dispose()
         {
@@ -101,7 +107,7 @@ namespace FlussonnicOrion.OrionPro
 
         public IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber)
         {
-            return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber)), _visitorsLock);
+            return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber)), _visitorsLock).ToArray();
         }
         public IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber)
         {
@@ -195,6 +201,7 @@ namespace FlussonnicOrion.OrionPro
 
         private async Task<IEnumerable<TPersonData>> LoadPersons()
         {
+            _logger.LogInformation("Получение списка TPerson");
             var allPersons = new List<TPersonData>();
             var personsCount = await _orionClient.GetPersonsCount();
 
@@ -202,21 +209,32 @@ namespace FlussonnicOrion.OrionPro
             {
                 var persons = await _orionClient.GetPersons(true, i, 100, null, false, false);
                 if (persons == null)
+                {
+                    _logger.LogError("Ошибка при получении списка TPerson");
                     return null;
+                }
                 allPersons.AddRange(persons);
+                _logger.LogInformation($"Получение списка TPerson: {allPersons.Count} из {personsCount}");
             }
 
             return allPersons;
         }
         private async Task<IEnumerable<TVisitData>> LoadVisitors()
         {
+            _logger.LogInformation("Получение списка TVisit");
             var visitors = await _orionClient.GetVisits();
-            if (visitors != null)
-                visitors.ToList().ForEach(x => x.CarNumber = ReplaceCirilicToLatin(x.CarNumber));
+            if (visitors == null)
+            {
+                _logger.LogError("Ошибка при получении списка TVisit");
+                return null;
+            }
+            visitors.ToList().ForEach(x => x.CarNumber = ReplaceCirilicToLatin(x.CarNumber));
+            _logger.LogInformation($"Получение списка TVisit: {visitors.Length} из {visitors.Length}");
             return visitors;
         }
         private async Task<IEnumerable<TKeyData>> LoadKeys()
         {
+            _logger.LogInformation("Получение списка TKeyData");
             var allKeys = new List<TKeyData>();
             var keysCount = await _orionClient.GetKeysCount();
 
@@ -224,8 +242,12 @@ namespace FlussonnicOrion.OrionPro
             {
                 var keys = await _orionClient.GetKeys(i, 100);
                 if (keys == null)
+                {
+                    _logger.LogError("Ошибка при получении списка TKeyData");
                     return null;
+                }
                 allKeys.AddRange(keys);
+                _logger.LogInformation($"Получение списка TKeyData: {allKeys.Count} из {keysCount}");
             }
 
             var carNumbers = allKeys.Where(x => x.CodeType == (int)CodeType.CarNumber).ToList();
@@ -234,6 +256,7 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task<IEnumerable<TAccessLevel>> LoadAccessLevels()
         {
+            _logger.LogInformation("Получение списка TAccessLevel");
             var allAccessLevels = new List<TAccessLevel>();
             var accessLevelsCount = await _orionClient.GetAccessLevelsCount();
 
@@ -241,8 +264,12 @@ namespace FlussonnicOrion.OrionPro
             {
                 var accessLevels = await _orionClient.GetAccessLevels(i, 100);
                 if (accessLevels == null)
+                {
+                    _logger.LogError("Ошибка при получении списка TAccessLevel");
                     return null;
+                }
                 allAccessLevels.AddRange(accessLevels);
+                _logger.LogInformation($"Получение списка TAccessLevel: {allAccessLevels.Count} из {accessLevelsCount}");
             }
 
             return allAccessLevels;

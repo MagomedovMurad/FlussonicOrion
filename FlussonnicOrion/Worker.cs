@@ -1,3 +1,4 @@
+using FlussonnicOrion.Controllers;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading;
@@ -8,9 +9,9 @@ namespace FlussonnicOrion
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private IController _controller;
+        private ILogicController _controller;
 
-        public Worker(ILogger<Worker> logger, IController controller)
+        public Worker(ILogger<Worker> logger, ILogicController controller)
         {
             _logger = logger;
             _controller = controller;
@@ -18,9 +19,9 @@ namespace FlussonnicOrion
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("Service starting");
+            _logger.LogInformation("Запуск службы");
             await _controller.Initialize();
-            _logger.LogInformation("Service started");
+            _logger.LogInformation("Служба запущена");
         }
 
         public override void Dispose()

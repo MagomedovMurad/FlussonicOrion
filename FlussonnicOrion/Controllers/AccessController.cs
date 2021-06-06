@@ -10,7 +10,7 @@ namespace FlussonnicOrion.Controllers
 {
     public interface IAccessController
     {
-        IEnumerable<AccessRequesteResult> CheckAccess(string number, int itemId);
+        List<AccessRequesteResult> CheckAccess(string number, int itemId);
     }
 
     public class AccessController: IAccessController
@@ -22,15 +22,20 @@ namespace FlussonnicOrion.Controllers
             _orionCache = orionCache;
         }
         
-        public IEnumerable<AccessRequesteResult> CheckAccess(string number, int itemId)
+        public List<AccessRequesteResult> CheckAccess(string number, int itemId)
         {
             var keys = _orionCache.GetKeysByRegNumber(number);
-            var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId));
+            var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId)).ToArray();
 
             var visits = _orionCache.GetVisitsByRegNumber(number);
-            var visitAccessResults = visits.Select(x => CheckAccessByVisit(x));
+            var visitAccessResults = visits.Select(x => CheckAccessByVisit(x)).ToArray();
 
-            return keyAccessResults.Concat(visitAccessResults).Where(x => x != null);
+            var allAccessResults = keyAccessResults.Concat(visitAccessResults).Where(x => x != null).ToList();
+
+            if (allAccessResults.Count == 0)
+                allAccessResults.Add(new AccessRequesteResult(false, "Не найден в системе", 0, null));
+
+            return allAccessResults;
         }
 
         private AccessRequesteResult CheckAccessByVisit(TVisitData visit)
@@ -40,10 +45,10 @@ namespace FlussonnicOrion.Controllers
                 return null;
 
             var company = _orionCache.GetCompany(visit.VisitedCompanyId);
-            var personData = $"{company}: {person.LastName} {person.FirstName} {person.MiddleName}";
+            var personData = $"{company?.Name ?? "Неизвестно"}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
             if (person.IsInBlackList)
-                return new AccessRequesteResult(false, $"Находится в черном списке по причине {person.BlackListComment}", person.Id, personData);
+                return new AccessRequesteResult(false, $"В черном списке", person.Id, personData);
 
             else if (visit.VisitDate > DateTime.Now)
                 return new AccessRequesteResult(false, $"Проход не разрешен до {visit.VisitDate}", person.Id, personData);
@@ -59,7 +64,7 @@ namespace FlussonnicOrion.Controllers
             if (person.IsInArchive)
                 return null;
 
-            var personData = $"{person.Company}: {person.LastName} {person.FirstName} {person.MiddleName}";
+            var personData = $"{(string.IsNullOrWhiteSpace(person?.Company)? "Неизвестно": person?.Company)}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
             if (key.IsBlocked)
                 return new AccessRequesteResult(false, "Ключ заблокирован", person.Id, personData, key.Id);
@@ -71,7 +76,7 @@ namespace FlussonnicOrion.Controllers
                 return new AccessRequesteResult(false, $"Ключ не дейстивтелен до {key.StartDate}", person.Id, personData, key.Id);
 
             else if (key.EndDate < DateTime.Now)
-                return new AccessRequesteResult(false, $"Срок действия ключа истек {key.EndDate}", person.Id, personData, key.Id);
+                return new AccessRequesteResult(false, $"Ключ истек {key.EndDate}", person.Id, personData, key.Id);
 
             else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key.Id);
         }
@@ -80,11 +85,11 @@ namespace FlussonnicOrion.Controllers
             var accessLevel = _orionCache.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items.Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() && x.ItemId == itemId).ToArray();
             if (accessLevelItems.Length == 0)
-                return new AccessRequesteResult(false, $"Доступ к шлагбауму {itemId} ограничен уровнем доступа ключа", personId, personData, keyId);
+                return new AccessRequesteResult(false, $"Ограничено уровнем доступа", personId, personData, keyId);
 
             var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x)).Any(x => x);
             if (!isAccess)
-                return new AccessRequesteResult(false, $"Доступ ограничен временным интервалом уровня доступа ключа", personId, personData, keyId);
+                return new AccessRequesteResult(false, $"Ограничено временным интервалом", personId, personData, keyId);
 
             return new AccessRequesteResult(true, null, personId, personData, keyId);
         }
@@ -98,11 +103,14 @@ namespace FlussonnicOrion.Controllers
         }
         private bool CheckIntervalAccess(TTimeWindow timeWindow, TTimeInterval timeInterval)
         {
+            if (timeWindow.Calendar.Length < 31 * 12)
+                return true;
+
             var calendarDayIndex = (DateTime.Now.Month - 1) * 31 + DateTime.Now.Day - 1;
             var calendarDayType = timeWindow.Calendar[calendarDayIndex];
 
             if (calendarDayType == 15)
-                calendarDayType = (byte)(DateTime.Now.DayOfWeek - 1);
+                calendarDayType = (byte)(DateTime.Now.DayOfWeek + 6 % 7);
 
             return timeInterval.Days[calendarDayType];
         }
