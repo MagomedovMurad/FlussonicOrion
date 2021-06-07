@@ -61,9 +61,9 @@ namespace FlussonnicOrion.Controllers
 
         public void Dispose()
         {
-            _flussonic.Stop();
-            _orionClient.Dispose();
-            _orionCache.Dispose();
+            _flussonic?.Stop();
+            _orionClient?.Dispose();
+            _orionCache?.Dispose();
         }        
 
         private void Flussonic_NewEvent(object sender, Models.FlussonicEvent e)
