@@ -110,7 +110,7 @@ namespace FlussonnicOrion.Controllers
             var calendarDayType = timeWindow.Calendar[calendarDayIndex];
 
             if (calendarDayType == 15)
-                calendarDayType = (byte)(DateTime.Now.DayOfWeek + 6 % 7);
+                calendarDayType = (byte)((int)(DateTime.Now.DayOfWeek + 6) % 7);
 
             return timeInterval.Days[calendarDayType];
         }
