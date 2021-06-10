@@ -6,6 +6,7 @@ using FlussonnicOrion.OrionPro.Enums;
 using FlussonnicOrion.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,20 +28,21 @@ namespace FlussonnicOrion.Controllers
         private IOrionClient _orionClient;
         private IOrionCache _orionCache;
         private IAccessController _accessController;
-
-        private Dictionary<string, int> _camerasToBariers;
+        private IAccesspointsCache _accesspointsCache;
 
         public LogicController(ILogger<LogicController> logger, 
                           IOrionClient orionClient, 
                           IOrionCache orionCache, 
                           IServiceScopeFactory scopeFactory,
-                          IServiceSettingsController serviceSettingsController)
+                          IServiceSettingsController serviceSettingsController,
+                          IAccesspointsCache accesspointsCache)
         {
             _logger = logger;
             _orionClient = orionClient;
             _orionCache = orionCache;
             _accessController = scopeFactory.Resolve<IAccessController>();
             _serviceSettingsController = serviceSettingsController;
+            _accesspointsCache = accesspointsCache;
         }
 
         public async Task Initialize()
@@ -48,7 +50,7 @@ namespace FlussonnicOrion.Controllers
             _serviceSettingsController.Initialize();
 
             var orionSettings = _serviceSettingsController.Settings.OrionSettings;
-            _camerasToBariers = orionSettings.VideSourceToAccessPoint;
+            _accesspointsCache.Initialize(orionSettings.AccesspointsSettings);
             await _orionClient.Initialize(orionSettings);
             _orionCache.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
 
@@ -67,7 +69,7 @@ namespace FlussonnicOrion.Controllers
             _orionCache?.Dispose();
         }        
 
-        private void Flussonic_NewEvent(object sender, Models.FlussonicEvent e)
+        private void Flussonic_NewEvent(object sender, FlussonicEvent e)
         {
             Task.Run(async () =>
             {
@@ -78,31 +80,39 @@ namespace FlussonnicOrion.Controllers
                 if (e.ObjectAction != ObjectAction.Enter)
                     return;
 
-                var accesspointId = GetAccesspointId(e.CameraId);
-                if (accesspointId == null)
+                var cameraSettings = _accesspointsCache.GetVideosourceSettings(e.CameraId);
+                if (cameraSettings == null)
                     return;
 
-                var accessResults = _accessController.CheckAccess(e.ObjectId, accesspointId.Value);
+                var accessResults = _accessController.CheckAccess(e.ObjectId, cameraSettings.AccesspointId);
 
                 var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
                                                        .OrderByDescending(x => x.StartDateTime)
                                                        .FirstOrDefault();
 
                 if (allowedAccessResult != null)
-                    await _orionClient.ControlAccesspoint(accesspointId.Value, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, allowedAccessResult.PersonId);
+                {
+                    ActionType actionType = Convert(cameraSettings.PassageDirection);
+                    await _orionClient.ControlAccesspoint(cameraSettings.AccesspointId, AccesspointCommand.ProvisionOfAccess, actionType, allowedAccessResult.PersonId);
+                }
 
-                await AddExternalEvents(accessResults.ToList().Except(new[] { allowedAccessResult }), accesspointId.Value);
-                await AddAdditionalExternalEvents(accessResults, e.ObjectId, accesspointId.Value);
+                await AddExternalEvents(accessResults.ToList().Except(new[] { allowedAccessResult }), cameraSettings.AccesspointId);
+                await AddAdditionalExternalEvents(accessResults, e.ObjectId, cameraSettings.AccesspointId);
             });
         }
 
-        private int? GetAccesspointId(string cameraId)
+        private ActionType Convert(PassageDirection passageDirection)
         {
-            var isSuccess = _camerasToBariers.TryGetValue(cameraId, out int itemId);
-            if (isSuccess)
-                return itemId;
-            else
-                return null;
+            switch (passageDirection)
+            {
+                case PassageDirection.Enter: 
+                    return ActionType.Entry;
+                
+                case PassageDirection.Exit: 
+                    return ActionType.Exit;
+
+                default: throw new InvalidOperationException($"Тип {passageDirection} не поддерживается");
+            }
         }
 
         private async Task AddExternalEvents(IEnumerable<AccessRequestResult> requestResults, int accesspointId)

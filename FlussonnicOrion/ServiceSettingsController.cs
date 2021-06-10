@@ -85,10 +85,20 @@ namespace FlussonnicOrion
                 TokenLifetime = 300,
                 EmployeesUpdatingInterval = 60,
                 VisitorsUpdatingInterval = 60,
-                VideSourceToAccessPoint = new Dictionary<string, int>
+                AccesspointsSettings = new List<AccesspointSettings>
                 {
-                    {"cam1", 1 },
-                    {"cam2", 2 },
+                    new AccesspointSettings
+                    {
+                        AccesspointId = 1,
+                        EnterCamId = "cam1",
+                        ExitCamId = "cam2"
+                    },
+                    new AccesspointSettings
+                    {
+                        AccesspointId = 2,
+                        EnterCamId = "cam3",
+                        ExitCamId = "cam4"
+                    }
                 }
             };
 
