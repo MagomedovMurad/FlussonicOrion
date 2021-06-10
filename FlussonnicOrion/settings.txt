@@ -1,1 +1,31 @@
-{"OrionSettings":{"IPAddress":"127.0.0.1","Port":8090,"ModuleUserName":"admin","ModulePassword":"password","EmployeeUserName":"admin123","EmployeePassword":"password123","TokenLifetime":300,"EmployeesUpdatingInterval":60,"VisitorsUpdatingInterval":60,"VideoSourceToAccessPoint":[{"AccesspointId":1,"EnterCamId":"cam1","ExitCamId":"cam2"}]},"FlussonicSettings":{"IsServerMode":true,"ServerPort":26038,"WatcherIPAddress":"127.0.0.1","WatcherPort":80}}
+{
+    "FlussonicSettings": {
+        "IsServerMode": true,
+        "ServerPort": 26038,
+        "WatcherIPAddress": "127.0.0.1",
+        "WatcherPort": 80
+    },
+    "OrionSettings": {
+        "AccesspointsSettings": [
+            {
+                "AccesspointId": 1,
+                "EnterCamId": "cam1",
+                "ExitCamId": "cam2"
+            },
+            {
+                "AccesspointId": 2,
+                "EnterCamId": "cam3",
+                "ExitCamId": "cam4"
+            }
+        ],
+        "EmployeePassword": "password",
+        "EmployeeUserName": "admin123",
+        "EmployeesUpdatingInterval": 10,
+        "IPAddress": "127.0.0.1",
+        "ModulePassword": "password",
+        "ModuleUserName": "admin",
+        "Port": 8090,
+        "TokenLifetime": 300,
+        "VisitorsUpdatingInterval": 10
+    }
+}
