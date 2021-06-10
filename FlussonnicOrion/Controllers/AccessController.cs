@@ -10,7 +10,7 @@ namespace FlussonnicOrion.Controllers
 {
     public interface IAccessController
     {
-        List<AccessRequesteResult> CheckAccess(string number, int itemId);
+        List<AccessRequestResult> CheckAccess(string number, int itemId);
     }
 
     public class AccessController: IAccessController
@@ -22,7 +22,7 @@ namespace FlussonnicOrion.Controllers
             _orionCache = orionCache;
         }
         
-        public List<AccessRequesteResult> CheckAccess(string number, int itemId)
+        public List<AccessRequestResult> CheckAccess(string number, int itemId)
         {
             var keys = _orionCache.GetKeysByRegNumber(number);
             var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId)).ToArray();
@@ -33,12 +33,12 @@ namespace FlussonnicOrion.Controllers
             var allAccessResults = keyAccessResults.Concat(visitAccessResults).Where(x => x != null).ToList();
 
             if (allAccessResults.Count == 0)
-                allAccessResults.Add(new AccessRequesteResult(false, "Не найден в системе", 0, null));
+                allAccessResults.Add(new AccessRequestResult(false, "Не найден в системе", 0, null, null));
 
             return allAccessResults;
         }
 
-        private AccessRequesteResult CheckAccessByVisit(TVisitData visit)
+        private AccessRequestResult CheckAccessByVisit(TVisitData visit)
         {
             var person = _orionCache.GetPerson(visit.PersonId);
             if (person.IsInArchive)
@@ -48,17 +48,17 @@ namespace FlussonnicOrion.Controllers
             var personData = $"{company?.Name ?? "Неизвестно"}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
             if (person.IsInBlackList)
-                return new AccessRequesteResult(false, $"В черном списке", person.Id, personData);
+                return new AccessRequestResult(false, $"В черном списке", person.Id, personData, visit.VisitDate);
 
             else if (visit.VisitDate > DateTime.Now)
-                return new AccessRequesteResult(false, $"Проход не разрешен до {visit.VisitDate}", person.Id, personData);
+                return new AccessRequestResult(false, $"Проход не разрешен до {visit.VisitDate}", person.Id, personData, visit.VisitDate);
 
             else if (visit.VisitEndDateTime < DateTime.Now)
-                return new AccessRequesteResult(false, $"Проход запрещен после {visit.VisitEndDateTime}", person.Id, personData);
+                return new AccessRequestResult(false, $"Проход запрещен после {visit.VisitEndDateTime}", person.Id, personData, visit.VisitDate);
             else
-                return new AccessRequesteResult(true, null, person.Id, personData);
+                return new AccessRequestResult(true, null, person.Id, personData, visit.VisitDate);
         }
-        private AccessRequesteResult CheckAccessByKey(TKeyData key, int itemId)
+        private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId)
         {
             var person = _orionCache.GetPerson(key.PersonId);
             if (person.IsInArchive)
@@ -67,31 +67,31 @@ namespace FlussonnicOrion.Controllers
             var personData = $"{(string.IsNullOrWhiteSpace(person?.Company)? "Неизвестно": person?.Company)}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
             if (key.IsBlocked)
-                return new AccessRequesteResult(false, "Ключ заблокирован", person.Id, personData, key.Id);
+                return new AccessRequestResult(false, "Ключ заблокирован", person.Id, personData, key.StartDate, key.Id);
 
             else if (key.IsInStopList)
-                return new AccessRequesteResult(false, "Ключ в стоп-листе", person.Id, personData, key.Id);
+                return new AccessRequestResult(false, "Ключ в стоп-листе", person.Id, personData, key.StartDate, key.Id);
 
             else if (key.StartDate > DateTime.Now)
-                return new AccessRequesteResult(false, $"Ключ не дейстивтелен до {key.StartDate}", person.Id, personData, key.Id);
+                return new AccessRequestResult(false, $"Ключ не дейстивтелен до {key.StartDate}", person.Id, personData, key.StartDate, key.Id);
 
             else if (key.EndDate < DateTime.Now)
-                return new AccessRequesteResult(false, $"Ключ истек {key.EndDate}", person.Id, personData, key.Id);
+                return new AccessRequestResult(false, $"Ключ истек {key.EndDate}", person.Id, personData, key.StartDate, key.Id);
 
-            else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key.Id);
+            else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key);
         }
-        private AccessRequesteResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, int keyId)
+        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key)
         {
             var accessLevel = _orionCache.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items.Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() && x.ItemId == itemId).ToArray();
             if (accessLevelItems.Length == 0)
-                return new AccessRequesteResult(false, $"Ограничено уровнем доступа", personId, personData, keyId);
+                return new AccessRequestResult(false, $"Ограничено уровнем доступа", personId, personData, key.StartDate, key.Id);
 
             var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x)).Any(x => x);
             if (!isAccess)
-                return new AccessRequesteResult(false, $"Ограничено временным интервалом", personId, personData, keyId);
+                return new AccessRequestResult(false, $"Ограничено временным интервалом", personId, personData, key.StartDate, key.Id);
 
-            return new AccessRequesteResult(true, null, personId, personData, keyId);
+            return new AccessRequestResult(true, null, personId, personData, key.StartDate, key.Id);
         }
         private bool CheckWindowAccess(TAccessLevelItem accessLevelItem)
         {

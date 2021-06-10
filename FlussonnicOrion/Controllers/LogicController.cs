@@ -1,5 +1,6 @@
 ﻿using FlussonnicOrion.Flussonic;
 using FlussonnicOrion.Flussonic.Enums;
+using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro;
 using FlussonnicOrion.OrionPro.Enums;
 using FlussonnicOrion.Utils;
@@ -77,22 +78,50 @@ namespace FlussonnicOrion.Controllers
                 if (e.ObjectAction != ObjectAction.Enter)
                     return;
 
-                var isSuccess = _camerasToBariers.TryGetValue(e.CameraId, out int itemId);
-                if (!isSuccess)
+                var accesspointId = GetAccesspointId(e.CameraId);
+                if (accesspointId == null)
                     return;
 
-                var accessResults = _accessController.CheckAccess(e.ObjectId, itemId);
-                var allowedAccessResult = accessResults.FirstOrDefault(x => x.AccessAllowed);
+                var accessResults = _accessController.CheckAccess(e.ObjectId, accesspointId.Value);
+
+                var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
+                                                       .OrderByDescending(x => x.StartDateTime)
+                                                       .FirstOrDefault();
 
                 if (allowedAccessResult != null)
-                    await _orionClient.ControlAccesspoint(itemId, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, allowedAccessResult.PersonId);
+                    await _orionClient.ControlAccesspoint(accesspointId.Value, AccesspointCommand.ProvisionOfAccess, ActionType.Passage, allowedAccessResult.PersonId);
 
-                foreach (var accessResult in accessResults)
-                {
-                    var text = $"{e.ObjectId}. {(accessResult.AccessAllowed ? "Доступ" : "Запрет")}. {accessResult.Reason}";// {accessResult.PersonData}";
-                    await _orionClient.AddExternalEvent(0, itemId, ItemType.ACCESSPOINT, 1651, accessResult.KeyId, accessResult.PersonId, text);
-                }
+                await AddExternalEvents(accessResults.ToList().Except(new[] { allowedAccessResult }), accesspointId.Value);
+                await AddAdditionalExternalEvents(accessResults, e.ObjectId, accesspointId.Value);
             });
         }
+
+        private int? GetAccesspointId(string cameraId)
+        {
+            var isSuccess = _camerasToBariers.TryGetValue(cameraId, out int itemId);
+            if (isSuccess)
+                return itemId;
+            else
+                return null;
+        }
+
+        private async Task AddExternalEvents(IEnumerable<AccessRequestResult> requestResults, int accesspointId)
+        {
+            foreach (var accessResult in requestResults)
+            {
+                var eventType = accessResult.AccessAllowed ? EventType.AccessGranted : EventType.AccessDenied;
+                await _orionClient.AddExternalEvent(0, accesspointId, ItemType.ACCESSPOINT, (int)eventType, accessResult.KeyId, accessResult.PersonId, null);
+            }
+        }
+
+        private async Task AddAdditionalExternalEvents(IEnumerable<AccessRequestResult> requestResults, string number, int accesspointId)
+        {
+            foreach (var accessResult in requestResults)
+            {
+                var text = $"{number}. {(accessResult.AccessAllowed ? "Доступ" : "Запрет")}. {accessResult.Reason}";// {accessResult.PersonData}";
+                await _orionClient.AddExternalEvent(0, accesspointId, ItemType.ACCESSPOINT, (int)EventType.ThirdPartyEvent, accessResult.KeyId, accessResult.PersonId, text);
+            }
+        }
+
     }
 }

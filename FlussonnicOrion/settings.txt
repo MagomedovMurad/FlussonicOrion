@@ -19,7 +19,7 @@
             "cam1": 1,
             "cam2": 2
         },
-        "VisitorsUpdatingInterval": 60,
-        "EmployeesUpdatingInterval": 60
+        "VisitorsUpdatingInterval": 10,
+        "EmployeesUpdatingInterval": 10
     }
 }
