@@ -84,7 +84,7 @@ namespace FlussonnicOrion.Controllers
                 if (cameraSettings == null)
                     return;
 
-                var accessResults = _accessController.CheckAccess(e.ObjectId, cameraSettings.AccesspointId);
+                var accessResults = _accessController.CheckAccess(e.ObjectId, cameraSettings.AccesspointId, cameraSettings.PassageDirection);
 
                 var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
                                                        .OrderByDescending(x => x.StartDateTime)

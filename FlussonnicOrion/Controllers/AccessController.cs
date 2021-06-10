@@ -10,7 +10,7 @@ namespace FlussonnicOrion.Controllers
 {
     public interface IAccessController
     {
-        List<AccessRequestResult> CheckAccess(string number, int itemId);
+        List<AccessRequestResult> CheckAccess(string number, int itemId, PassageDirection direction);
     }
 
     public class AccessController: IAccessController
@@ -22,12 +22,12 @@ namespace FlussonnicOrion.Controllers
             _orionCache = orionCache;
         }
         
-        public List<AccessRequestResult> CheckAccess(string number, int itemId)
+        public List<AccessRequestResult> CheckAccess(string licensePlate, int itemId, PassageDirection direction)
         {
-            var keys = _orionCache.GetKeysByRegNumber(number);
-            var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId)).ToArray();
+            var keys = _orionCache.GetKeysByRegNumber(licensePlate);
+            var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId, direction)).ToArray();
 
-            var visits = _orionCache.GetVisitsByRegNumber(number);
+            var visits = _orionCache.GetVisitsByRegNumber(licensePlate);
             var visitAccessResults = visits.Select(x => CheckAccessByVisit(x)).ToArray();
 
             var allAccessResults = keyAccessResults.Concat(visitAccessResults).Where(x => x != null).ToList();
@@ -58,7 +58,7 @@ namespace FlussonnicOrion.Controllers
             else
                 return new AccessRequestResult(true, null, person.Id, personData, visit.VisitDate);
         }
-        private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId)
+        private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId, PassageDirection direction)
         {
             var person = _orionCache.GetPerson(key.PersonId);
             if (person.IsInArchive)
@@ -78,26 +78,32 @@ namespace FlussonnicOrion.Controllers
             else if (key.EndDate < DateTime.Now)
                 return new AccessRequestResult(false, $"Ключ истек {key.EndDate}", person.Id, personData, key.StartDate, key.Id);
 
-            else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key);
+            else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key, direction);
         }
-        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key)
+        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key, PassageDirection direction)
         {
             var accessLevel = _orionCache.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items.Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() && x.ItemId == itemId).ToArray();
             if (accessLevelItems.Length == 0)
                 return new AccessRequestResult(false, $"Ограничено уровнем доступа", personId, personData, key.StartDate, key.Id);
 
-            var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x)).Any(x => x);
+            var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x, direction)).Any(x => x);
             if (!isAccess)
                 return new AccessRequestResult(false, $"Ограничено временным интервалом", personId, personData, key.StartDate, key.Id);
 
             return new AccessRequestResult(true, null, personId, personData, key.StartDate, key.Id);
         }
-        private bool CheckWindowAccess(TAccessLevelItem accessLevelItem)
+        private bool CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
         {
             var timeWindow = _orionCache.GetTimeWindow(accessLevelItem.TimeWindowId);
             var timeIntervals = timeWindow.TimeIntervals.Where(x => x.StartTime.TimeOfDay <= DateTime.Now.TimeOfDay
                                                      && x.EndTime.TimeOfDay >= DateTime.Now.TimeOfDay).ToArray();
+
+            if (direction.Equals(PassageDirection.Enter))
+                timeIntervals = timeIntervals.Where(x => x.IsEnterActivity).ToArray();
+
+            if (direction.Equals(PassageDirection.Exit))
+                timeIntervals = timeIntervals.Where(x => x.IsEnterActivity).ToArray();
 
             return timeIntervals.Select(x => CheckIntervalAccess(timeWindow, x)).Any(x => x);
         }
