@@ -22,7 +22,9 @@ namespace FlussonnicOrion.OrionPro
         Task<TVisitData[]> GetVisits();
         Task<int> GetPersonsCount();
         Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors);
+        Task<TPersonData> GetPersonById(int id);
         Task<TTimeWindow[]> GetTimeWindows();
+        Task<TTimeWindow> GetTimeWindowById(int id);
         Task<TKeyData> GetKeyData(string code, int codeType);
         Task<TKeyData[]> GetKeys(int offset, int count);
         Task<int> GetKeysCount();
@@ -147,8 +149,10 @@ namespace FlussonnicOrion.OrionPro
         private delegate Task<ExtendTokenExpirationResponse> ExtendTokenExpirationDel(string token);
         private delegate Task<GetVisitsResponse> GetVisitsDel(string token);
         private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
+        private delegate Task<GetPersonByIdResponse> GetPersonByIdDel(int id, bool withoutPhoto, string token);
         private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string token);
         private delegate Task<GetTimeWindowsResponse> GetTimeWindowsDel(string token);
+        private delegate Task<GetTimeWindowByIdResponse> GetTimeWindowByIdDel(int id, string token);
         private delegate Task<GetKeyDataResponse> GetKeyDataDel(string code, int codeType, string token);
         private delegate Task<GetKeysResponse> GetKeysDel(int offset, int count, string token);
         private delegate Task<GetKeysCountResponse> GetKeysCountDel(string token);
@@ -164,6 +168,11 @@ namespace FlussonnicOrion.OrionPro
         {
             return await Execute<GetVisitsResponse, TVisitData[]>((GetVisitsDel)_client.GetVisitsAsync, false, _token);
         }
+        public async Task<TPersonData> GetPersonById(int id)
+        {
+            return await Execute<GetPersonsResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true, _token);
+        }
+
         public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)
         {
             return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors, _token);
@@ -175,6 +184,10 @@ namespace FlussonnicOrion.OrionPro
         public async Task<TTimeWindow[]> GetTimeWindows()
         {
             return await Execute<GetTimeWindowsResponse, TTimeWindow[]>((GetTimeWindowsDel)_client.GetTimeWindowsAsync, false, _token);
+        }
+        public async Task<TTimeWindow> GetTimeWindowById(int id)
+        {
+            return await Execute<GetTimeWindowByIdResponse, TTimeWindow>((GetTimeWindowByIdDel)_client.GetTimeWindowByIdAsync, false, id, _token);
         }
         public async Task<TKeyData> GetKeyData(string code, int codeType)
         {

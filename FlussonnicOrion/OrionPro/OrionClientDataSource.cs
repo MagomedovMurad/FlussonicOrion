@@ -1,9 +1,6 @@
 ﻿using Orion;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlussonnicOrion.OrionPro
 {
@@ -16,45 +13,46 @@ namespace FlussonnicOrion.OrionPro
         }
 
 
-        public async Task<TAccessLevel> GetAccessLevel(int id)
+        public TAccessLevel GetAccessLevel(int id)
         {
-            return await _orionClient.GetAccessLevelById(id);
+            return _orionClient.GetAccessLevelById(id).Result;
         }
 
-        public async Task<TCompany> GetCompany(int id)
+        public TCompany GetCompany(int id)
         {
-            return await _orionClient.GetCompany(id);
+            return _orionClient.GetCompany(id).Result;
         }
 
-        public async Task<IEnumerable<TKeyData>> GetKeysByRegNumber(string regNumber)
+        public IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber)
         {
-            var key = await _orionClient.GetKeyData(regNumber, 5);
+            var key = _orionClient.GetKeyData(regNumber, 5).Result;
             return new[] { key };
         }
 
-        public async Task<TPersonData> GetPerson(int id)
+        public TPersonData GetPerson(int id)
         {
-            return await _orionClient.GetPersons().Result.First();
+            return _orionClient.GetPersonById(id).Result;
         }
 
         public TTimeWindow GetTimeWindow(int id)
         {
-            throw new NotImplementedException();
+            return _orionClient.GetTimeWindowById(id).Result;
         }
 
         public IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber)
         {
-            throw new NotImplementedException();
+            var visits = _orionClient.GetVisits().Result;
+            return visits.Where(x => x.CarNumber == regNumber).ToArray();
         }
 
         public void Initialize(int employeeInterval, int visitorsInterval)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

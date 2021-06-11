@@ -114,7 +114,7 @@ namespace FlussonnicOrion.Controllers
                 }
                 catch (Exception ex)
                 {
-                    File.WriteAllText("exceptions.txt", ex.ToString());
+                    _logger.LogError(ex, $"Ошибка при обработке номера {e.ObjectId}");
                 }
             });
         }
