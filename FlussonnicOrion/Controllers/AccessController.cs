@@ -15,19 +15,19 @@ namespace FlussonnicOrion.Controllers
 
     public class AccessController: IAccessController
     {
-        private readonly IOrionDataSource _orionCache;
+        private readonly IOrionDataSource _orionDataSource;
 
-        public AccessController(IOrionDataSource orionCache)
+        public AccessController(IOrionDataSource dataSource)
         {
-            _orionCache = orionCache;
+            _orionDataSource = dataSource;
         }
         
         public List<AccessRequestResult> CheckAccess(string licensePlate, int itemId, PassageDirection direction)
         {
-            var keys = _orionCache.GetKeysByRegNumber(licensePlate);
+            var keys = _orionDataSource.GetKeysByRegNumber(licensePlate);
             var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId, direction)).ToArray();
 
-            var visits = _orionCache.GetVisitsByRegNumber(licensePlate);
+            var visits = _orionDataSource.GetVisitsByRegNumber(licensePlate);
             var visitAccessResults = visits.Select(x => CheckAccessByVisit(x)).ToArray();
 
             var allAccessResults = keyAccessResults.Concat(visitAccessResults).Where(x => x != null).ToList();
@@ -40,11 +40,11 @@ namespace FlussonnicOrion.Controllers
 
         private AccessRequestResult CheckAccessByVisit(TVisitData visit)
         {
-            var person = _orionCache.GetPerson(visit.PersonId);
+            var person = _orionDataSource.GetPerson(visit.PersonId);
             if (person.IsInArchive)
                 return null;
 
-            var company = _orionCache.GetCompany(visit.VisitedCompanyId);
+            var company = _orionDataSource.GetCompany(visit.VisitedCompanyId);
             var personData = $"{company?.Name ?? "Неизвестно"}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
             if (person.IsInBlackList)
@@ -60,7 +60,7 @@ namespace FlussonnicOrion.Controllers
         }
         private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId, PassageDirection direction)
         {
-            var person = _orionCache.GetPerson(key.PersonId);
+            var person = _orionDataSource.GetPerson(key.PersonId);
             if (person.IsInArchive)
                 return null;
 
@@ -82,7 +82,7 @@ namespace FlussonnicOrion.Controllers
         }
         private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key, PassageDirection direction)
         {
-            var accessLevel = _orionCache.GetAccessLevel(accessLevelId);
+            var accessLevel = _orionDataSource.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items.Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() && x.ItemId == itemId).ToArray();
             if (accessLevelItems.Length == 0)
                 return new AccessRequestResult(false, $"Ограничено уровнем доступа", personId, personData, key.StartDate, key.Id);
@@ -95,7 +95,7 @@ namespace FlussonnicOrion.Controllers
         }
         private bool CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
         {
-            var timeWindow = _orionCache.GetTimeWindow(accessLevelItem.TimeWindowId);
+            var timeWindow = _orionDataSource.GetTimeWindow(accessLevelItem.TimeWindowId);
             var timeIntervals = timeWindow.TimeIntervals.Where(x => x.StartTime.TimeOfDay <= DateTime.Now.TimeOfDay
                                                      && x.EndTime.TimeOfDay >= DateTime.Now.TimeOfDay).ToArray();
 

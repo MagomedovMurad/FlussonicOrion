@@ -25,10 +25,9 @@ namespace FlussonnicOrion
                             .AddSingleton<ILogicController, LogicController>()
                             .AddSingleton<IServiceSettingsController, ServiceSettingsController>()
                             .AddSingleton<IOrionClient, OrionClient>()
-                            .AddSingleton<IOrionDataSource, OrionClientDataSource>()
-                            .AddSingleton<IOrionDataSource, OrionClientDataSource>()
-                            .AddSingleton<IAccesspointsCache, AccesspointsCache>()
-                            .AddScoped<IAccessController, AccessController>();
+                            .AddSingleton<OrionClientDataSource, OrionClientDataSource>()
+                            .AddSingleton<OrionCacheDataSource, OrionCacheDataSource>()
+                            .AddSingleton<IAccesspointsCache, AccesspointsCache>();
                 });
     }
 }

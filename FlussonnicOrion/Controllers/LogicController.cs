@@ -28,42 +28,49 @@ namespace FlussonnicOrion.Controllers
         private IFlussonic _flussonic;
         private IOrionClient _orionClient;
         private IOrionDataSource _dataSource;
-        private IAccessController _accessController;
         private IAccesspointsCache _accesspointsCache;
+        private IAccessController _accessController;
+        private IServiceScopeFactory _scopeFactory; 
 
         public LogicController(ILogger<LogicController> logger, 
                           IOrionClient orionClient, 
-                          IOrionDataSource orionCache, 
                           IServiceScopeFactory scopeFactory,
                           IServiceSettingsController serviceSettingsController,
                           IAccesspointsCache accesspointsCache)
         {
-            scopeFactory.Resolve();
+            _scopeFactory = scopeFactory;
             _logger = logger;
             _orionClient = orionClient;
-            _dataSource = orionCache;
-            _accessController = scopeFactory.Resolve<IAccessController>();
             _serviceSettingsController = serviceSettingsController;
             _accesspointsCache = accesspointsCache;
         }
 
         public async Task Initialize()
         {
-            _serviceSettingsController.Initialize();
+            try
+            {
+                _serviceSettingsController.Initialize();
 
-            var orionSettings = _serviceSettingsController.Settings.OrionSettings;
-            _accesspointsCache.Initialize(orionSettings.AccesspointsSettings);
-            await _orionClient.Initialize(orionSettings);
+                var orionSettings = _serviceSettingsController.Settings.OrionSettings;
+                _accesspointsCache.Initialize(orionSettings.AccesspointsSettings);
+                await _orionClient.Initialize(orionSettings);
 
-            _dataSource = orionSettings.UseCache ? new OrionCacheDataSource(_orionClient) : new OrionClientDataSource(_orionClient);
-            _dataSource.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
+                _dataSource = orionSettings.UseCache ? _scopeFactory.Resolve<OrionCacheDataSource>() : _scopeFactory.Resolve<OrionClientDataSource>();
+                _dataSource.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
 
-            var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
-            _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort, _logger) : 
-                                        new FlussonicClient(flussonicSettings.WatcherIPAddress,
-                                                            flussonicSettings.WatcherPort);
-            _flussonic.Start();
-            _flussonic.NewEvent += Flussonic_NewEvent;
+                _accessController = new AccessController(_dataSource);
+
+                var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
+                _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort, _logger) :
+                                            new FlussonicClient(flussonicSettings.WatcherIPAddress,
+                                                                flussonicSettings.WatcherPort);
+                _flussonic.Start();
+                _flussonic.NewEvent += Flussonic_NewEvent;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при инициализации службы");
+            }
         }
 
         public void Dispose()
