@@ -1,14 +1,17 @@
-﻿using FlussonnicOrion.Models;
+﻿using FlussonnicOrion.Flussonic;
+using FlussonnicOrion.Models;
 using FlussonnicOrion.Utils;
 using System.Collections.Generic;
 using System.Net;
 
 namespace FlussonnicOrion.Api
 {
-    public class FlussonicApi
+    public class FlussonicApi: IFlussonic
     {
         private string _ipAddress;
         private int _port;
+
+        public event System.EventHandler<FlussonicEvent> NewEvent;
 
         public FlussonicApi(string ipAddress, int port)
         { 
@@ -34,6 +37,16 @@ namespace FlussonnicOrion.Api
             response.Close();
 
             // return JsonConvert.DeserializeObject<PledgeResponse>(json);
+        }
+
+        public void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Stop()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -55,7 +55,6 @@ namespace FlussonnicOrion
         public void Stop()
         {
             _started = false;
-            _httpListener.Stop();
             _httpListener.Close();
         }
 

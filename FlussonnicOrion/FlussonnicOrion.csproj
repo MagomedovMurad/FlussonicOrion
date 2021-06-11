@@ -20,4 +20,10 @@
   <ItemGroup>
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
