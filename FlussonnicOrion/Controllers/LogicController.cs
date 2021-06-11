@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -73,31 +74,48 @@ namespace FlussonnicOrion.Controllers
         {
             Task.Run(async () =>
             {
-                _logger.LogInformation($"Новое событие от камеры: {e.CameraId}. Гос. номер: {e.ObjectId}. Action: {e.ObjectAction}");
-                if (e.ObjectClass != ObjectClass.Vehicle)
-                    return;
-
-                if (e.ObjectAction != ObjectAction.Enter)
-                    return;
-
-                var cameraSettings = _accesspointsCache.GetVideosourceSettings(e.CameraId);
-                if (cameraSettings == null)
-                    return;
-
-                var accessResults = _accessController.CheckAccess(e.ObjectId, cameraSettings.AccesspointId, cameraSettings.PassageDirection);
-
-                var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
-                                                       .OrderByDescending(x => x.StartDateTime)
-                                                       .FirstOrDefault();
-
-                if (allowedAccessResult != null)
+                try
                 {
-                    ActionType actionType = Convert(cameraSettings.PassageDirection);
-                    await _orionClient.ControlAccesspoint(cameraSettings.AccesspointId, AccesspointCommand.ProvisionOfAccess, actionType, allowedAccessResult.PersonId);
-                }
+                    _logger.LogInformation($"Новое событие от камеры: {e.CameraId}. Гос. номер: {e.ObjectId}. Action: {e.ObjectAction}");
+                    if (e.ObjectClass != ObjectClass.Vehicle)
+                    {
+                        _logger.LogWarning($"Объект типа {e.ObjectClass} не поддерживается");
+                        return;
+                    }
 
-                await AddExternalEvents(accessResults.ToList().Except(new[] { allowedAccessResult }), cameraSettings.AccesspointId);
-                await AddAdditionalExternalEvents(accessResults, e.ObjectId, cameraSettings.AccesspointId);
+                    if (e.ObjectAction != ObjectAction.Enter)
+                    {
+                        _logger.LogWarning($"Объект типа {e.ObjectAction} не поддерживается"); ;
+                        return;
+                    }
+
+                    var cameraSettings = _accesspointsCache.GetVideosourceSettings(e.CameraId);
+                    if (cameraSettings == null)
+                    {
+                        _logger.LogWarning($"Камера с идентификатором {e.CameraId} не привязана к точке доступа");
+                        return;
+                    }
+
+                    var accessResults = _accessController.CheckAccess(e.ObjectId, cameraSettings.AccesspointId, cameraSettings.PassageDirection);
+
+                    var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
+                                                           .OrderByDescending(x => x.StartDateTime)
+                                                           .FirstOrDefault();
+
+                    if (allowedAccessResult != null)
+                    {
+                        _logger.LogInformation($"Отправка команды на открытие двери {cameraSettings.AccesspointId} для {allowedAccessResult.PersonData}");
+                        ActionType actionType = Convert(cameraSettings.PassageDirection);
+                        await _orionClient.ControlAccesspoint(cameraSettings.AccesspointId, AccesspointCommand.ProvisionOfAccess, actionType, allowedAccessResult.PersonId);
+                    }
+
+                    await AddExternalEvents(accessResults.ToList(), cameraSettings.AccesspointId);
+                    await AddAdditionalExternalEvents(accessResults, e.ObjectId, cameraSettings.AccesspointId);
+                }
+                catch (Exception ex)
+                {
+                    File.WriteAllText("exceptions.txt", ex.ToString());
+                }
             });
         }
 

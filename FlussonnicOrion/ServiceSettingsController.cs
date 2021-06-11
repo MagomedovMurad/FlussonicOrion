@@ -18,7 +18,7 @@ namespace FlussonnicOrion
     public class ServiceSettingsController: IServiceSettingsController
     {
         private ILogger<IServiceSettingsController> _logger;
-        private const string _fileName = "settings.txt";
+        private string _fileName = $"{AppContext.BaseDirectory}\\settings.txt";
         public ServiceSettings Settings { get; set; }
 
         public ServiceSettingsController(ILogger<IServiceSettingsController> logger)
@@ -64,7 +64,7 @@ namespace FlussonnicOrion
             {
                 var defaultSettings = GetDefaultSettings();
                 var stringDefaultSettings = JsonConvert.SerializeObject(defaultSettings);
-                File.WriteAllText("./settings.txt", stringDefaultSettings);
+                File.WriteAllText(_fileName, stringDefaultSettings);
             }
             catch (Exception ex)
             {

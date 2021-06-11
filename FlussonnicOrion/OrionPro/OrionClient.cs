@@ -30,6 +30,7 @@ namespace FlussonnicOrion.OrionPro
         Task<int> GetAccessLevelsCount();
         Task<TAccessLevel[]> GetAccessLevels(int offset, int count);
         Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors);
+        Task<TCompany> GetCompany(int id);
         #endregion
 
         #region Commands
@@ -157,6 +158,7 @@ namespace FlussonnicOrion.OrionPro
         private delegate Task<GetCompaniesResponse> GetCompaniesDel(bool isEmployees, bool isVisitors, string token);
         private delegate Task<AddExternalEventResponse> AddExternalEventDel(TExternalEvent externalEvent, string token);
         private delegate Task<ControlItemsResponse> ControlItemsDel(string token, TItem[] item, int command, int action, int personId);
+        private delegate Task<GetCompanyByIdResponse> GetCompanyByIdDel(int id, string token);
         #endregion
         public async Task<TVisitData[]> GetVisits()
         {
@@ -201,6 +203,10 @@ namespace FlussonnicOrion.OrionPro
         public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
         {
             return await Execute<GetCompaniesResponse, TCompany[]>((GetCompaniesDel)_client.GetCompaniesAsync, false, isEmployees, isVisitors, _token);
+        }
+        public async Task<TCompany> GetCompany(int id)
+        {
+            return await Execute<GetCompanyByIdResponse, TCompany>((GetCompanyByIdDel)_client.GetCompanyByIdAsync, false, id, _token);
         }
 
         #endregion
