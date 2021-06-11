@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace FlussonnicOrion.OrionPro
 {
-    public interface IOrionCache
+    public interface IOrionDataSource
     {
         void Initialize(int employeeInterval, int visitorsInterval);
         void Dispose();
@@ -23,9 +23,9 @@ namespace FlussonnicOrion.OrionPro
         TCompany GetCompany(int id);
     }
 
-    public class OrionCache: IOrionCache
+    public class OrionCacheDataSource: IOrionDataSource
     {
-        private readonly ILogger<IOrionCache> _logger;
+        private readonly ILogger<IOrionDataSource> _logger;
         private readonly IOrionClient _orionClient;
 
         #region Timers
@@ -70,7 +70,7 @@ namespace FlussonnicOrion.OrionPro
             { "У", "Y"},
             { "Х", "X"}
         };
-        public OrionCache(IOrionClient orionClient, ILogger<IOrionCache> logger)
+        public OrionCacheDataSource(IOrionClient orionClient, ILogger<IOrionDataSource> logger)
         {
             _orionClient = orionClient;
             _logger = logger;

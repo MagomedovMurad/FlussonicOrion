@@ -85,6 +85,7 @@ namespace FlussonnicOrion
                 TokenLifetime = 300,
                 EmployeesUpdatingInterval = 60,
                 VisitorsUpdatingInterval = 60,
+                UseCache = false,
                 AccesspointsSettings = new List<AccesspointSettings>
                 {
                     new AccesspointSettings

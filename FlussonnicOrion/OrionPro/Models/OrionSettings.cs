@@ -13,6 +13,7 @@ namespace FlussonnicOrion.OrionPro.Models
         public int TokenLifetime { get; set; }
         public int EmployeesUpdatingInterval { get; set; }
         public int VisitorsUpdatingInterval { get; set; }
+        public bool UseCache { get; set; }
         public List<AccesspointSettings> AccesspointsSettings { get; set; }
     }
 

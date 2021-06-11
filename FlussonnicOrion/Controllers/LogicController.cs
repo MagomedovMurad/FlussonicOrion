@@ -27,20 +27,21 @@ namespace FlussonnicOrion.Controllers
         private IServiceSettingsController _serviceSettingsController;
         private IFlussonic _flussonic;
         private IOrionClient _orionClient;
-        private IOrionCache _orionCache;
+        private IOrionDataSource _dataSource;
         private IAccessController _accessController;
         private IAccesspointsCache _accesspointsCache;
 
         public LogicController(ILogger<LogicController> logger, 
                           IOrionClient orionClient, 
-                          IOrionCache orionCache, 
+                          IOrionDataSource orionCache, 
                           IServiceScopeFactory scopeFactory,
                           IServiceSettingsController serviceSettingsController,
                           IAccesspointsCache accesspointsCache)
         {
+            scopeFactory.Resolve();
             _logger = logger;
             _orionClient = orionClient;
-            _orionCache = orionCache;
+            _dataSource = orionCache;
             _accessController = scopeFactory.Resolve<IAccessController>();
             _serviceSettingsController = serviceSettingsController;
             _accesspointsCache = accesspointsCache;
@@ -53,7 +54,9 @@ namespace FlussonnicOrion.Controllers
             var orionSettings = _serviceSettingsController.Settings.OrionSettings;
             _accesspointsCache.Initialize(orionSettings.AccesspointsSettings);
             await _orionClient.Initialize(orionSettings);
-            _orionCache.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
+
+            _dataSource = orionSettings.UseCache ? new OrionCacheDataSource(_orionClient) : new OrionClientDataSource(_orionClient);
+            _dataSource.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
 
             var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
             _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort, _logger) : 
@@ -67,7 +70,7 @@ namespace FlussonnicOrion.Controllers
         {
             _flussonic?.Stop();
             _orionClient?.Dispose();
-            _orionCache?.Dispose();
+            _dataSource?.Dispose();
         }        
 
         private void Flussonic_NewEvent(object sender, FlussonicEvent e)
@@ -109,7 +112,7 @@ namespace FlussonnicOrion.Controllers
                         await _orionClient.ControlAccesspoint(cameraSettings.AccesspointId, AccesspointCommand.ProvisionOfAccess, actionType, allowedAccessResult.PersonId);
                     }
 
-                    await AddExternalEvents(accessResults.ToList(), cameraSettings.AccesspointId);
+                    await AddExternalEvents(accessResults.Except(new[] { allowedAccessResult }).ToList(), cameraSettings.AccesspointId);
                     await AddAdditionalExternalEvents(accessResults, e.ObjectId, cameraSettings.AccesspointId);
                 }
                 catch (Exception ex)

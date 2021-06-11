@@ -15,9 +15,9 @@ namespace FlussonnicOrion.Controllers
 
     public class AccessController: IAccessController
     {
-        private readonly IOrionCache _orionCache;
+        private readonly IOrionDataSource _orionCache;
 
-        public AccessController(IOrionCache orionCache)
+        public AccessController(IOrionDataSource orionCache)
         {
             _orionCache = orionCache;
         }

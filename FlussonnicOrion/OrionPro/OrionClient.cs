@@ -170,7 +170,7 @@ namespace FlussonnicOrion.OrionPro
         }
         public async Task<TPersonData> GetPersonById(int id)
         {
-            return await Execute<GetPersonsResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true, _token);
+            return await Execute<GetPersonByIdResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true, "");
         }
 
         public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)

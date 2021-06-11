@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FlussonnicOrion.OrionPro
 {
-    public class OrionClientDataSource : IOrionCache
+    public class OrionClientDataSource : IOrionDataSource
     {
         private IOrionClient _orionClient;
         public OrionClientDataSource(IOrionClient orionClient)
@@ -26,7 +26,10 @@ namespace FlussonnicOrion.OrionPro
         public IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber)
         {
             var key = _orionClient.GetKeyData(regNumber, 5).Result;
-            return new[] { key };
+            if (key != null)
+                return new[] { key };
+            else
+                return new List<TKeyData>();
         }
 
         public TPersonData GetPerson(int id)
