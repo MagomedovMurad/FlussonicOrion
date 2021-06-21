@@ -1,0 +1,32 @@
+{
+    "FlussonicSettings": 
+    {
+        "ServerPort": 26038
+    },
+    "OrionSettings": 
+    {
+        "IPAddress": "127.0.0.1",
+        "Port": 8090,
+        "ModuleUserName": "admin",
+        "ModulePassword": "password",
+        "EmployeeUserName": "admin123",
+        "EmployeePassword": "password",      
+        "TokenLifetime": 300,
+        "UseCache": false,
+        "VisitorsUpdatingInterval": 60,
+        "EmployeesUpdatingInterval": 60,
+        "AccesspointsSettings": 
+        [
+            {
+                "AccesspointId": 1,
+                "EnterCamId": "cam1",
+                "ExitCamId": "cam2"
+            },
+            {
+                "AccesspointId": 2,
+                "EnterCamId": "cam3",
+                "ExitCamId": "cam4"
+            }
+        ]
+    }
+}

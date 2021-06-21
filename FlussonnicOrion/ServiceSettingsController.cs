@@ -105,10 +105,7 @@ namespace FlussonnicOrion
 
             var flussonicSettings = new FlussonicSettings
             {
-                IsServerMode = true,
-                ServerPort = 26038,
-                WatcherIPAddress = "127.0.0.1",
-                WatcherPort= 80
+                ServerPort = 26038
             };
 
             var serviceSettings = new ServiceSettings

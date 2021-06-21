@@ -61,9 +61,8 @@ namespace FlussonnicOrion.Controllers
                 _accessController = new AccessController(_dataSource);
 
                 var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
-                _flussonic = flussonicSettings.IsServerMode ? new FlussonicServer(flussonicSettings.ServerPort, _logger) :
-                                            new FlussonicClient(flussonicSettings.WatcherIPAddress,
-                                                                flussonicSettings.WatcherPort);
+                _flussonic = new FlussonicServer(flussonicSettings.ServerPort, _logger);
+                                           
                 _flussonic.Start();
                 _flussonic.NewEvent += Flussonic_NewEvent;
             }
