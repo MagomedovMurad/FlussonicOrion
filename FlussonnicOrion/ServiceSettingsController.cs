@@ -18,7 +18,7 @@ namespace FlussonnicOrion
     public class ServiceSettingsController: IServiceSettingsController
     {
         private ILogger<IServiceSettingsController> _logger;
-        private string _fileName = $"{AppContext.BaseDirectory}\\settings.json";
+        private string _fileName = $"{AppContext.BaseDirectory}settings.json";
         public ServiceSettings Settings { get; set; }
 
         public ServiceSettingsController(ILogger<IServiceSettingsController> logger)
