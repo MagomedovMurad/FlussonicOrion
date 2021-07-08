@@ -84,8 +84,8 @@ namespace FlussonnicOrion.OrionPro
                 {
                     Id = ep.Id,
                     Name = ep.Name,
-                    EnterZone = enterZone.Name,
-                    ExitZone = exitZone.Name
+                    EnterZone = enterZone?.Name,
+                    ExitZone = exitZone?.Name
                 };
             }).ToArray();
         }
