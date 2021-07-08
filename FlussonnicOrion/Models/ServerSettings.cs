@@ -5,9 +5,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlussonnicOrion.Flussonic.Models
+namespace FlussonnicOrion.Models
 {
-    public class FlussonicSettings
+    public class ServerSettings
     {
         public int ServerPort {get; set;}
     }

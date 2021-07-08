@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FlussonnicOrion.OrionPro;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -10,9 +12,26 @@ namespace FlussonnicOrion
     {
         private HttpListener _httpListener;
         private bool _started;
-        public event EventHandler<string> DataReceived;
+        private int _port;
+        public Dictionary<string, Func<string, HttpResponse>> _subscriptions;
+        private List<string> _prefixes;
 
-        public void Start(params string[] addresses)
+        public HttpServer(int port)
+        {
+            _port = port;
+            _subscriptions = new Dictionary<string, Func<string, HttpResponse>>();
+            _prefixes = new List<string>();
+        }
+        
+        public void Subscribe(string prefix, Func<string, HttpResponse> func)
+        {
+            prefix = prefix.Replace("port", _port.ToString());
+            _prefixes.Add(prefix);
+            var url = new Uri(prefix.Replace("+", "127.0.0.1"));
+            _subscriptions.Add(url.AbsolutePath.Remove(url.AbsolutePath.Length -1), func);
+        }
+
+        public void Start()
         {
             Task.Run(async () =>
             {
@@ -22,7 +41,7 @@ namespace FlussonnicOrion
                         return;
 
                     _httpListener = new HttpListener();
-                    foreach (var address in addresses)
+                    foreach (var address in _prefixes)
                         _httpListener.Prefixes.Add(address);
 
                     _httpListener.Start();
@@ -33,11 +52,14 @@ namespace FlussonnicOrion
                         {
                             HttpListenerContext context = await _httpListener.GetContextAsync();
                             HttpListenerRequest request = context.Request;
-
                             var requestData = GetStreamData(request.InputStream, request.ContentEncoding);
-                            Task.Run(() => DataReceived?.Invoke(this, requestData));
-                            context.Response.StatusCode = 200;
-                            context.Response.Close();
+                            var response = _subscriptions[request.RawUrl]?.Invoke(requestData);
+
+                            context.Response.StatusCode = response.Code;
+                            if (response.Data != null)
+                                context.Response.Close(response.Data, false);
+                            else
+                                context.Response.Close();
                         }
                         catch (Exception ex)
                         {
@@ -66,5 +88,17 @@ namespace FlussonnicOrion
             }
         }
 
+    }
+
+    public class HttpResponse
+    {
+        public HttpResponse(int code, byte[] data)
+        {
+            Code = code;
+            Data = data;
+        }
+
+        public int Code { get; set; }
+        public byte[] Data { get; set; }
     }
 }

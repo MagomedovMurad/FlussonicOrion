@@ -60,11 +60,16 @@ namespace FlussonnicOrion.Controllers
 
                 _accessController = new AccessController(_dataSource);
 
-                var flussonicSettings = _serviceSettingsController.Settings.FlussonicSettings;
-                _flussonic = new FlussonicServer(flussonicSettings.ServerPort, _logger);
-                                           
+                var httpServer = new HttpServer(_serviceSettingsController.Settings.ServerSettings.ServerPort);
+                httpServer.Start();
+
+                var helper = new EntryPointsHelper(httpServer, _orionClient, _logger);
+                helper.Initialize();
+
+                _flussonic = new FlussonicServer(httpServer,  _logger);
                 _flussonic.Start();
                 _flussonic.NewEvent += Flussonic_NewEvent;
+
             }
             catch (Exception ex)
             {
@@ -110,6 +115,12 @@ namespace FlussonnicOrion.Controllers
                     var allowedAccessResult = accessResults.Where(x => x.AccessAllowed)
                                                            .OrderByDescending(x => x.StartDateTime)
                                                            .FirstOrDefault();
+                    foreach (var result in accessResults)
+                    {
+                        var text = $"Доступ {(result.AccessAllowed ? "разрешен" : "запрещен")}. {result.PersonData}. {result.Reason}";
+                        _logger.LogInformation(text);
+                    }
+                    
 
                     if (allowedAccessResult != null)
                     {

@@ -1,16 +1,16 @@
 {
-    "FlussonicSettings": 
+    "ServerSettings": 
     {
         "ServerPort": 26038
     },
     "OrionSettings": 
     {
-        "IPAddress": "127.0.0.1",
+        "IPAddress": "10.21.101.19",
         "Port": 8090,
-        "ModuleUserName": "admin",
-        "ModulePassword": "password",
-        "EmployeeUserName": "admin123",
-        "EmployeePassword": "password",      
+        "ModuleUserName": "skip",
+        "ModulePassword": "master123",
+        "EmployeeUserName": "out_skip",
+        "EmployeePassword": "master26pn",      
         "TokenLifetime": 300,
         "UseCache": false,
         "VisitorsUpdatingInterval": 60,
@@ -18,14 +18,14 @@
         "AccesspointsSettings": 
         [
             {
-                "AccesspointId": 1,
+                "AccesspointId": 11,
                 "EnterCamId": "cam1",
-                "ExitCamId": "cam2"
+                "ExitCamId": ""
             },
             {
-                "AccesspointId": 2,
-                "EnterCamId": "cam3",
-                "ExitCamId": "cam4"
+                "AccesspointId": 12,
+                "EnterCamId": "",
+                "ExitCamId": "cam2"
             }
         ]
     }

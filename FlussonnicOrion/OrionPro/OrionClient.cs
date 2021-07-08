@@ -33,6 +33,8 @@ namespace FlussonnicOrion.OrionPro
         Task<TAccessLevel[]> GetAccessLevels(int offset, int count);
         Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors);
         Task<TCompany> GetCompany(int id);
+        Task<TEntryPoint[]> GetEntryPoints(int offset, int count);
+        Task<TAccessZone[]> GetAccessZones();
         #endregion
 
         #region Commands
@@ -100,7 +102,7 @@ namespace FlussonnicOrion.OrionPro
         {
             _timer = new Timer();
             _timer.Elapsed += Timer_Elapsed;
-            _timer.Interval = tokenLifetime * 1000;
+            _timer.Interval = (tokenLifetime - 1) * 1000;
             _timer.Start();
         }
         private void StopTokenExpirationExtending()
@@ -163,6 +165,8 @@ namespace FlussonnicOrion.OrionPro
         private delegate Task<AddExternalEventResponse> AddExternalEventDel(TExternalEvent externalEvent, string token);
         private delegate Task<ControlItemsResponse> ControlItemsDel(string token, TItem[] item, int command, int action, int personId);
         private delegate Task<GetCompanyByIdResponse> GetCompanyByIdDel(int id, string token);
+        private delegate Task<GetEntryPointsResponse> GetEntryPointsDel(int offset, int count, string token);
+        private delegate Task<GetAccessZonesResponse> GetAccessZonesDel(string token);
         #endregion
         public async Task<TVisitData[]> GetVisits()
         {
@@ -211,7 +215,7 @@ namespace FlussonnicOrion.OrionPro
         }
         public async Task<TAccessLevel[]> GetAccessLevels(int offset, int count)
         {
-            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count,_token);
+            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count, _token);
         }
         public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
         {
@@ -220,6 +224,14 @@ namespace FlussonnicOrion.OrionPro
         public async Task<TCompany> GetCompany(int id)
         {
             return await Execute<GetCompanyByIdResponse, TCompany>((GetCompanyByIdDel)_client.GetCompanyByIdAsync, false, id, _token);
+        }
+        public async Task<TEntryPoint[]> GetEntryPoints(int offset, int count)
+        {
+            return await Execute<GetEntryPointsResponse, TEntryPoint[]>((GetEntryPointsDel)_client.GetEntryPointsAsync, false, offset, count, _token);
+        }
+        public async Task<TAccessZone[]> GetAccessZones()
+        {
+            return await Execute<GetAccessZonesResponse, TAccessZone[]>((GetAccessZonesDel)_client.GetAccessZonesAsync, false, _token);
         }
 
         #endregion

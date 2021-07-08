@@ -1,4 +1,4 @@
-﻿using FlussonnicOrion.Flussonic.Models;
+﻿using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -103,7 +103,7 @@ namespace FlussonnicOrion
                 }
             };
 
-            var flussonicSettings = new FlussonicSettings
+            var serverSettings = new ServerSettings
             {
                 ServerPort = 26038
             };
@@ -111,7 +111,7 @@ namespace FlussonnicOrion
             var serviceSettings = new ServiceSettings
             {
                 OrionSettings = orionSettings,
-                FlussonicSettings = flussonicSettings
+                ServerSettings = serverSettings
             };
 
             return serviceSettings;

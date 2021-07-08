@@ -1,4 +1,4 @@
-﻿using FlussonnicOrion.Flussonic.Models;
+﻿using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro.Models;
 
 namespace FlussonnicOrion
@@ -6,6 +6,6 @@ namespace FlussonnicOrion
     public class ServiceSettings
     {
         public OrionSettings OrionSettings { get; set; }
-        public FlussonicSettings FlussonicSettings {get; set;}
+        public ServerSettings ServerSettings {get; set;}
     }
 }
