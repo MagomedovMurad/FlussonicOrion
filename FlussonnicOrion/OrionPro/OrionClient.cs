@@ -52,6 +52,7 @@ namespace FlussonnicOrion.OrionPro
         private OrionSettings _settings;
         private Timer _timer;
         private string _token;
+
         #endregion
 
         public OrionClient(ILogger<IOrionClient> logger)
@@ -67,6 +68,7 @@ namespace FlussonnicOrion.OrionPro
             _remoteAddress = new EndpointAddress($"http://{settings.IPAddress}:{settings.Port}/soap/IOrionPro");
 
             InitializeClient();
+
             await InitializeToken(_settings.TokenLifetime);
             _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
@@ -122,7 +124,7 @@ namespace FlussonnicOrion.OrionPro
         }
         private async Task ExtendTokenExpiration()
         {
-            _token = await Execute<ExtendTokenExpirationResponse, string>((ExtendTokenExpirationDel)_client.ExtendTokenExpirationAsync, false, _token);
+            await Execute<ExtendTokenExpirationResponse, string>((ExtendTokenExpirationDel)_client.ExtendTokenExpirationAsync, false);
         }
         private string GetMd5Hash(string data)
         {
@@ -146,8 +148,8 @@ namespace FlussonnicOrion.OrionPro
         #endregion
 
         #region Queries
-        #region Delegetes
-        private delegate Task<GetLoginTokenResponse> GetLoginTokenDel(string Login, string Md5Passw);
+        #region Delegates
+        private delegate Task<GetLoginTokenResponse> GetLoginTokenDel(string Login, string Md5Passw, string _);
         private delegate Task<ExtendTokenExpirationResponse> ExtendTokenExpirationDel(string token);
         private delegate Task<GetVisitsResponse> GetVisitsDel(string token);
         private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
@@ -163,75 +165,75 @@ namespace FlussonnicOrion.OrionPro
         private delegate Task<GetAccessLevelsResponse> GetAccessLevelsDel(int offset, int count, string token);
         private delegate Task<GetCompaniesResponse> GetCompaniesDel(bool isEmployees, bool isVisitors, string token);
         private delegate Task<AddExternalEventResponse> AddExternalEventDel(TExternalEvent externalEvent, string token);
-        private delegate Task<ControlItemsResponse> ControlItemsDel(string token, TItem[] item, int command, int action, int personId);
+        private delegate Task<ControlItemsResponse> ControlItemsDel(TItem[] item, int command, int action, int personId, string token);
         private delegate Task<GetCompanyByIdResponse> GetCompanyByIdDel(int id, string token);
         private delegate Task<GetEntryPointsResponse> GetEntryPointsDel(int offset, int count, string token);
         private delegate Task<GetAccessZonesResponse> GetAccessZonesDel(string token);
         #endregion
         public async Task<TVisitData[]> GetVisits()
         {
-            return await Execute<GetVisitsResponse, TVisitData[]>((GetVisitsDel)_client.GetVisitsAsync, false, _token);
+            return await Execute<GetVisitsResponse, TVisitData[]>((GetVisitsDel)_client.GetVisitsAsync, false);
         }
         public async Task<TPersonData> GetPersonById(int id)
         {
-            return await Execute<GetPersonByIdResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true, "");
+            return await Execute<GetPersonByIdResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true);
         }
 
         public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)
         {
-            return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors, _token);
+            return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors);
         }
         public async Task<int> GetPersonsCount()
         {
-            return await Execute<GetPersonsCountResponse, int>((GetPersonsCountDel)_client.GetPersonsCountAsync, false, _token);
+            return await Execute<GetPersonsCountResponse, int>((GetPersonsCountDel)_client.GetPersonsCountAsync, false);
         }
         public async Task<TTimeWindow[]> GetTimeWindows()
         {
-            return await Execute<GetTimeWindowsResponse, TTimeWindow[]>((GetTimeWindowsDel)_client.GetTimeWindowsAsync, false, _token);
+            return await Execute<GetTimeWindowsResponse, TTimeWindow[]>((GetTimeWindowsDel)_client.GetTimeWindowsAsync, false);
         }
         public async Task<TTimeWindow> GetTimeWindowById(int id)
         {
-            return await Execute<GetTimeWindowByIdResponse, TTimeWindow>((GetTimeWindowByIdDel)_client.GetTimeWindowByIdAsync, false, id, _token);
+            return await Execute<GetTimeWindowByIdResponse, TTimeWindow>((GetTimeWindowByIdDel)_client.GetTimeWindowByIdAsync, false, id);
         }
         public async Task<TKeyData> GetKeyData(string code, int codeType)
         {
-            return await Execute<GetKeyDataResponse, TKeyData>((GetKeyDataDel)_client.GetKeyDataAsync, false, code, codeType, _token);
+            return await Execute<GetKeyDataResponse, TKeyData>((GetKeyDataDel)_client.GetKeyDataAsync, false, code, codeType);
         }
         public async Task<TKeyData[]> GetKeys(int offset, int count)
         {
-            return await Execute<GetKeysResponse, TKeyData[]>((GetKeysDel)_client.GetKeysAsync, false, offset, count, _token);
+            return await Execute<GetKeysResponse, TKeyData[]>((GetKeysDel)_client.GetKeysAsync, false, offset, count);
         }
         public async Task<int> GetKeysCount()
         {
-            return await Execute<GetKeysCountResponse, int>((GetKeysCountDel)_client.GetKeysCountAsync, false, _token);
+            return await Execute<GetKeysCountResponse, int>((GetKeysCountDel)_client.GetKeysCountAsync, false);
         }
         public async Task<TAccessLevel> GetAccessLevelById(int id)
         {
-            return await Execute<GetAccessLevelByIdResponse, TAccessLevel>((GetAccessLevelByIdDel)_client.GetAccessLevelByIdAsync, false, id, _token);
+            return await Execute<GetAccessLevelByIdResponse, TAccessLevel>((GetAccessLevelByIdDel)_client.GetAccessLevelByIdAsync, false, id);
         }
         public async Task<int> GetAccessLevelsCount()
         {
-            return await Execute<GetAccessLevelsCountResponse, int>((GetAccessLevelsCountDel)_client.GetAccessLevelsCountAsync, false, _token);
+            return await Execute<GetAccessLevelsCountResponse, int>((GetAccessLevelsCountDel)_client.GetAccessLevelsCountAsync, false);
         }
         public async Task<TAccessLevel[]> GetAccessLevels(int offset, int count)
         {
-            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count, _token);
+            return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count);
         }
         public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
         {
-            return await Execute<GetCompaniesResponse, TCompany[]>((GetCompaniesDel)_client.GetCompaniesAsync, false, isEmployees, isVisitors, _token);
+            return await Execute<GetCompaniesResponse, TCompany[]>((GetCompaniesDel)_client.GetCompaniesAsync, false, isEmployees, isVisitors);
         }
         public async Task<TCompany> GetCompany(int id)
         {
-            return await Execute<GetCompanyByIdResponse, TCompany>((GetCompanyByIdDel)_client.GetCompanyByIdAsync, false, id, _token);
+            return await Execute<GetCompanyByIdResponse, TCompany>((GetCompanyByIdDel)_client.GetCompanyByIdAsync, false, id);
         }
         public async Task<TEntryPoint[]> GetEntryPoints(int offset, int count)
         {
-            return await Execute<GetEntryPointsResponse, TEntryPoint[]>((GetEntryPointsDel)_client.GetEntryPointsAsync, false, offset, count, _token);
+            return await Execute<GetEntryPointsResponse, TEntryPoint[]>((GetEntryPointsDel)_client.GetEntryPointsAsync, false, offset, count);
         }
         public async Task<TAccessZone[]> GetAccessZones()
         {
-            return await Execute<GetAccessZonesResponse, TAccessZone[]>((GetAccessZonesDel)_client.GetAccessZonesAsync, false, _token);
+            return await Execute<GetAccessZonesResponse, TAccessZone[]>((GetAccessZonesDel)_client.GetAccessZonesAsync, false);
         }
 
         #endregion
@@ -251,7 +253,7 @@ namespace FlussonnicOrion.OrionPro
                 Text = text
             };
 
-            await Execute<AddExternalEventResponse, TExternalEvent>((AddExternalEventDel)_client.AddExternalEventAsync, false, externalEvent, _token);
+            await Execute<AddExternalEventResponse, TExternalEvent>((AddExternalEventDel)_client.AddExternalEventAsync, false, externalEvent);
         }
         public async Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
         {
@@ -261,7 +263,7 @@ namespace FlussonnicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
-            await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, false, _token, new[] { accesspoint }, (int)commandId, (int)action, personId);
+            await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, false, new[] { accesspoint }, (int)commandId, (int)action, personId);
         }
         #endregion
 
@@ -283,7 +285,7 @@ namespace FlussonnicOrion.OrionPro
         { 
             try
             {
-                Y result = await (@delegate.DynamicInvoke(args) as Task<Y>);
+                Y result = await (@delegate.DynamicInvoke(args.Append(_token).ToArray()) as Task<Y>);
                 var parsedResult = ParseResult<T>(result);
 
                 if (!parsedResult.IsSuccess && parsedResult.ServiceError != null)

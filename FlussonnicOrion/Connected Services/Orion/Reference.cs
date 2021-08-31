@@ -17451,7 +17451,7 @@ namespace Orion
             return base.Channel.GetLoginTokenAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.GetLoginTokenResponse> GetLoginTokenAsync(string Login, string Md5Passw)
+        public System.Threading.Tasks.Task<Orion.GetLoginTokenResponse> GetLoginTokenAsync(string Login, string Md5Passw, string _)
         {
             Orion.GetLoginTokenRequest inValue = new Orion.GetLoginTokenRequest();
             inValue.Login = Login;
@@ -17507,7 +17507,7 @@ namespace Orion
             return base.Channel.ControlItemsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.ControlItemsResponse> ControlItemsAsync(string Token, Orion.TItem[] Items, int Command, int Action, int PersonId)
+        public System.Threading.Tasks.Task<Orion.ControlItemsResponse> ControlItemsAsync(Orion.TItem[] Items, int Command, int Action, int PersonId, string Token)
         {
             Orion.ControlItemsRequest inValue = new Orion.ControlItemsRequest();
             inValue.Token = Token;
