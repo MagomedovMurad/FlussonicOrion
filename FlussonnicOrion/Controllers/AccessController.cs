@@ -1,6 +1,7 @@
 ﻿using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro;
 using FlussonnicOrion.OrionPro.Enums;
+using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,6 @@ namespace FlussonnicOrion.Controllers
 
             return allAccessResults;
         }
-
         private AccessRequestResult CheckAccessByVisit(TVisitData visit)
         {
             var person = _orionDataSource.GetPerson(visit.PersonId);
@@ -83,7 +83,10 @@ namespace FlussonnicOrion.Controllers
         private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key, PassageDirection direction)
         {
             var accessLevel = _orionDataSource.GetAccessLevel(accessLevelId);
-            var accessLevelItems = accessLevel.Items.Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() && x.ItemId == itemId).ToArray();
+            var accessLevelItems = accessLevel.Items
+                                              .Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() 
+                                                          && (x.ItemId == itemId || x.ItemId == 0))
+                                              .ToArray();
             if (accessLevelItems.Length == 0)
                 return new AccessRequestResult(false, $"Ограничено уровнем доступа", personId, personData, key.StartDate, key.Id);
 
@@ -99,7 +102,7 @@ namespace FlussonnicOrion.Controllers
             var timeIntervals = timeWindow.TimeIntervals.Where(x => x.StartTime.TimeOfDay <= DateTime.Now.TimeOfDay
                                                      && x.EndTime.TimeOfDay >= DateTime.Now.TimeOfDay).ToArray();
 
-            if (direction.Equals(PassageDirection.Enter))
+            if (direction.Equals(PassageDirection.Entry))
                 timeIntervals = timeIntervals.Where(x => x.IsEnterActivity).ToArray();
 
             if (direction.Equals(PassageDirection.Exit))
