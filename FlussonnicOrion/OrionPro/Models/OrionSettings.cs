@@ -22,5 +22,13 @@ namespace FlussonnicOrion.OrionPro.Models
         public int AccesspointId { get; set; }
         public string EnterCamId { get; set; }
         public string ExitCamId { get; set; }
+        public FilterType FilterType { get; set; }
+    }
+
+    public enum FilterType
+    { 
+        Empty,
+        Crosscam,
+        Opentimeout
     }
 }

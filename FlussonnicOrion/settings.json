@@ -3,30 +3,24 @@
     {
         "ServerPort": 26038
     },
-    "OrionSettings": 
-    {
-        "IPAddress": "10.21.101.19",
-        "Port": 8090,
-        "ModuleUserName": "skip",
-        "ModulePassword": "master123",
-        "EmployeeUserName": "out_skip",
-        "EmployeePassword": "master26pn",      
-        "TokenLifetime": 300,
-        "UseCache": false,
-        "VisitorsUpdatingInterval": 60,
-        "EmployeesUpdatingInterval": 60,
-        "AccesspointsSettings": 
-        [
-            {
-                "AccesspointId": 11,
-                "EnterCamId": "cam1",
-                "ExitCamId": ""
-            },
-            {
-                "AccesspointId": 12,
-                "EnterCamId": "",
-                "ExitCamId": "cam2"
-            }
-        ]
-    }
+  "OrionSettings": {
+    "IPAddress": "127.0.0.1",
+    "Port": 8090,
+    "ModuleUserName": "orionintegration",
+    "ModulePassword": "orionintegration",
+    "EmployeeUserName": "remoteorion",
+    "EmployeePassword": "remoteorion",
+    "TokenLifetime": 300,
+    "UseCache": false,
+    "VisitorsUpdatingInterval": 60,
+    "EmployeesUpdatingInterval": 60,
+    "AccesspointsSettings": [
+      {
+        "AccesspointId": 1,
+        "EnterCamId": "cam1",
+        "ExitCamId": "cam2",
+        "FilterType": "Opentimeout"
+      }
+    ]
+  }
 }

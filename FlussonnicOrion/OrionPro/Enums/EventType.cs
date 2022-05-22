@@ -21,6 +21,21 @@ namespace FlussonnicOrion.OrionPro.Enums
         /// <summary>
         /// Доступ предоставлен
         /// </summary>
-        AccessGranted = 28
+        AccessGranted = 28,
+
+        /// <summary>
+        /// Доступ предоставлен по кнопке
+        /// </summary>
+        AccessGrantedByKey = 270,
+
+        /// <summary>
+        /// Проход
+        /// </summary>
+        Pass = 32,
+
+        /// <summary>
+        /// Проход по кнопке
+        /// </summary>
+        PassByKey = 271
     }
 }

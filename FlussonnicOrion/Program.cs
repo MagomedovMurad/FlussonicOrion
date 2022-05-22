@@ -1,4 +1,6 @@
 using FlussonnicOrion.Controllers;
+using FlussonnicOrion.Managers;
+using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,13 +19,13 @@ namespace FlussonnicOrion
                 .UseSystemd()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>()
-                            .AddSingleton<ILogicController, LogicController>()
+                    services.AddHostedService<Service>()
                             .AddSingleton<IServiceSettingsController, ServiceSettingsController>()
                             .AddSingleton<IOrionClient, OrionClient>()
                             .AddSingleton<OrionClientDataSource, OrionClientDataSource>()
                             .AddSingleton<OrionCacheDataSource, OrionCacheDataSource>()
-                            .AddSingleton<IAccesspointsCache, AccesspointsCache>();
+                            .AddSingleton<IAccessPointsManager, AccessPointsManager>()
+                            .AddSingleton<IVideoSourceManager, VideoSourceManager>();
                 });
     }
 }

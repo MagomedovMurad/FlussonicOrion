@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
@@ -35,6 +34,7 @@ namespace FlussonnicOrion.OrionPro
         Task<TCompany> GetCompany(int id);
         Task<TEntryPoint[]> GetEntryPoints(int offset, int count);
         Task<TAccessZone[]> GetAccessZones();
+        Task<TEvent[]> GetEvents(DateTime beginTime, DateTime endTime, int[] eventTypes, int offset, int count, TPersonData[] persons, int[] entryPoints, TSection[] sections, TSectionsGroup[] sectionGroups);
         #endregion
 
         #region Commands
@@ -169,6 +169,7 @@ namespace FlussonnicOrion.OrionPro
         private delegate Task<GetCompanyByIdResponse> GetCompanyByIdDel(int id, string token);
         private delegate Task<GetEntryPointsResponse> GetEntryPointsDel(int offset, int count, string token);
         private delegate Task<GetAccessZonesResponse> GetAccessZonesDel(string token);
+        private delegate Task<GetEventsResponse> GetEventsDel(DateTime beginTime, DateTime endTime, TEventType[] eventTypes, int offset, int count, TPersonData[] persons, TEntryPoint[] entryPoints, TSection[] sections, TSectionsGroup[] sectionGroups, string token);
         #endregion
         public async Task<TVisitData[]> GetVisits()
         {
@@ -234,6 +235,12 @@ namespace FlussonnicOrion.OrionPro
         public async Task<TAccessZone[]> GetAccessZones()
         {
             return await Execute<GetAccessZonesResponse, TAccessZone[]>((GetAccessZonesDel)_client.GetAccessZonesAsync, false);
+        }
+        public async Task<TEvent[]> GetEvents(DateTime beginTime, DateTime endTime, int[] eventTypeIds, int offset, int count, TPersonData[] persons, int[] entryPointIds, TSection[] sections, TSectionsGroup[] sectionGroups)
+        {
+            var eventTypes = eventTypeIds.Select(x => new TEventType { Id = x }).ToArray();
+            var entryPoints = entryPointIds.Select(x => new TEntryPoint { Id = x }).ToArray();
+            return await Execute<GetEventsResponse, TEvent[]>((GetEventsDel)_client.GetEventsAsync, false, beginTime, endTime, eventTypes, offset, count, persons, entryPoints, sections, sectionGroups);
         }
 
         #endregion

@@ -70,7 +70,6 @@ namespace FlussonnicOrion.OrionPro
             return html;
         }
 
-
         public async Task<EntryPoint[]> GetEntryPionts()
         {
             var entryPoints = await _orionClient.GetEntryPoints(0, 0);
