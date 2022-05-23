@@ -74,7 +74,7 @@ namespace FlussonnicOrion.Filters
                              TimeSpan.FromSeconds(20),
                              TimeSpan.FromSeconds(1),
                              "Ожидание после последнего предоставления доступа",
-                             passEventIsLast))
+                             !passEventIsLast))
                         return;
                 }
 
@@ -103,14 +103,14 @@ namespace FlussonnicOrion.Filters
 
         private bool NeedAbort(DateTime dateTime, TimeSpan time, TimeSpan? delay, string reason, params bool[] condition)
         {
-            var timeFromLastAccessGranted = DateTime.Now - dateTime;
-            var result = timeFromLastAccessGranted < time;
-
-            if (condition.Append(result).All(x => true))
+            var timeFrom = DateTime.Now - dateTime;
+            var result = timeFrom < time;
+            
+            if (condition.Append(result).All(x => x))
             {
-                var timeFromLastAccessGrantedDelta = TimeSpan.FromSeconds(20) - timeFromLastAccessGranted;
-                _logger.LogInformation($"{reason}. Осталось {timeFromLastAccessGrantedDelta} сек из {time}");
-                Task.Delay(delay ?? timeFromLastAccessGrantedDelta).ContinueWith(t => Next());
+                var timeFromDelta = time - timeFrom;
+                _logger.LogInformation($"{reason}. Осталось {timeFromDelta} сек из {time}");
+                Task.Delay(delay ?? timeFromDelta).ContinueWith(t => Next());
                 return true;
             }
             return false;
