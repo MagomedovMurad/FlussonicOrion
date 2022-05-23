@@ -11,7 +11,7 @@ namespace FlussonnicOrion.Filters
         {
             var request = new PassRequest();
             request.LicensePlate = licensePlate;
-            request.InFrameTime = DateTime.Now;
+            request.EnterInFrameTime = DateTime.Now;
             request.Direction = direction;
             NewRequest.Invoke(this, request);
         }

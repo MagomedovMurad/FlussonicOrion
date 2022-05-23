@@ -17,7 +17,8 @@ namespace FlussonnicOrion.Filters
 
         private int _id;
         private bool _inProcess;
-        private ConcurrentQueue<PassRequest> _passRequests;        
+        private ConcurrentQueue<PassRequest> _passRequests;
+        private object _requestsHandlingLock = new object();
 
         public event EventHandler<PassRequest> NewRequest;
 
@@ -32,76 +33,159 @@ namespace FlussonnicOrion.Filters
         {
             var request = new PassRequest();
             request.LicensePlate = licensePlate;
-            request.InFrameTime = DateTime.Now;
+            request.EnterInFrameTime = DateTime.Now;
             request.Direction = direction;
-            _passRequests.Enqueue(request);
 
-            if (!_inProcess)
-                Next();
+            WorkWithPassRequestsQueue(() =>
+            {
+                _passRequests.Enqueue(request);
+                if (!_inProcess)
+                {
+                    _inProcess = true;
+                    Next();
+                }
+            });
         }
 
         public void RemoveRequest(string licensePlate)
         {
-            _passRequests = new ConcurrentQueue<PassRequest>(_passRequests.Where(x => x.LicensePlate != licensePlate));
+            WorkWithPassRequestsQueue(() => _passRequests = 
+                new ConcurrentQueue<PassRequest>(_passRequests.Where(x => x.LicensePlate != licensePlate)));
             _logger.LogInformation($"Удален запрос с номером {licensePlate}");
         }
 
         private async Task Next()
         {
-            _inProcess = true;
-
             if (_passRequests.TryPeek(out PassRequest request))
             {
                 var events = await GetEvents();
                 var sortedEvents = (events ?? new TEvent[0]).OrderByDescending(x => x.EventDate);
-                var lastPassEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.PassByKey 
-                                                                  || x.EventTypeId == (int)EventType.Pass);
 
-                var lastAccessGrantedEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.AccessGranted 
+                var lastAccessGrantedEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.AccessGranted
                                                                       || x.EventTypeId == (int)EventType.AccessGrantedByKey);
 
+                var lastPassEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.PassByKey
+                                                                  || x.EventTypeId == (int)EventType.Pass);
 
                 if (lastAccessGrantedEvent != null)
                 {
-                    var timeFromLastAccessGranted = DateTime.Now - lastAccessGrantedEvent.EventDate;
-                    var tty = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
-                    if (timeFromLastAccessGranted < TimeSpan.FromSeconds(20) && tty == false)
-                    {
-                        var timeFromLastAccessGrantedDelta = TimeSpan.FromSeconds(20) - timeFromLastAccessGranted;
-                        _logger.LogInformation($"Ожидание 20 сек после последнего предоставления доступа {timeFromLastAccessGrantedDelta.Seconds}");
-                        Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith(t => Next());
+                    var passEventIsLast = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
+                    if (NeedAbort(lastAccessGrantedEvent.EventDate,
+                             TimeSpan.FromSeconds(20),
+                             TimeSpan.FromSeconds(1),
+                             "Ожидание после последнего предоставления доступа",
+                             passEventIsLast))
                         return;
-                    }
                 }
 
                 if (lastPassEvent != null)
                 {
-                    var timeFromLastPassage = DateTime.Now - lastPassEvent.EventDate;
-                    if (timeFromLastPassage < TimeSpan.FromSeconds(5))
-                    {
-                        var timeFromLastPassageDelta = TimeSpan.FromSeconds(5) - timeFromLastPassage;
-                        _logger.LogInformation($"Ожидание 5 сек после последнего прохода ({timeFromLastPassageDelta})");
-                        Task.Delay(timeFromLastPassageDelta).ContinueWith(t => Next());
+                    if (NeedAbort(lastPassEvent.EventDate,
+                              TimeSpan.FromSeconds(5),
+                              null,
+                              "Ожидание после последнего прохода"))
                         return;
-                    }
                 }
 
                 //Обработать запрос
-                _passRequests.TryPeek(out PassRequest first);
-                if (request.Equals(first))
-                    _passRequests.TryDequeue(out PassRequest _);
-
+                WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
                 NewRequest.Invoke(this, request);
             }
 
-            if (_passRequests.Count > 0)
+            WorkWithPassRequestsQueue(() =>
             {
-                await Task.Delay(3000);
-                Next();
-            }
-            else
-                _inProcess = false;
+                if (_passRequests.Count > 0)
+                    Task.Delay(3000).ContinueWith(t => Next());
+                else
+                    _inProcess = false;
+            });
         }
+
+        private bool NeedAbort(DateTime dateTime, TimeSpan time, TimeSpan? delay, string reason, params bool[] condition)
+        {
+            var timeFromLastAccessGranted = DateTime.Now - dateTime;
+            var result = timeFromLastAccessGranted < time;
+
+            if (condition.Append(result).All(x => true))
+            {
+                var timeFromLastAccessGrantedDelta = TimeSpan.FromSeconds(20) - timeFromLastAccessGranted;
+                _logger.LogInformation($"{reason}. Осталось {timeFromLastAccessGrantedDelta} сек из {time}");
+                Task.Delay(delay ?? timeFromLastAccessGrantedDelta).ContinueWith(t => Next());
+                return true;
+            }
+            return false;
+        }
+
+        private void WorkWithPassRequestsQueue(Action action)
+        {
+            lock (_requestsHandlingLock)
+                action.Invoke();
+        }
+        private void RemoveCurrentRequest(PassRequest request)
+        {
+            _passRequests.TryPeek(out PassRequest current);
+            if (request.Equals(current))
+                _passRequests.TryDequeue(out PassRequest _);
+        }
+
+        //private async Task Next()
+        //{
+        //    _inProcess = true;
+
+        //    if (_passRequests.TryPeek(out PassRequest request))
+        //    {
+        //        var events = await GetEvents();
+        //        var sortedEvents = (events ?? new TEvent[0]).OrderByDescending(x => x.EventDate);
+
+        //        var lastAccessGrantedEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.AccessGranted 
+        //                                                              || x.EventTypeId == (int)EventType.AccessGrantedByKey);
+
+        //        var lastPassEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.PassByKey
+        //                                                          || x.EventTypeId == (int)EventType.Pass);
+
+        //        if (lastAccessGrantedEvent != null)
+        //        {
+        //            var timeFromLastAccessGranted = DateTime.Now - lastAccessGrantedEvent.EventDate;
+        //            var tty = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
+        //            if (timeFromLastAccessGranted < TimeSpan.FromSeconds(20) && tty == false)
+        //            {
+        //                var timeFromLastAccessGrantedDelta = TimeSpan.FromSeconds(20) - timeFromLastAccessGranted;
+        //                _logger.LogInformation($"Ожидание 20 сек после последнего предоставления доступа {timeFromLastAccessGrantedDelta.Seconds}");
+        //                Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith(t => Next());
+        //                return;
+        //            }
+        //        }
+
+        //        if (lastPassEvent != null)
+        //        {
+        //            var timeFromLastPassage = DateTime.Now - lastPassEvent.EventDate;
+        //            if (timeFromLastPassage < TimeSpan.FromSeconds(5))
+        //            {
+        //                var timeFromLastPassageDelta = TimeSpan.FromSeconds(5) - timeFromLastPassage;
+        //                _logger.LogInformation($"Ожидание 5 сек после последнего прохода ({timeFromLastPassageDelta})");
+        //                Task.Delay(timeFromLastPassageDelta).ContinueWith(t => Next());
+        //                return;
+        //            }
+        //        }
+
+        //        //Обработать запрос
+        //        _passRequests.TryPeek(out PassRequest first);
+        //        if (request.Equals(first))
+        //            _passRequests.TryDequeue(out PassRequest _);
+
+        //        NewRequest.Invoke(this, request);
+        //    }
+
+        //    if (_passRequests.Count > 0)
+        //    {
+        //        await Task.Delay(3000);
+        //        Next();
+        //    }
+        //    else
+        //    {
+        //        _inProcess = false;
+        //    }
+        //}
 
         private async Task<TEvent[]> GetEvents()
         {
