@@ -104,11 +104,8 @@ namespace FlussonnicOrion.Filters
                     if (_lastPassRequest.LicensePlate == request.LicensePlate)
                     {
                         _logger.LogInformation($"Номер {request.LicensePlate} совпадает с последним запросом");
-                        WorkWithPassRequestsQueue(() =>
-                        {
-                            _inProcess = false;
-                            RemoveCurrentRequest(request);
-                        });
+                        WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
+                        TryNext();
                         return;
                     }
 
@@ -125,6 +122,11 @@ namespace FlussonnicOrion.Filters
                 NewRequest.Invoke(this, request);
             }
 
+            TryNext();
+        }
+
+        private void TryNext()
+        {
             WorkWithPassRequestsQueue(() =>
             {
                 if (_passRequests.Count > 0)
@@ -133,6 +135,7 @@ namespace FlussonnicOrion.Filters
                     _inProcess = false;
             });
         }
+
         private void WorkWithPassRequestsQueue(Action action)
         {
             lock (_requestsHandlingLock)
