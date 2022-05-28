@@ -33,7 +33,7 @@
   "FilterSettings": {
     "TimeAfterLastAccessGranted": 20,
     "TimeAfterLastPass": 5,
-    "EventLogDelay": 3,
-    "TimeInFrameForProcessing": 5
+    "TimeInFrameForProcessing": 5,
+    "EventLogDelay": 3
   }
 }
