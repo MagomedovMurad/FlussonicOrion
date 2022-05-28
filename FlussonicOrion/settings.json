@@ -1,0 +1,31 @@
+{
+  "ServerSettings": {
+    "ServerPort": 26038
+  },
+  "OrionSettings": {
+    "IPAddress": "127.0.0.1",
+    "Port": 8090,
+    "ModuleUserName": "orionintegration",
+    "ModulePassword": "orionintegration",
+    "EmployeeUserName": "remoteorion",
+    "EmployeePassword": "remoteorion",
+    "TokenLifetime": 300,
+    "UseCache": false,
+    "VisitorsUpdatingInterval": 60,
+    "EmployeesUpdatingInterval": 60
+  },
+  "AccesspointsSettings": [
+    {
+      "AccesspointId": 1,
+      "EnterCamId": "cam1",
+      "ExitCamId": "cam2",
+      "FilterType": "Crosscam"
+    }
+  ],
+  "FilterSettings": {
+    "TimeAfterLastAccessGranted": 20,
+    "TimeAfterLastPass": 5,
+    "TimeInFrameForProcessing": 5,
+    "EventLogDelay": 3
+  }
+}
