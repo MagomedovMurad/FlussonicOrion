@@ -1,6 +1,5 @@
 ﻿using FlussonnicOrion.Controllers;
 using FlussonnicOrion.Filters;
-using FlussonnicOrion.Models;
 using FlussonnicOrion.OrionPro;
 using FlussonnicOrion.OrionPro.Models;
 using FlussonnicOrion.Utils;
@@ -14,7 +13,7 @@ namespace FlussonnicOrion.Managers
 {
     public interface IAccessPointsManager
     {
-        void Initialize(OrionSettings settings);
+        void Initialize();
         AccessPointController GetAcceessPoint(int id);
     }
 
@@ -40,7 +39,7 @@ namespace FlussonnicOrion.Managers
             _accessPoints = new List<AccessPointController>();
         }
 
-        public void Initialize(OrionSettings settings)
+        public void Initialize()
         {
             try
             {
@@ -49,7 +48,8 @@ namespace FlussonnicOrion.Managers
                 _dataSource.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
                 _accessController = new AccessController(_dataSource);
 
-                var accessPoints = orionSettings
+                var accessPoints = _serviceSettingsController
+                    .Settings
                     .AccesspointsSettings
                     .Select(x =>
                         new AccessPointController(
@@ -75,9 +75,9 @@ namespace FlussonnicOrion.Managers
                 case FilterType.Empty:
                     return new EmptyFilter();
                 case FilterType.Crosscam:
-                    return new CrossCamerasFilter(_logger, _orionClient);
+                    return new CrossCamerasFilter(_logger, _orionClient, _serviceSettingsController);
                 case FilterType.Opentimeout:
-                    return new OpenTimeoutFilter(_logger, _orionClient);
+                    return new OpenTimeoutFilter(_logger, _orionClient, _serviceSettingsController);
                 default: throw new InvalidCastException($"Тип фильтра {filterType} не поддерживается");
             }
         }

@@ -14,21 +14,5 @@ namespace FlussonnicOrion.OrionPro.Models
         public int EmployeesUpdatingInterval { get; set; }
         public int VisitorsUpdatingInterval { get; set; }
         public bool UseCache { get; set; }
-        public List<AccesspointSettings> AccesspointsSettings { get; set; }
-    }
-
-    public class AccesspointSettings
-    { 
-        public int AccesspointId { get; set; }
-        public string EnterCamId { get; set; }
-        public string ExitCamId { get; set; }
-        public FilterType FilterType { get; set; }
-    }
-
-    public enum FilterType
-    { 
-        Empty,
-        Crosscam,
-        Opentimeout
     }
 }

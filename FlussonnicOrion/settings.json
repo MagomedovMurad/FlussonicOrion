@@ -1,8 +1,7 @@
 {
-    "ServerSettings": 
-    {
-        "ServerPort": 26038
-    },
+  "ServerSettings": {
+    "ServerPort": 26038
+  },
   "OrionSettings": {
     "IPAddress": "127.0.0.1",
     "Port": 8090,
@@ -22,5 +21,19 @@
         "FilterType": "Opentimeout"
       }
     ]
+  },
+  "AccesspointsSettings": [
+    {
+      "AccesspointId": 1,
+      "EnterCamId": "cam1",
+      "ExitCamId": "cam2",
+      "FilterType": "Opentimeout"
+    }
+  ],
+  "FilterSettings" {
+    "TimeAfterLastAccessGranted": 20,
+    "TimeAfterLastPass": 5,
+    "EventLogDelay": 3,
+    "TimeInFrameForProcessing": 5
   }
 }

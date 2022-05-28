@@ -74,6 +74,11 @@ namespace FlussonnicOrion
          
         private ServiceSettings GetDefaultSettings()
         {
+            var serverSettings = new ServerSettings
+            {
+                ServerPort = 26038
+            };
+
             var orionSettings = new OrionSettings
             {
                 IPAddress = "127.0.0.1",
@@ -85,33 +90,39 @@ namespace FlussonnicOrion
                 TokenLifetime = 300,
                 EmployeesUpdatingInterval = 60,
                 VisitorsUpdatingInterval = 60,
-                UseCache = false,
-                AccesspointsSettings = new List<AccesspointSettings>
+                UseCache = false
+            };
+
+            var accesspointsSettings = new List<AccesspointSettings>
+            {
+                new AccesspointSettings
                 {
-                    new AccesspointSettings
-                    {
-                        AccesspointId = 1,
-                        EnterCamId = "cam1",
-                        ExitCamId = "cam2"
-                    },
-                    new AccesspointSettings
-                    {
-                        AccesspointId = 2,
-                        EnterCamId = "cam3",
-                        ExitCamId = "cam4"
-                    }
+                    AccesspointId = 1,
+                    EnterCamId = "cam1",
+                    ExitCamId = "cam2"
+                },
+                new AccesspointSettings
+                {
+                    AccesspointId = 2,
+                    EnterCamId = "cam3",
+                    ExitCamId = "cam4"
                 }
             };
 
-            var serverSettings = new ServerSettings
+            var filterSettings = new FilterSettings
             {
-                ServerPort = 26038
+                TimeAfterLastAccessGranted = 20,
+                TimeAfterLastPass = 5,
+                TimeInFrameForProcessing = 5,
+                EventLogDelay = 3
             };
 
             var serviceSettings = new ServiceSettings
             {
+                ServerSettings = serverSettings,
                 OrionSettings = orionSettings,
-                ServerSettings = serverSettings
+                AccesspointsSettings = accesspointsSettings,
+                FilterSettings = filterSettings
             };
 
             return serviceSettings;

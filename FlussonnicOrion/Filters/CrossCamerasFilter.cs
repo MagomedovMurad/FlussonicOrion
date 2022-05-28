@@ -20,13 +20,18 @@ namespace FlussonnicOrion.Filters
         private PassRequest _lastPassRequest;
         private ConcurrentQueue<PassRequest> _passRequests;
         private object _requestsHandlingLock = new object();
+        private FilterSettings _settings;
+        private TimeSpan _requestedEventsInterval; 
 
         public event EventHandler<PassRequest> NewRequest;
 
-        public CrossCamerasFilter(ILogger logger, IOrionClient orionClient)
+        public CrossCamerasFilter(ILogger logger, 
+                                  IOrionClient orionClient, 
+                                  IServiceSettingsController serviceSettingsController)
         {
             _logger = logger;
             _orionClient = orionClient;
+            _settings = serviceSettingsController.Settings.FilterSettings;
 
             _passRequests = new ConcurrentQueue<PassRequest>();
             _lastPassRequest = new PassRequest()
@@ -35,6 +40,13 @@ namespace FlussonnicOrion.Filters
                 EnterInFrameTime = DateTime.Now - TimeSpan.FromDays(1),
                 OutFrameTime = DateTime.Now - TimeSpan.FromDays(1)
             };
+            var requestedEventsIntervalSec = new[] 
+            { 
+                _settings.TimeAfterLastAccessGranted, 
+                _settings.TimeAfterLastPass 
+            }.Max() + 10;
+
+            _requestedEventsInterval = TimeSpan.FromSeconds(requestedEventsIntervalSec);
         }
 
         public void AddRequest(string licensePlate, PassageDirection direction)
@@ -80,7 +92,7 @@ namespace FlussonnicOrion.Filters
                 {
                     var passEventIsLast = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
                     if (NeedAbort(lastAccessGrantedEvent.EventDate,
-                             TimeSpan.FromSeconds(20),
+                             TimeSpan.FromSeconds(_settings.TimeAfterLastAccessGranted),
                              TimeSpan.FromSeconds(1),
                              "Ожидание после последнего предоставления доступа",
                              !passEventIsLast))
@@ -90,7 +102,7 @@ namespace FlussonnicOrion.Filters
                 if (lastPassEvent != null)
                 {
                     if (NeedAbort(lastPassEvent.EventDate,
-                             TimeSpan.FromSeconds(5),
+                             TimeSpan.FromSeconds(_settings.TimeAfterLastPass),
                              null,
                              "Ожидание после последнего прохода"))
                         return;
@@ -110,7 +122,7 @@ namespace FlussonnicOrion.Filters
                     }
 
                     if (NeedAbort(request.EnterInFrameTime,
-                            TimeSpan.FromSeconds(5),
+                            TimeSpan.FromSeconds(_settings.TimeInFrameForProcessing),
                             TimeSpan.FromSeconds(1),
                             "Ожидание нахождения в кадре"))
                         return;
@@ -124,13 +136,12 @@ namespace FlussonnicOrion.Filters
 
             TryNext();
         }
-
         private void TryNext()
         {
             WorkWithPassRequestsQueue(() =>
             {
                 if (_passRequests.Count > 0)
-                    Task.Delay(3000).ContinueWith(t => Next());
+                    Task.Delay(TimeSpan.FromSeconds(_settings.EventLogDelay)).ContinueWith(t => Next());
                 else
                     _inProcess = false;
             });
@@ -162,90 +173,6 @@ namespace FlussonnicOrion.Filters
             return false;
         }
 
-        //private async Task Next()
-        //{
-        //    _inProcess = true;
-
-        //    if (_passRequests.TryPeek(out PassRequest request))
-        //    {
-        //        var events = await GetEvents();
-        //        var sortedEvents = (events ?? new TEvent[0]).OrderByDescending(x => x.EventDate);
-
-        //        var lastAccessGrantedEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.AccessGranted
-        //                                                              || x.EventTypeId == (int)EventType.AccessGrantedByKey);
-
-        //        var lastPassEvent = sortedEvents.FirstOrDefault(x => x.EventTypeId == (int)EventType.PassByKey
-        //                                          || x.EventTypeId == (int)EventType.Pass);
-
-        //        if (lastAccessGrantedEvent != null)
-        //        {
-        //            var timeFromLastAccessGranted = DateTime.Now - lastAccessGrantedEvent.EventDate;
-        //            var tty = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
-        //            if (timeFromLastAccessGranted < TimeSpan.FromSeconds(20) && tty == false)
-        //            {
-        //                var timeFromLastAccessGrantedDelta = TimeSpan.FromSeconds(20) - timeFromLastAccessGranted;
-        //                _logger.LogInformation($"Ожидание 20 сек после последнего предоставления доступа {timeFromLastAccessGrantedDelta.Seconds}");
-        //                Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith(t => Next());
-        //                return;
-        //            }
-        //        }
-
-        //        if (lastPassEvent != null)
-        //        {
-        //            var timeFromLastPassage = DateTime.Now - lastPassEvent.EventDate;
-        //            if (timeFromLastPassage < TimeSpan.FromSeconds(5))
-        //            {
-        //                var timeFromLastPassageDelta = TimeSpan.FromSeconds(5) - timeFromLastPassage;
-        //                _logger.LogInformation($"Ожидание 5 сек после последнего прохода ({timeFromLastPassageDelta})");
-        //                Task.Delay(timeFromLastPassageDelta).ContinueWith(t => Next());
-        //                return;
-        //            }
-        //        }
-
-        //        var lastEvent = lastPassEvent ?? lastAccessGrantedEvent;
-        //        var inCamDirection = lastEvent?.Description?.Contains(request.Direction == PassageDirection.Entry ? "Выход" : "Вход");
-        //        if (inCamDirection is true)
-        //        {
-        //            _logger.LogInformation($"Последний проезд ({request.LicensePlate}) был в направлении распознавшей камеры");
-        //            if (_lastPassRequest.LicensePlate == request.LicensePlate)
-        //            {
-        //                _logger.LogInformation($"Номер {request.LicensePlate} совпадает с последним запросом");
-        //                _inProcess = false;
-        //                _passRequests.TryPeek(out PassRequest first);
-        //                if (request.Equals(first))
-        //                    _passRequests.TryDequeue(out PassRequest _);
-        //                return;
-        //            }
-
-        //            var timeInFrame = DateTime.Now - request.InFrameTime;
-        //            if (timeInFrame < TimeSpan.FromSeconds(5))
-        //            {
-        //                var timeInFrameDelta = TimeSpan.FromSeconds(5) - timeInFrame;
-        //                _logger.LogInformation($"Ожидание нахождения в кадре {timeInFrameDelta.Seconds} из 5 сек");
-        //                Task.Delay(timeInFrameDelta).ContinueWith(t => Next());
-        //                return;
-        //            }
-        //        }
-
-        //        //Обработать запрос
-        //        _lastPassRequest = request;
-        //        _passRequests.TryPeek(out PassRequest first1);
-        //        if (request.Equals(first1))
-        //            _passRequests.TryDequeue(out PassRequest _);
-        //        NewRequest.Invoke(this, request);
-        //    }
-
-        //    if (_passRequests.Count > 0)
-        //    {
-        //        await Task.Delay(3000);
-        //        Next();
-        //    }
-        //    else
-        //    {
-        //        _inProcess = false;
-        //    }
-        //}
-
         private async Task<TEvent[]> GetEvents()
         {
             var entryPoints = new[] { _id };
@@ -257,7 +184,7 @@ namespace FlussonnicOrion.Filters
                 (int)EventType.AccessGrantedByKey
             };
 
-            return await _orionClient.GetEvents(DateTime.Now - TimeSpan.FromSeconds(30),
+            return await _orionClient.GetEvents(DateTime.Now - _requestedEventsInterval,
                 DateTime.Now, eventTypes, 0, 0, null, entryPoints, null, null);
         }
     }
