@@ -30,7 +30,7 @@
       "FilterType": "Opentimeout"
     }
   ],
-  "FilterSettings" {
+  "FilterSettings": {
     "TimeAfterLastAccessGranted": 20,
     "TimeAfterLastPass": 5,
     "EventLogDelay": 3,
