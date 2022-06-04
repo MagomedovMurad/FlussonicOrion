@@ -1,0 +1,24 @@
+[Unit]
+Description=Служба взаимодействия с системами Flussonic Watcher и АРМ Орион Про
+
+[Service]
+WorkingDirectory=/usr/local/bin/FlussonicOrion
+
+# systemd will run this executable to start the service
+ExecStart=/usr/local/bin/FlussonicOrion/FlussonicOrion
+
+# to query logs using journalctl, set a logical name here
+SyslogIdentifier=FlussonicOrion
+
+# Use your username to keep things simple.
+# If you pick a different user, make sure dotnet and all permissions are set correctly to run the app
+# To update permissions, use 'chown yourusername -R /usr/local/bin/FlussonicOrion' to take ownership of the folder and files,
+#       Use 'chmod +x /usr/local/bin/FlussonicOrion/FlussonicOrion' to allow execution of the executable file
+User=murad
+
+# This environment variable is necessary when dotnet isn't loaded for the specified user.
+# To figure out this value, run 'env | grep DOTNET_ROOT' when dotnet has been loaded into your shell.
+Environment=DOTNET_ROOT=/opt/rh/rh-dotnet31/root/usr/lib64/dotnet
+
+[Install]
+WantedBy=multi-user.target

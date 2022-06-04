@@ -52,7 +52,7 @@ namespace FlussonicOrion.Controllers
             if (allowedAccessResult != null)
             {
                 _logger.LogInformation($"Отправка команды на открытие двери {Id} для {allowedAccessResult.PersonData}");
-                _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(request.Direction), allowedAccessResult.PersonId).Wait(); ;
+                _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(request.Direction), allowedAccessResult.PersonId).Wait();
             }
 
             AddExternalEvents(accessResults.Except(new[] { allowedAccessResult }).ToList(), Id).Wait();

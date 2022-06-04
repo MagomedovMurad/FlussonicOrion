@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="FlussonicOrion.service">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
