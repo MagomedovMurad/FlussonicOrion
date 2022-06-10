@@ -21,6 +21,7 @@ namespace FlussonicOrion.OrionPro
         Task<TVisitData[]> GetVisits();
         Task<int> GetPersonsCount();
         Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors);
+        Task<string[]> GetPersonPassList(TPersonData personData);
         Task<TPersonData> GetPersonById(int id);
         Task<TTimeWindow[]> GetTimeWindows();
         Task<TTimeWindow> GetTimeWindowById(int id);
@@ -153,6 +154,7 @@ namespace FlussonicOrion.OrionPro
         private delegate Task<ExtendTokenExpirationResponse> ExtendTokenExpirationDel(string token);
         private delegate Task<GetVisitsResponse> GetVisitsDel(string token);
         private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
+        private delegate Task<GetPersonPassListResponse> GetPersonPassListDel(TPersonData personData, string token);
         private delegate Task<GetPersonByIdResponse> GetPersonByIdDel(int id, bool withoutPhoto, string token);
         private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string token);
         private delegate Task<GetTimeWindowsResponse> GetTimeWindowsDel(string token);
@@ -179,7 +181,10 @@ namespace FlussonicOrion.OrionPro
         {
             return await Execute<GetPersonByIdResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true);
         }
-
+        public async Task<string[]> GetPersonPassList(TPersonData personData)
+        {
+            return await Execute<GetPersonPassListResponse, string[]>((GetPersonPassListDel)_client.GetPersonPassListAsync, false, personData);
+        }
         public async Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors)
         {
             return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors);

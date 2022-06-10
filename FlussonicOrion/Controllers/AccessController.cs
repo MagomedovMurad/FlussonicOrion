@@ -1,7 +1,6 @@
 ﻿using FlussonicOrion.Models;
-using FlussonicOrion.OrionPro;
+using FlussonicOrion.OrionPro.DataSources;
 using FlussonicOrion.OrionPro.Enums;
-using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Collections.Generic;
@@ -25,8 +24,8 @@ namespace FlussonicOrion.Controllers
         
         public List<AccessRequestResult> CheckAccess(string licensePlate, int itemId, PassageDirection direction)
         {
-            var keys = _orionDataSource.GetKeysByRegNumber(licensePlate);
-            var keyAccessResults = keys.Select(x => CheckAccessByKey(x, itemId, direction)).ToArray();
+            var key = _orionDataSource.GetKeysByCode(licensePlate);
+            var keyAccessResults = CheckAccessByKey(key, itemId, direction);
 
             var visits = _orionDataSource.GetVisitsByRegNumber(licensePlate);
             var visitAccessResults = visits.Select(x => CheckAccessByVisit(x)).ToArray();
@@ -44,6 +43,14 @@ namespace FlussonicOrion.Controllers
             if (person.IsInArchive)
                 return null;
 
+            var passCodeList = _orionDataSource.GetPersonPassList(visit.PersonId);
+            foreach (var code in passCodeList)
+            {
+                var key = _orionDataSource.GetKeysByCode(code);
+
+            }
+
+
             var company = _orionDataSource.GetCompany(visit.VisitedCompanyId);
             var personData = $"{company?.Name ?? "Неизвестно"}: {person.LastName} {person.FirstName} {person.MiddleName}";
 
@@ -51,10 +58,10 @@ namespace FlussonicOrion.Controllers
                 return new AccessRequestResult(false, $"В черном списке", person.Id, personData, visit.VisitDate);
 
             else if (visit.VisitDate > DateTime.Now)
-                return new AccessRequestResult(false, $"Проход не разрешен до {visit.VisitDate}", person.Id, personData, visit.VisitDate);
+                return new AccessRequestResult(false, $"Доступ запрещен до {visit.VisitDate}", person.Id, personData, visit.VisitDate);
 
             else if (visit.VisitEndDateTime < DateTime.Now)
-                return new AccessRequestResult(false, $"Проход запрещен после {visit.VisitEndDateTime}", person.Id, personData, visit.VisitDate);
+                return new AccessRequestResult(false, $"Доступ запрещен после {visit.VisitEndDateTime}", person.Id, personData, visit.VisitDate);
             else
                 return new AccessRequestResult(true, null, person.Id, personData, visit.VisitDate);
         }

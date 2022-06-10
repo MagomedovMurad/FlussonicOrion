@@ -8,21 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace FlussonicOrion.OrionPro
+namespace FlussonicOrion.OrionPro.DataSources
 {
-    public interface IOrionDataSource
-    {
-        void Initialize(int employeeInterval, int visitorsInterval);
-        void Dispose();
-
-        IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber);
-        IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber);
-        TPersonData GetPerson(int id);
-        TAccessLevel GetAccessLevel(int id);
-        TTimeWindow GetTimeWindow(int id);
-        TCompany GetCompany(int id);
-    }
-
     public class OrionCacheDataSource: IOrionDataSource
     {
         private readonly ILogger<IOrionDataSource> _logger;
@@ -109,9 +96,9 @@ namespace FlussonicOrion.OrionPro
         {
             return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber)), _visitorsLock).ToArray();
         }
-        public IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber)
+        public TKeyData GetKeysByCode(string regNumber)
         {
-            return ReadList(() => _keys.Where(x => x.Code.Equals(regNumber)), _keysLock).ToArray();
+            return ReadList(() => _keys.FirstOrDefault(x => x.Code.Equals(regNumber)), _keysLock);
         }
         public TPersonData GetPerson(int id)
         {
@@ -119,15 +106,15 @@ namespace FlussonicOrion.OrionPro
         }
         public TAccessLevel GetAccessLevel(int id)
         {
-            return _accessLevels.FirstOrDefault(x => x.Id == id);
+            return ReadList(() => _accessLevels.FirstOrDefault(x => x.Id == id), _accessLevelsLock);
         }
         public TTimeWindow GetTimeWindow(int id)
         {
-            return _timeWindows.FirstOrDefault(x => x.Id == id);
+            return ReadList(() => _timeWindows.FirstOrDefault(x => x.Id == id), _timeWindowsLock);
         }
         public TCompany GetCompany(int id)
         {
-            return _companies.FirstOrDefault(x => x.Id == id);
+            return ReadList(() => _companies.FirstOrDefault(x => x.Id == id), _companiesLock);
         }
 
 

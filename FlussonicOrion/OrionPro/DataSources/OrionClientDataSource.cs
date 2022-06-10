@@ -1,8 +1,9 @@
-﻿using Orion;
+﻿using FlussonicOrion.OrionPro.Enums;
+using Orion;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FlussonicOrion.OrionPro
+namespace FlussonicOrion.OrionPro.DataSources
 {
     public class OrionClientDataSource : IOrionDataSource
     {
@@ -12,6 +13,12 @@ namespace FlussonicOrion.OrionPro
             _orionClient = orionClient;
         }
 
+        public string[] GetPersonPassList(int personId)
+        {
+            var personData = new TPersonData();
+            personData.Id = personId;
+            return _orionClient.GetPersonPassList(personData).Result;
+        }
 
         public TAccessLevel GetAccessLevel(int id)
         {
@@ -23,13 +30,9 @@ namespace FlussonicOrion.OrionPro
             return _orionClient.GetCompany(id).Result;
         }
 
-        public IEnumerable<TKeyData> GetKeysByRegNumber(string regNumber)
+        public TKeyData GetKeysByCode(string code)
         {
-            var key = _orionClient.GetKeyData(regNumber, 5).Result;
-            if (key != null)
-                return new[] { key };
-            else
-                return new List<TKeyData>();
+            return _orionClient.GetKeyData(code, (int)CodeType.CarNumber).Result;
         }
 
         public TPersonData GetPerson(int id)
