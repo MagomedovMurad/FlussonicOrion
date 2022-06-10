@@ -1,7 +1,7 @@
 ﻿using FlussonicOrion.Controllers;
 using FlussonicOrion.Filters;
 using FlussonicOrion.OrionPro;
-using FlussonicOrion.OrionPro.Models;
+using FlussonicOrion.OrionPro.DataSources;
 using FlussonicOrion.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -82,7 +82,6 @@ namespace FlussonicOrion.Managers
                     throw new InvalidCastException($"Тип фильтра {filterType} не поддерживается");
             }
         }
-
         public AccessPointController GetAcceessPoint(int id)
         {
             return _accessPoints.FirstOrDefault(x => x.Id == id);

@@ -5,12 +5,13 @@ using Orion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace FlussonicOrion.Controllers
 {
     public interface IAccessController
     {
-        List<AccessRequestResult> CheckAccess(string number, int itemId, PassageDirection direction);
+        AccessRequestResult CheckAccess(string number, int itemId, PassageDirection direction);
     }
 
     public class AccessController: IAccessController
@@ -22,72 +23,43 @@ namespace FlussonicOrion.Controllers
             _orionDataSource = dataSource;
         }
         
-        public List<AccessRequestResult> CheckAccess(string licensePlate, int itemId, PassageDirection direction)
+        public AccessRequestResult CheckAccess(string licensePlate, int itemId, PassageDirection direction)
         {
-            var key = _orionDataSource.GetKeysByCode(licensePlate);
-            var keyAccessResults = CheckAccessByKey(key, itemId, direction);
+            var key = _orionDataSource.GetKeyByCode(licensePlate);
+            if (key != null)
+                return CheckAccessByKey(key, itemId, direction);
 
-            var visits = _orionDataSource.GetVisitsByRegNumber(licensePlate);
-            var visitAccessResults = visits.Select(x => CheckAccessByVisit(x)).ToArray();
+            var visit = _orionDataSource.GetActualVisitByRegNumber(licensePlate);
+            if(visit == null)
+                return new AccessRequestResult(false, "Не найден", null, null);
 
-            var allAccessResults = keyAccessResults.Concat(visitAccessResults).Where(x => x != null).ToList();
+            key = _orionDataSource.GetKeyByPersonIdAndComment(visit.PersonId, licensePlate);
+            if (key != null)
+                return CheckAccessByKey(key, itemId, direction);
 
-            if (allAccessResults.Count == 0)
-                allAccessResults.Add(new AccessRequestResult(false, "Не найден в системе", 0, null, null));
-
-            return allAccessResults;
+            return new AccessRequestResult(false, "Не найден", null, null);
         }
-        private AccessRequestResult CheckAccessByVisit(TVisitData visit)
-        {
-            var person = _orionDataSource.GetPerson(visit.PersonId);
-            if (person.IsInArchive)
-                return null;
-
-            var passCodeList = _orionDataSource.GetPersonPassList(visit.PersonId);
-            foreach (var code in passCodeList)
-            {
-                var key = _orionDataSource.GetKeysByCode(code);
-
-            }
-
-
-            var company = _orionDataSource.GetCompany(visit.VisitedCompanyId);
-            var personData = $"{company?.Name ?? "Неизвестно"}: {person.LastName} {person.FirstName} {person.MiddleName}";
-
-            if (person.IsInBlackList)
-                return new AccessRequestResult(false, $"В черном списке", person.Id, personData, visit.VisitDate);
-
-            else if (visit.VisitDate > DateTime.Now)
-                return new AccessRequestResult(false, $"Доступ запрещен до {visit.VisitDate}", person.Id, personData, visit.VisitDate);
-
-            else if (visit.VisitEndDateTime < DateTime.Now)
-                return new AccessRequestResult(false, $"Доступ запрещен после {visit.VisitEndDateTime}", person.Id, personData, visit.VisitDate);
-            else
-                return new AccessRequestResult(true, null, person.Id, personData, visit.VisitDate);
-        }
+       
         private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId, PassageDirection direction)
         {
             var person = _orionDataSource.GetPerson(key.PersonId);
-            if (person.IsInArchive)
-                return null;
 
-            var personData = $"{(string.IsNullOrWhiteSpace(person?.Company)? "Неизвестно": person?.Company)}: {person.LastName} {person.FirstName} {person.MiddleName}";
-
-            if (key.IsBlocked)
-                return new AccessRequestResult(false, "Ключ заблокирован", person.Id, personData, key.StartDate, key.Id);
-
+            if(person.IsInArchive)
+                return new AccessRequestResult(false, "В архиве", person, key.StartDate, key.Id);
+            else if (person.IsInBlackList)
+                return new AccessRequestResult(false, $"В черном списке", person, key.StartDate, key.Id);
+            else if (key.IsBlocked)
+                return new AccessRequestResult(false, "Заблокирован", person, key.StartDate, key.Id);
             else if (key.IsInStopList)
-                return new AccessRequestResult(false, "Ключ в стоп-листе", person.Id, personData, key.StartDate, key.Id);
-
+                return new AccessRequestResult(false, "В стоп-листе", person, key.StartDate, key.Id);
             else if (key.StartDate > DateTime.Now)
-                return new AccessRequestResult(false, $"Ключ не дейстивтелен до {key.StartDate}", person.Id, personData, key.StartDate, key.Id);
-
+                return new AccessRequestResult(false, $"Ключ не активен", person, key.StartDate, key.Id);
             else if (key.EndDate < DateTime.Now)
-                return new AccessRequestResult(false, $"Ключ истек {key.EndDate}", person.Id, personData, key.StartDate, key.Id);
-
-            else return CheckAccessLevel(key.AccessLevelId, itemId, person.Id, personData, key, direction);
+                return new AccessRequestResult(false, $"Ключ истек", person, key.StartDate, key.Id);
+            else 
+                return CheckAccessLevel(key.AccessLevelId, itemId, person, key, direction);
         }
-        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, int personId, string personData, TKeyData key, PassageDirection direction)
+        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, TPersonData person, TKeyData key, PassageDirection direction)
         {
             var accessLevel = _orionDataSource.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items
@@ -95,13 +67,13 @@ namespace FlussonicOrion.Controllers
                                                           && (x.ItemId == itemId || x.ItemId == 0))
                                               .ToArray();
             if (accessLevelItems.Length == 0)
-                return new AccessRequestResult(false, $"Ограничено уровнем доступа", personId, personData, key.StartDate, key.Id);
+                return new AccessRequestResult(false, $"Уровнем доступа", person, key.StartDate, key.Id);
 
             var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x, direction)).Any(x => x);
             if (!isAccess)
-                return new AccessRequestResult(false, $"Ограничено временным интервалом", personId, personData, key.StartDate, key.Id);
+                return new AccessRequestResult(false, $"Временным окном", person, key.StartDate, key.Id);
 
-            return new AccessRequestResult(true, null, personId, personData, key.StartDate, key.Id);
+            return new AccessRequestResult(true, null, person, key.StartDate, key.Id);
         }
         private bool CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
         {
@@ -130,5 +102,80 @@ namespace FlussonicOrion.Controllers
 
             return timeInterval.Days[calendarDayType];
         }
+    }
+
+    public class ShortStringHelper
+    {
+        public string CreateSring(string licensePlate, string accessResult, string company, string fullName, string reason)
+        {
+            var licensePlateItem = new LineItem(LineItemType.LicensePlate, 1, licensePlate, 10);
+            var accessResultItem = new LineItem(LineItemType.AccessResult, 2, accessResult, 6);
+            var companyItem = new LineItem(LineItemType.Company, 5, company, 15);
+            var fullNameItem = new LineItem(LineItemType.FullName, 4, fullName, 15);
+            var reasonItem = new LineItem(LineItemType.Reason, 3, reason, 15);
+
+            return CreateSring(licensePlateItem, accessResultItem, companyItem, fullNameItem, reasonItem);
+        }
+
+        public string CreateSring(params LineItem[] items)
+        {
+            var orderedItems = items.OrderBy(x => x.Priority).ToList();
+
+            foreach (var testData in orderedItems)
+                testData.TrimmedValue = Substring(testData.Value, testData.MaxLength);
+
+            var result = string.Join(" ", orderedItems.Select(x => x.TrimmedValue));
+
+            int freeSymbolsCount = 65 - result.Length;
+
+            foreach (var testData in orderedItems)
+            {
+                if (freeSymbolsCount == 0)
+                    return string.Join(" ", orderedItems.Select(x => x.TrimmedValue));
+
+                if (testData.Value.Length > testData.MaxLength)
+                {
+                    var substring = Substring(testData.Value, testData.TrimmedValue.Length + freeSymbolsCount);
+                    freeSymbolsCount -= (substring.Length - testData.TrimmedValue.Length);
+                    testData.TrimmedValue = substring;
+                }
+            }
+            return string.Join(" ", orderedItems.Select(x => x.TrimmedValue));
+        }
+
+        private string Substring(string value, int maxCount)
+        {
+            if (value.Length <= maxCount)
+                return value;
+
+            else
+                return value.Substring(0, maxCount);
+        }
+    }
+
+    public class LineItem
+    {
+        public LineItem(LineItemType type, int priority, string value, int maxLength)
+        {
+            Type = type;
+            Priority = priority;
+            Value = value;
+            MaxLength = maxLength;
+        }
+
+        public LineItemType Type { get; set; }
+        public int Priority { get; set; }
+        public string Value { get; set; }
+        public int MaxLength { get; set; }
+        public string TrimmedValue { get; set; }
+    }
+
+    public enum LineItemType
+    {
+        LicensePlate,
+        AccessResult,
+        Company,
+        FullName,
+        Reason
     }
 }

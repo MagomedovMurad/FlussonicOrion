@@ -1,7 +1,8 @@
 ﻿using FlussonicOrion.OrionPro.Enums;
 using Orion;
-using System.Collections.Generic;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FlussonicOrion.OrionPro.DataSources
 {
@@ -13,11 +14,15 @@ namespace FlussonicOrion.OrionPro.DataSources
             _orionClient = orionClient;
         }
 
-        public string[] GetPersonPassList(int personId)
+        public TKeyData GetKeyByPersonIdAndComment(int personId, string comment)
         {
             var personData = new TPersonData();
             personData.Id = personId;
-            return _orionClient.GetPersonPassList(personData).Result;
+            var passList = _orionClient.GetPersonPassList(personData).Result;
+            var tasks = passList.Select(x => _orionClient.GetKeyData(x, 0));
+
+            var keys = Task.WhenAll(tasks).Result;
+            return keys.FirstOrDefault(x => x.Comment.Contains(comment, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public TAccessLevel GetAccessLevel(int id)
@@ -30,7 +35,7 @@ namespace FlussonicOrion.OrionPro.DataSources
             return _orionClient.GetCompany(id).Result;
         }
 
-        public TKeyData GetKeysByCode(string code)
+        public TKeyData GetKeyByCode(string code)
         {
             return _orionClient.GetKeyData(code, (int)CodeType.CarNumber).Result;
         }
@@ -45,10 +50,12 @@ namespace FlussonicOrion.OrionPro.DataSources
             return _orionClient.GetTimeWindowById(id).Result;
         }
 
-        public IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber)
+        public TVisitData GetActualVisitByRegNumber(string regNumber)
         {
             var visits = _orionClient.GetVisits().Result;
-            return visits.Where(x => x.CarNumber == regNumber).ToArray();
+            return visits.Where(x => x.CarNumber.Equals(regNumber))
+                         .FirstOrDefault(x => DateTime.Now >= x.VisitDate &&
+                                              DateTime.Now <= x.VisitEndDateTime);
         }
 
         public void Initialize(int employeeInterval, int visitorsInterval)

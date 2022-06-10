@@ -92,13 +92,21 @@ namespace FlussonicOrion.OrionPro.DataSources
             _companiesTimer.Dispose();
         }
 
-        public IEnumerable<TVisitData> GetVisitsByRegNumber(string regNumber)
+        public TVisitData GetActualVisitByRegNumber(string regNumber)
         {
-            return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber)), _visitorsLock).ToArray();
+            return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber))
+                                           .FirstOrDefault(x => DateTime.Now >= x.VisitDate &&
+                                                                DateTime.Now <= x.VisitEndDateTime), _visitorsLock);
         }
-        public TKeyData GetKeysByCode(string regNumber)
+        public TKeyData GetKeyByCode(string code)
         {
-            return ReadList(() => _keys.FirstOrDefault(x => x.Code.Equals(regNumber)), _keysLock);
+            return ReadList(() => _keys.FirstOrDefault(x => x.Code.Equals(code)), _keysLock);
+        }
+        public TKeyData GetKeyByPersonIdAndComment(int personId, string comment)
+        {
+            return ReadList(() => _keys.FirstOrDefault(x => x.PersonId.Equals(personId) &&
+                                                            ReplaceCirilicToLatin(x.Comment)
+                                                            .Contains(ReplaceCirilicToLatin(comment))), _keysLock);
         }
         public TPersonData GetPerson(int id)
         {
@@ -234,9 +242,13 @@ namespace FlussonicOrion.OrionPro.DataSources
                 _logger.LogInformation($"Получение списка TKeyData: {allKeys.Count} из {keysCount}");
             }
 
-            var carNumbers = allKeys.Where(x => x.CodeType == (int)CodeType.CarNumber).ToList();
-            carNumbers.ForEach(x => x.Code = ReplaceCirilicToLatin(x.Code));
-            return carNumbers;
+            allKeys.Where(x => x.CodeType == (int)CodeType.CarNumber)
+                   .ToList()
+                   .ForEach(x => x.Code = ReplaceCirilicToLatin(x.Code));
+
+            //var carNumbers = allKeys.Where(x => x.CodeType == (int)CodeType.CarNumber).ToList();
+            //carNumbers.ForEach(x => x.Code = ReplaceCirilicToLatin(x.Code));
+            return allKeys;
         }
         private async Task<IEnumerable<TAccessLevel>> LoadAccessLevels()
         {
@@ -303,8 +315,6 @@ namespace FlussonicOrion.OrionPro.DataSources
                 lockSlim.ExitReadLock();
             }
         }
-
-
         #endregion
     }
 }
