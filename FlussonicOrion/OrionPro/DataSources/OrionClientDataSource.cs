@@ -18,6 +18,7 @@ namespace FlussonicOrion.OrionPro.DataSources
         {
             var personData = new TPersonData();
             personData.Id = personId;
+            personData.Photo = new byte[0];
             var passList = _orionClient.GetPersonPassList(personData).Result;
             var tasks = passList.Select(x => _orionClient.GetKeyData(x, 0));
 

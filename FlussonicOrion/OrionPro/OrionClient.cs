@@ -71,6 +71,18 @@ namespace FlussonicOrion.OrionPro
             InitializeClient();
 
             await InitializeToken(_settings.TokenLifetime);
+
+            try
+            {
+                var person = await _client.GetPersonByIdAsync(3, true, _token);
+                person.@return.OperationResult.Photo = new byte[0];
+                var t = await _client.GetPersonPassListAsync(person.@return.OperationResult, _token);
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+
             _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
         private void InitializeClient()
