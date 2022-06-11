@@ -11,8 +11,7 @@
     "EmployeePassword": "remoteorion",
     "TokenLifetime": 300,
     "UseCache": false,
-    "VisitorsUpdatingInterval": 60,
-    "EmployeesUpdatingInterval": 60
+    "CacheUpdatingInterval": 60
   },
   "AccesspointsSettings": [
     {

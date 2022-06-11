@@ -88,8 +88,7 @@ namespace FlussonicOrion
                 EmployeeUserName = "admin123",
                 EmployeePassword = "password123",
                 TokenLifetime = 300,
-                EmployeesUpdatingInterval = 60,
-                VisitorsUpdatingInterval = 60,
+                CacheUpdatingInterval = 60,
                 UseCache = false
             };
 

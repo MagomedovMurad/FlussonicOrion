@@ -31,17 +31,17 @@ namespace FlussonicOrion.Controllers
             if(visit == null)
                 return new AccessRequestResult(false, "Не найден", null, null, 0);
 
-            key = _orionDataSource.GetKeyByPersonIdAndComment(visit.PersonId, licensePlate);
+            key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
             if (key != null)
                 return CheckAccessByKey(key, itemId, direction);
 
-            return new AccessRequestResult(false, "Не найден", null, null, 0);
+            return new AccessRequestResult(false, "Ключ не найден", null, null, 0);
         }
         private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId, PassageDirection direction)
         {
             var person = _orionDataSource.GetPerson(key.PersonId);
-
-            if(person.IsInArchive)
+            
+            if (person.IsInArchive)
                 return new AccessRequestResult(false, "В архиве", person, key.StartDate, key.Id);
             else if (person.IsInBlackList)
                 return new AccessRequestResult(false, $"В черном списке", person, key.StartDate, key.Id);
@@ -82,7 +82,7 @@ namespace FlussonicOrion.Controllers
                 timeIntervals = timeIntervals.Where(x => x.IsEnterActivity).ToArray();
 
             if (direction.Equals(PassageDirection.Exit))
-                timeIntervals = timeIntervals.Where(x => x.IsEnterActivity).ToArray();
+                timeIntervals = timeIntervals.Where(x => x.IsExitActivity).ToArray();
 
             return timeIntervals.Select(x => CheckIntervalAccess(timeWindow, x)).Any(x => x);
         }

@@ -12,38 +12,6 @@ using System.Timers;
 
 namespace FlussonicOrion.OrionPro
 {
-    public interface IOrionClient
-    {
-        Task Initialize(OrionSettings settings);
-        void Dispose();
-
-        #region Queries
-        Task<TVisitData[]> GetVisits();
-        Task<int> GetPersonsCount();
-        Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors);
-        Task<string[]> GetPersonPassList(TPersonData personData);
-        Task<TPersonData> GetPersonById(int id);
-        Task<TTimeWindow[]> GetTimeWindows();
-        Task<TTimeWindow> GetTimeWindowById(int id);
-        Task<TKeyData> GetKeyData(string code, int codeType);
-        Task<TKeyData[]> GetKeys(int offset, int count);
-        Task<int> GetKeysCount();
-        Task<TAccessLevel> GetAccessLevelById(int id);
-        Task<int> GetAccessLevelsCount();
-        Task<TAccessLevel[]> GetAccessLevels(int offset, int count);
-        Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors);
-        Task<TCompany> GetCompany(int id);
-        Task<TEntryPoint[]> GetEntryPoints(int offset, int count);
-        Task<TAccessZone[]> GetAccessZones();
-        Task<TEvent[]> GetEvents(DateTime beginTime, DateTime endTime, int[] eventTypes, int offset, int count, TPersonData[] persons, int[] entryPoints, TSection[] sections, TSectionsGroup[] sectionGroups);
-        #endregion
-
-        #region Commands
-        Task AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text);
-        Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId);
-        #endregion
-    }
-
     public class OrionClient : IOrionClient
     {
         #region Fields
@@ -69,19 +37,7 @@ namespace FlussonicOrion.OrionPro
             _remoteAddress = new EndpointAddress($"http://{settings.IPAddress}:{settings.Port}/soap/IOrionPro");
 
             InitializeClient();
-
             await InitializeToken(_settings.TokenLifetime);
-
-            try
-            {
-                var person = await _client.GetPersonByIdAsync(3, true, _token);
-                person.@return.OperationResult.Photo = new byte[0];
-                var t = await _client.GetPersonPassListAsync(person.@return.OperationResult, _token);
-            }
-            catch (Exception ex)
-            { 
-            
-            }
 
             _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
@@ -162,25 +118,23 @@ namespace FlussonicOrion.OrionPro
 
         #region Queries
         #region Delegates
-        private delegate Task<GetLoginTokenResponse> GetLoginTokenDel(string Login, string Md5Passw, string _);
+        private delegate Task<GetLoginTokenResponse> GetLoginTokenDel(string Login, string Md5Passw, string token);
         private delegate Task<ExtendTokenExpirationResponse> ExtendTokenExpirationDel(string token);
         private delegate Task<GetVisitsResponse> GetVisitsDel(string token);
         private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
         private delegate Task<GetPersonPassListResponse> GetPersonPassListDel(TPersonData personData, string token);
         private delegate Task<GetPersonByIdResponse> GetPersonByIdDel(int id, bool withoutPhoto, string token);
-        private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string token);
+        private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string[] filter, bool isEmployees, bool isVisitors, string token);
         private delegate Task<GetTimeWindowsResponse> GetTimeWindowsDel(string token);
         private delegate Task<GetTimeWindowByIdResponse> GetTimeWindowByIdDel(int id, string token);
         private delegate Task<GetKeyDataResponse> GetKeyDataDel(string code, int codeType, string token);
-        private delegate Task<GetKeysResponse> GetKeysDel(int offset, int count, string token);
-        private delegate Task<GetKeysCountResponse> GetKeysCountDel(string token);
+        private delegate Task<GetKeysResponse> GetKeysDel(int codeType, int personId, int offset, int count, string token);
+        private delegate Task<GetKeysCountResponse> GetKeysCountDel(int codeType, int personId, string token);
         private delegate Task<GetAccessLevelByIdResponse> GetAccessLevelByIdDel(int id, string token);
         private delegate Task<GetAccessLevelsCountResponse> GetAccessLevelsCountDel(string token);
         private delegate Task<GetAccessLevelsResponse> GetAccessLevelsDel(int offset, int count, string token);
-        private delegate Task<GetCompaniesResponse> GetCompaniesDel(bool isEmployees, bool isVisitors, string token);
         private delegate Task<AddExternalEventResponse> AddExternalEventDel(TExternalEvent externalEvent, string token);
-        private delegate Task<ControlItemsResponse> ControlItemsDel(TItem[] item, int command, int action, int personId, string token);
-        private delegate Task<GetCompanyByIdResponse> GetCompanyByIdDel(int id, string token);
+        private delegate Task<ControlItemsResponse> ControlItemsDel(TItem[] items, int command, int action, int personId, string token);
         private delegate Task<GetEntryPointsResponse> GetEntryPointsDel(int offset, int count, string token);
         private delegate Task<GetAccessZonesResponse> GetAccessZonesDel(string token);
         private delegate Task<GetEventsResponse> GetEventsDel(DateTime beginTime, DateTime endTime, TEventType[] eventTypes, int offset, int count, TPersonData[] persons, TEntryPoint[] entryPoints, TSection[] sections, TSectionsGroup[] sectionGroups, string token);
@@ -201,9 +155,9 @@ namespace FlussonicOrion.OrionPro
         {
             return await Execute<GetPersonsResponse, TPersonData[]>((GetPersonsDel)_client.GetPersonsAsync, false, withoutPhoto, offset, count, filter, isEmployees, isVisitors);
         }
-        public async Task<int> GetPersonsCount()
+        public async Task<int> GetPersonsCount(string[] filter, bool isEmployees, bool isVisitors)
         {
-            return await Execute<GetPersonsCountResponse, int>((GetPersonsCountDel)_client.GetPersonsCountAsync, false);
+            return await Execute<GetPersonsCountResponse, int>((GetPersonsCountDel)_client.GetPersonsCountAsync, false, filter, isEmployees, isVisitors);
         }
         public async Task<TTimeWindow[]> GetTimeWindows()
         {
@@ -217,13 +171,13 @@ namespace FlussonicOrion.OrionPro
         {
             return await Execute<GetKeyDataResponse, TKeyData>((GetKeyDataDel)_client.GetKeyDataAsync, false, code, codeType);
         }
-        public async Task<TKeyData[]> GetKeys(int offset, int count)
+        public async Task<TKeyData[]> GetKeys(int codeType, int personId, int offset, int count)
         {
-            return await Execute<GetKeysResponse, TKeyData[]>((GetKeysDel)_client.GetKeysAsync, false, offset, count);
+            return await Execute<GetKeysResponse, TKeyData[]>((GetKeysDel)_client.GetKeysAsync, false, codeType, personId, offset, count);
         }
-        public async Task<int> GetKeysCount()
+        public async Task<int> GetKeysCount(int codeType, int personId)
         {
-            return await Execute<GetKeysCountResponse, int>((GetKeysCountDel)_client.GetKeysCountAsync, false);
+            return await Execute<GetKeysCountResponse, int>((GetKeysCountDel)_client.GetKeysCountAsync, false, codeType, personId);
         }
         public async Task<TAccessLevel> GetAccessLevelById(int id)
         {
@@ -237,14 +191,7 @@ namespace FlussonicOrion.OrionPro
         {
             return await Execute<GetAccessLevelsResponse, TAccessLevel[]>((GetAccessLevelsDel)_client.GetAccessLevelsAsync, false, offset, count);
         }
-        public async Task<TCompany[]> GetCompanies(bool isEmployees, bool isVisitors)
-        {
-            return await Execute<GetCompaniesResponse, TCompany[]>((GetCompaniesDel)_client.GetCompaniesAsync, false, isEmployees, isVisitors);
-        }
-        public async Task<TCompany> GetCompany(int id)
-        {
-            return await Execute<GetCompanyByIdResponse, TCompany>((GetCompanyByIdDel)_client.GetCompanyByIdAsync, false, id);
-        }
+
         public async Task<TEntryPoint[]> GetEntryPoints(int offset, int count)
         {
             return await Execute<GetEntryPointsResponse, TEntryPoint[]>((GetEntryPointsDel)_client.GetEntryPointsAsync, false, offset, count);
@@ -287,23 +234,12 @@ namespace FlussonicOrion.OrionPro
                 ItemType = ItemType.ACCESSPOINT.ToString(),
                 Timestamp = DateTime.Now
             };
+            
             await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, false, new[] { accesspoint }, (int)commandId, (int)action, personId);
         }
         #endregion
 
         #region Utils
-
-        private RequestResult<T> ParseResult<T>(object result)
-        {
-            var @return = result.GetType().GetField("return").GetValue(result);
-            var returnProps = @return.GetType().GetProperties();
-            T operationResult = (T)returnProps.Single(x => x.Name.Equals("OperationResult")).GetValue(@return);
-
-            bool success = (bool)returnProps.Single(x => x.Name.Equals("Success")).GetValue(@return);
-            TServiceError serviceError = (TServiceError)returnProps.Single(x => x.Name.Equals("ServiceError")).GetValue(@return);
-
-            return new RequestResult<T>() { Result = operationResult, IsSuccess = success, ServiceError = serviceError };
-        }
 
         private async Task<T> Execute<Y,T>(Delegate @delegate, bool isRepeat, params object[] args)
         { 
@@ -332,6 +268,17 @@ namespace FlussonicOrion.OrionPro
                 _logger.LogError(ex, $"Ошибка при выполнении метода {@delegate.Method.Name}:");
                 return default;
             }
+        }
+        private RequestResult<T> ParseResult<T>(object result)
+        {
+            var @return = result.GetType().GetField("return").GetValue(result);
+            var returnProps = @return.GetType().GetProperties();
+            T operationResult = (T)returnProps.Single(x => x.Name.Equals("OperationResult")).GetValue(@return);
+
+            bool success = (bool)returnProps.Single(x => x.Name.Equals("Success")).GetValue(@return);
+            TServiceError serviceError = (TServiceError)returnProps.Single(x => x.Name.Equals("ServiceError")).GetValue(@return);
+
+            return new RequestResult<T>() { Result = operationResult, IsSuccess = success, ServiceError = serviceError };
         }
 
         public void Dispose()

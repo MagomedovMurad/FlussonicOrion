@@ -11,7 +11,7 @@ namespace Orion
 {
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Orion.IOrionPro")]
     public interface IOrionPro
     {
@@ -28,13 +28,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetServiceInfoResponse> GetServiceInfoAsync(Orion.GetServiceInfoRequest request);
         
@@ -46,13 +43,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventTypesResponse> GetEventTypesAsync(Orion.GetEventTypesRequest request);
         
@@ -64,13 +58,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventsResponse> GetEventsAsync(Orion.GetEventsRequest request);
         
@@ -82,13 +73,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventsCountResponse> GetEventsCountAsync(Orion.GetEventsCountRequest request);
         
@@ -100,13 +88,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAccessLevelsResponse> GetAccessLevelsAsync(Orion.GetAccessLevelsRequest request);
         
@@ -118,13 +103,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAccessLevelByIdResponse> GetAccessLevelByIdAsync(Orion.GetAccessLevelByIdRequest request);
         
@@ -136,13 +118,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAccessLevelsCountResponse> GetAccessLevelsCountAsync(Orion.GetAccessLevelsCountRequest request);
         
@@ -154,13 +133,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAccessZonesResponse> GetAccessZonesAsync(Orion.GetAccessZonesRequest request);
         
@@ -172,13 +148,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEntryPointsResponse> GetEntryPointsAsync(Orion.GetEntryPointsRequest request);
         
@@ -190,15 +163,27 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEntryPointsCountResponse> GetEntryPointsCountAsync(Orion.GetEntryPointsCountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetEntryPointById", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetEntryPointByIdResponse> GetEntryPointByIdAsync(Orion.GetEntryPointByIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetPersons", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -208,13 +193,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonsResponse> GetPersonsAsync(Orion.GetPersonsRequest request);
         
@@ -226,13 +208,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonsCountResponse> GetPersonsCountAsync(Orion.GetPersonsCountRequest request);
         
@@ -244,13 +223,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonByIdResponse> GetPersonByIdAsync(Orion.GetPersonByIdRequest request);
         
@@ -262,13 +238,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonByExternalIdResponse> GetPersonByExternalIdAsync(Orion.GetPersonByExternalIdRequest request);
         
@@ -280,13 +253,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonByTabNumberResponse> GetPersonByTabNumberAsync(Orion.GetPersonByTabNumberRequest request);
         
@@ -298,13 +268,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddPersonResponse> AddPersonAsync(Orion.AddPersonRequest request);
         
@@ -316,13 +283,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdatePersonResponse> UpdatePersonAsync(Orion.UpdatePersonRequest request);
         
@@ -334,13 +298,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonPassListResponse> GetPersonPassListAsync(Orion.GetPersonPassListRequest request);
         
@@ -352,13 +313,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonByPassResponse> GetPersonByPassAsync(Orion.GetPersonByPassRequest request);
         
@@ -370,13 +328,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonPassListByPassResponse> GetPersonPassListByPassAsync(Orion.GetPersonPassListByPassRequest request);
         
@@ -388,13 +343,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.PutPassWithAccLevelsResponse> PutPassWithAccLevelsAsync(Orion.PutPassWithAccLevelsRequest request);
         
@@ -406,13 +358,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.PutPassWithEntryPointsResponse> PutPassWithEntryPointsAsync(Orion.PutPassWithEntryPointsRequest request);
         
@@ -424,13 +373,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.BlockPassResponse> BlockPassAsync(Orion.BlockPassRequest request);
         
@@ -442,13 +388,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.BlockPersonResponse> BlockPersonAsync(Orion.BlockPersonRequest request);
         
@@ -460,13 +403,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePassResponse> DeletePassAsync(Orion.DeletePassRequest request);
         
@@ -478,13 +418,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePersonResponse> DeletePersonAsync(Orion.DeletePersonRequest request);
         
@@ -496,13 +433,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.StopPersonResponse> StopPersonAsync(Orion.StopPersonRequest request);
         
@@ -514,13 +448,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCompaniesResponse> GetCompaniesAsync(Orion.GetCompaniesRequest request);
         
@@ -532,13 +463,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCompanyByIdResponse> GetCompanyByIdAsync(Orion.GetCompanyByIdRequest request);
         
@@ -550,13 +478,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.SearchCompanyResponse> SearchCompanyAsync(Orion.SearchCompanyRequest request);
         
@@ -568,13 +493,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CreateCompanyResponse> CreateCompanyAsync(Orion.CreateCompanyRequest request);
         
@@ -586,13 +508,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateCompanyResponse> UpdateCompanyAsync(Orion.UpdateCompanyRequest request);
         
@@ -604,13 +523,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteCompanyResponse> DeleteCompanyAsync(Orion.DeleteCompanyRequest request);
         
@@ -622,13 +538,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDepartmentsResponse> GetDepartmentsAsync(Orion.GetDepartmentsRequest request);
         
@@ -640,13 +553,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDepartmentByIdResponse> GetDepartmentByIdAsync(Orion.GetDepartmentByIdRequest request);
         
@@ -658,13 +568,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.SearchDepartmentResponse> SearchDepartmentAsync(Orion.SearchDepartmentRequest request);
         
@@ -676,13 +583,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CreateDepartmentResponse> CreateDepartmentAsync(Orion.CreateDepartmentRequest request);
         
@@ -694,13 +598,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateDepartmentResponse> UpdateDepartmentAsync(Orion.UpdateDepartmentRequest request);
         
@@ -712,13 +613,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteDepartmentResponse> DeleteDepartmentAsync(Orion.DeleteDepartmentRequest request);
         
@@ -730,13 +628,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCompanyDepartmentsResponse> GetCompanyDepartmentsAsync(Orion.GetCompanyDepartmentsRequest request);
         
@@ -748,13 +643,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPositionsResponse> GetPositionsAsync(Orion.GetPositionsRequest request);
         
@@ -766,13 +658,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPositionByIdResponse> GetPositionByIdAsync(Orion.GetPositionByIdRequest request);
         
@@ -784,13 +673,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.SearchPositionResponse> SearchPositionAsync(Orion.SearchPositionRequest request);
         
@@ -802,13 +688,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CreatePositionResponse> CreatePositionAsync(Orion.CreatePositionRequest request);
         
@@ -820,13 +703,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdatePositionResponse> UpdatePositionAsync(Orion.UpdatePositionRequest request);
         
@@ -838,13 +718,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePositionResponse> DeletePositionAsync(Orion.DeletePositionRequest request);
         
@@ -856,13 +733,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePersonByPassResponse> DeletePersonByPassAsync(Orion.DeletePersonByPassRequest request);
         
@@ -874,13 +748,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.StopPersonByPassResponse> StopPersonByPassAsync(Orion.StopPersonByPassRequest request);
         
@@ -892,13 +763,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.BlockPersonByPassResponse> BlockPersonByPassAsync(Orion.BlockPersonByPassRequest request);
         
@@ -910,13 +778,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CreateTimeWindowResponse> CreateTimeWindowAsync(Orion.CreateTimeWindowRequest request);
         
@@ -928,13 +793,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteTimeWindowResponse> DeleteTimeWindowAsync(Orion.DeleteTimeWindowRequest request);
         
@@ -946,13 +808,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetTimeWindowsResponse> GetTimeWindowsAsync(Orion.GetTimeWindowsRequest request);
         
@@ -964,13 +823,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetTimeWindowByIdResponse> GetTimeWindowByIdAsync(Orion.GetTimeWindowByIdRequest request);
         
@@ -982,13 +838,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.EditTimeWindowResponse> EditTimeWindowAsync(Orion.EditTimeWindowRequest request);
         
@@ -1000,13 +853,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddTimeIntervalResponse> AddTimeIntervalAsync(Orion.AddTimeIntervalRequest request);
         
@@ -1018,13 +868,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.EditTimeIntervalResponse> EditTimeIntervalAsync(Orion.EditTimeIntervalRequest request);
         
@@ -1036,13 +883,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteTimeIntervalResponse> DeleteTimeIntervalAsync(Orion.DeleteTimeIntervalRequest request);
         
@@ -1054,13 +898,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CreateAccessLevelResponse> CreateAccessLevelAsync(Orion.CreateAccessLevelRequest request);
         
@@ -1072,13 +913,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteAccessLevelResponse> DeleteAccessLevelAsync(Orion.DeleteAccessLevelRequest request);
         
@@ -1090,13 +928,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddAccessLevelItemResponse> AddAccessLevelItemAsync(Orion.AddAccessLevelItemRequest request);
         
@@ -1108,13 +943,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.EditAccessLevelItemResponse> EditAccessLevelItemAsync(Orion.EditAccessLevelItemRequest request);
         
@@ -1126,13 +958,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteAccessLevelItemResponse> DeleteAccessLevelItemAsync(Orion.DeleteAccessLevelItemRequest request);
         
@@ -1144,13 +973,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.EditAccessLevelResponse> EditAccessLevelAsync(Orion.EditAccessLevelRequest request);
         
@@ -1162,13 +988,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetKeyDataResponse> GetKeyDataAsync(Orion.GetKeyDataRequest request);
         
@@ -1180,13 +1003,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetKeyDataByIdResponse> GetKeyDataByIdAsync(Orion.GetKeyDataByIdRequest request);
         
@@ -1198,13 +1018,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetKeysCountResponse> GetKeysCountAsync(Orion.GetKeysCountRequest request);
         
@@ -1216,13 +1033,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetKeysResponse> GetKeysAsync(Orion.GetKeysRequest request);
         
@@ -1234,13 +1048,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddKeyResponse> AddKeyAsync(Orion.AddKeyRequest request);
         
@@ -1252,13 +1063,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateKeyDataResponse> UpdateKeyDataAsync(Orion.UpdateKeyDataRequest request);
         
@@ -1270,13 +1078,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetComPortsResponse> GetComPortsAsync(Orion.GetComPortsRequest request);
         
@@ -1288,13 +1093,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetComputersResponse> GetComputersAsync(Orion.GetComputersRequest request);
         
@@ -1306,15 +1108,27 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDevicesResponse> GetDevicesAsync(Orion.GetDevicesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetDeviceById", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetDeviceByIdResponse> GetDeviceByIdAsync(Orion.GetDeviceByIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetDevicesItems", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -1324,15 +1138,42 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDevicesItemsResponse> GetDevicesItemsAsync(Orion.GetDevicesItemsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetDeviceItems", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetDeviceItemsResponse> GetDeviceItemsAsync(Orion.GetDeviceItemsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetDeviceItemById", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetDeviceItemByIdResponse> GetDeviceItemByIdAsync(Orion.GetDeviceItemByIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetSections", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -1342,13 +1183,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetSectionsResponse> GetSectionsAsync(Orion.GetSectionsRequest request);
         
@@ -1360,13 +1198,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetSectionsGroupsResponse> GetSectionsGroupsAsync(Orion.GetSectionsGroupsRequest request);
         
@@ -1378,15 +1213,72 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetItemsResponse> GetItemsAsync(Orion.GetItemsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetItemsByTimeOfChange", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetItemsByTimeOfChangeResponse> GetItemsByTimeOfChangeAsync(Orion.GetItemsByTimeOfChangeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#ConvertWiegandToTouchMemory", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.ConvertWiegandToTouchMemoryResponse> ConvertWiegandToTouchMemoryAsync(Orion.ConvertWiegandToTouchMemoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#ConvertPinToTouchMemory", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.ConvertPinToTouchMemoryResponse> ConvertPinToTouchMemoryAsync(Orion.ConvertPinToTouchMemoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetPinFromTouchMemory", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetPinFromTouchMemoryResponse> GetPinFromTouchMemoryAsync(Orion.GetPinFromTouchMemoryRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetSectionsGroupsItems", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -1396,13 +1288,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetSectionsGroupsItemsResponse> GetSectionsGroupsItemsAsync(Orion.GetSectionsGroupsItemsRequest request);
         
@@ -1414,13 +1303,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetSectionItemsResponse> GetSectionItemsAsync(Orion.GetSectionItemsRequest request);
         
@@ -1432,13 +1318,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonsWithEmptyPassListResponse> GetPersonsWithEmptyPassListAsync(Orion.GetPersonsWithEmptyPassListRequest request);
         
@@ -1450,13 +1333,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.SendPasswordToEmailResponse> SendPasswordToEmailAsync(Orion.SendPasswordToEmailRequest request);
         
@@ -1468,13 +1348,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventsGroupsResponse> GetEventsGroupsAsync(Orion.GetEventsGroupsRequest request);
         
@@ -1486,13 +1363,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventsGroupByIdResponse> GetEventsGroupByIdAsync(Orion.GetEventsGroupByIdRequest request);
         
@@ -1504,13 +1378,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetEventsGroupsByEventTypeIdResponse> GetEventsGroupsByEventTypeIdAsync(Orion.GetEventsGroupsByEventTypeIdRequest request);
         
@@ -1522,13 +1393,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonCustomFieldsResponse> GetPersonCustomFieldsAsync(Orion.GetPersonCustomFieldsRequest request);
         
@@ -1540,13 +1408,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.SetPersonCustomFieldValueResponse> SetPersonCustomFieldValueAsync(Orion.SetPersonCustomFieldValueRequest request);
         
@@ -1558,13 +1423,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetVisitsResponse> GetVisitsAsync(Orion.GetVisitsRequest request);
         
@@ -1576,13 +1438,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetVisitByIdResponse> GetVisitByIdAsync(Orion.GetVisitByIdRequest request);
         
@@ -1594,13 +1453,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddVisitResponse> AddVisitAsync(Orion.AddVisitRequest request);
         
@@ -1612,13 +1468,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteVisitResponse> DeleteVisitAsync(Orion.DeleteVisitRequest request);
         
@@ -1630,13 +1483,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateVisitResponse> UpdateVisitAsync(Orion.UpdateVisitRequest request);
         
@@ -1648,13 +1498,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDbChangeLogItemsCountResponse> GetDbChangeLogItemsCountAsync(Orion.GetDbChangeLogItemsCountRequest request);
         
@@ -1666,15 +1513,42 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetDbChangeLogItemsResponse> GetDbChangeLogItemsAsync(Orion.GetDbChangeLogItemsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetChangedPersons", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetChangedPersonsResponse> GetChangedPersonsAsync(Orion.GetChangedPersonsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetChangedEntryPoints", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TRemoteControlCategory))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TReaderItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TScript))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
+        System.Threading.Tasks.Task<Orion.GetChangedEntryPointsResponse> GetChangedEntryPointsAsync(Orion.GetChangedEntryPointsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:OrionProIntf-IOrionPro#GetCars", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -1684,13 +1558,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCarsResponse> GetCarsAsync(Orion.GetCarsRequest request);
         
@@ -1702,13 +1573,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCarByIdResponse> GetCarByIdAsync(Orion.GetCarByIdRequest request);
         
@@ -1720,13 +1588,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddCarResponse> AddCarAsync(Orion.AddCarRequest request);
         
@@ -1738,13 +1603,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteCarResponse> DeleteCarAsync(Orion.DeleteCarRequest request);
         
@@ -1756,13 +1618,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateCarResponse> UpdateCarAsync(Orion.UpdateCarRequest request);
         
@@ -1774,13 +1633,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddPersonCarResponse> AddPersonCarAsync(Orion.AddPersonCarRequest request);
         
@@ -1792,13 +1648,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePersonCarResponse> DeletePersonCarAsync(Orion.DeletePersonCarRequest request);
         
@@ -1810,13 +1663,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonCarsResponse> GetPersonCarsAsync(Orion.GetPersonCarsRequest request);
         
@@ -1828,13 +1678,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetCarPersonsResponse> GetCarPersonsAsync(Orion.GetCarPersonsRequest request);
         
@@ -1846,13 +1693,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetThingsResponse> GetThingsAsync(Orion.GetThingsRequest request);
         
@@ -1864,13 +1708,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetThingByIdResponse> GetThingByIdAsync(Orion.GetThingByIdRequest request);
         
@@ -1882,13 +1723,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddThingResponse> AddThingAsync(Orion.AddThingRequest request);
         
@@ -1900,13 +1738,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteThingResponse> DeleteThingAsync(Orion.DeleteThingRequest request);
         
@@ -1918,13 +1753,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.UpdateThingResponse> UpdateThingAsync(Orion.UpdateThingRequest request);
         
@@ -1936,13 +1768,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddPersonThingResponse> AddPersonThingAsync(Orion.AddPersonThingRequest request);
         
@@ -1954,13 +1783,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeletePersonThingResponse> DeletePersonThingAsync(Orion.DeletePersonThingRequest request);
         
@@ -1972,13 +1798,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetPersonThingsResponse> GetPersonThingsAsync(Orion.GetPersonThingsRequest request);
         
@@ -1990,13 +1813,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetLoginTokenResponse> GetLoginTokenAsync(Orion.GetLoginTokenRequest request);
         
@@ -2008,13 +1828,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.ExtendTokenExpirationResponse> ExtendTokenExpirationAsync(Orion.ExtendTokenExpirationRequest request);
         
@@ -2026,13 +1843,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetItemsForLoginResponse> GetItemsForLoginAsync(Orion.GetItemsForLoginRequest request);
         
@@ -2044,13 +1858,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetItemsStatesResponse> GetItemsStatesAsync(Orion.GetItemsStatesRequest request);
         
@@ -2062,13 +1873,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.ControlItemsResponse> ControlItemsAsync(Orion.ControlItemsRequest request);
         
@@ -2080,13 +1888,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetADCValuesResponse> GetADCValuesAsync(Orion.GetADCValuesRequest request);
         
@@ -2098,13 +1903,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetScriptsResponse> GetScriptsAsync(Orion.GetScriptsRequest request);
         
@@ -2116,13 +1918,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetReaderItemsResponse> GetReaderItemsAsync(Orion.GetReaderItemsRequest request);
         
@@ -2134,13 +1933,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetReaderItemsCountResponse> GetReaderItemsCountAsync(Orion.GetReaderItemsCountRequest request);
         
@@ -2152,13 +1948,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetRecognitionChannelsResponse> GetRecognitionChannelsAsync(Orion.GetRecognitionChannelsRequest request);
         
@@ -2170,13 +1963,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetRecognitionChannelsCountResponse> GetRecognitionChannelsCountAsync(Orion.GetRecognitionChannelsCountRequest request);
         
@@ -2188,13 +1978,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetRecognitionChannelByIdResponse> GetRecognitionChannelByIdAsync(Orion.GetRecognitionChannelByIdRequest request);
         
@@ -2206,13 +1993,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAbsenceReasonTypesResponse> GetAbsenceReasonTypesAsync(Orion.GetAbsenceReasonTypesRequest request);
         
@@ -2224,13 +2008,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAbsenceReasonTypeByIdResponse> GetAbsenceReasonTypeByIdAsync(Orion.GetAbsenceReasonTypeByIdRequest request);
         
@@ -2242,13 +2023,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddAbsenceReasonTypeResponse> AddAbsenceReasonTypeAsync(Orion.AddAbsenceReasonTypeRequest request);
         
@@ -2260,13 +2038,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteAbsenceReasonTypeResponse> DeleteAbsenceReasonTypeAsync(Orion.DeleteAbsenceReasonTypeRequest request);
         
@@ -2278,13 +2053,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetAbsenceReasonsResponse> GetAbsenceReasonsAsync(Orion.GetAbsenceReasonsRequest request);
         
@@ -2296,13 +2068,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddAbsenceReasonResponse> AddAbsenceReasonAsync(Orion.AddAbsenceReasonRequest request);
         
@@ -2314,13 +2083,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.DeleteAbsenceReasonResponse> DeleteAbsenceReasonAsync(Orion.DeleteAbsenceReasonRequest request);
         
@@ -2332,13 +2098,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.AddExternalEventResponse> AddExternalEventAsync(Orion.AddExternalEventRequest request);
         
@@ -2350,13 +2113,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetRemoteControlCategoriesResponse> GetRemoteControlCategoriesAsync(Orion.GetRemoteControlCategoriesRequest request);
         
@@ -2368,13 +2128,10 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.GetBioPrintFromReaderResponse> GetBioPrintFromReaderAsync(Orion.GetBioPrintFromReaderRequest request);
         
@@ -2386,19 +2143,16 @@ namespace Orion
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItemADCValue))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDbChangeLogItem))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDevice))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComputer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TComPort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TAccessZone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEvent))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TDeviceItem))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEntryPoint))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TEventType))]
         System.Threading.Tasks.Task<Orion.CancelBioPrintReadingResponse> CancelBioPrintReadingAsync(Orion.CancelBioPrintReadingRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReplService", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReplServiceRequest
@@ -2410,7 +2164,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReplServiceResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReplServiceResponse
@@ -2430,7 +2184,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultServiceInfo
@@ -2483,7 +2237,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TServiceInfo
@@ -2566,7 +2320,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TRemoteControlCategory
@@ -2664,7 +2418,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultRemoteControlCategories
@@ -2717,7 +2471,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TServiceError
@@ -2770,7 +2524,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultExternalEvent
@@ -2823,7 +2577,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TExternalEvent
@@ -2951,7 +2705,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAbsenceReason
@@ -3004,7 +2758,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TAbsenceReason
@@ -3177,7 +2931,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAbsenceReasons
@@ -3230,7 +2984,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAbsenceReasonType
@@ -3283,7 +3037,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TAbsenceReasonType
@@ -3321,7 +3075,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAbsenceReasonTypes
@@ -3374,7 +3128,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultRecognitionChannel
@@ -3427,7 +3181,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TRecognitionChannel
@@ -3480,7 +3234,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultRecognitionChannels
@@ -3533,7 +3287,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TReaderItem
@@ -3601,7 +3355,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultReaderItems
@@ -3654,7 +3408,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TScript
@@ -3707,7 +3461,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultScripts
@@ -3760,7 +3514,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TItemADCValue
@@ -3843,7 +3597,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultItemADCValues
@@ -3896,7 +3650,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultThing
@@ -3949,7 +3703,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TThingData
@@ -4062,7 +3816,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultThings
@@ -4115,7 +3869,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultCar
@@ -4168,7 +3922,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TCarData
@@ -4266,7 +4020,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultCars
@@ -4319,7 +4073,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TDbChangeLogItem
@@ -4447,7 +4201,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultDbChangeLogItems
@@ -4500,7 +4254,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultVisit
@@ -4553,7 +4307,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TVisitData
@@ -4816,7 +4570,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultVisits
@@ -4869,7 +4623,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPersonCustomField
@@ -4922,7 +4676,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TPersonCustomField
@@ -4975,7 +4729,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPersonCustomFields
@@ -5028,7 +4782,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultEventsGroup
@@ -5081,7 +4835,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TEventsGroup
@@ -5149,7 +4903,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultEventsGroups
@@ -5202,7 +4956,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TItem
@@ -5315,7 +5069,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultItems
@@ -5368,7 +5122,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultSectionsGroups
@@ -5421,7 +5175,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TSectionsGroup
@@ -5519,7 +5273,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TSection
@@ -5647,7 +5401,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TDeviceItem
@@ -5760,7 +5514,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultSections
@@ -5813,7 +5567,60 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
+    public partial class TOperationResultDeviceItem
+    {
+        
+        private bool successField;
+        
+        private TServiceError serviceErrorField;
+        
+        private TDeviceItem operationResultField;
+        
+        /// <remarks/>
+        public bool Success
+        {
+            get
+            {
+                return this.successField;
+            }
+            set
+            {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TServiceError ServiceError
+        {
+            get
+            {
+                return this.serviceErrorField;
+            }
+            set
+            {
+                this.serviceErrorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TDeviceItem OperationResult
+        {
+            get
+            {
+                return this.operationResultField;
+            }
+            set
+            {
+                this.operationResultField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultDeviceItems
@@ -5866,7 +5673,60 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
+    public partial class TOperationResultDevice
+    {
+        
+        private bool successField;
+        
+        private TServiceError serviceErrorField;
+        
+        private TDevice operationResultField;
+        
+        /// <remarks/>
+        public bool Success
+        {
+            get
+            {
+                return this.successField;
+            }
+            set
+            {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TServiceError ServiceError
+        {
+            get
+            {
+                return this.serviceErrorField;
+            }
+            set
+            {
+                this.serviceErrorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TDevice OperationResult
+        {
+            get
+            {
+                return this.operationResultField;
+            }
+            set
+            {
+                this.operationResultField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TDevice
@@ -5885,6 +5745,8 @@ namespace Orion
         private int pKUIdField;
         
         private int hwIdField;
+        
+        private string ipAddressField;
         
         /// <remarks/>
         public int Id
@@ -5976,10 +5838,23 @@ namespace Orion
                 this.hwIdField = value;
             }
         }
+        
+        /// <remarks/>
+        public string IpAddress
+        {
+            get
+            {
+                return this.ipAddressField;
+            }
+            set
+            {
+                this.ipAddressField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultDevices
@@ -6032,7 +5907,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TComputer
@@ -6085,7 +5960,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultComputers
@@ -6138,7 +6013,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TComPort
@@ -6191,7 +6066,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultComPorts
@@ -6244,7 +6119,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultKeyDataList
@@ -6297,7 +6172,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TKeyData
@@ -6530,7 +6405,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultKeyData
@@ -6583,7 +6458,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAccessLevelItem
@@ -6636,7 +6511,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TAccessLevelItem
@@ -6824,7 +6699,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResult
@@ -6862,7 +6737,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultTimeInterval
@@ -6915,7 +6790,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TTimeInterval
@@ -7073,7 +6948,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultTimeWindows
@@ -7126,7 +7001,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TTimeWindow
@@ -7195,7 +7070,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultTimeWindow
@@ -7248,7 +7123,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPosition
@@ -7301,7 +7176,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TPosition
@@ -7339,7 +7214,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPositions
@@ -7392,7 +7267,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultDepartment
@@ -7445,7 +7320,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TDepartment
@@ -7528,7 +7403,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultDepartments
@@ -7581,7 +7456,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultCompany
@@ -7634,7 +7509,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TCompany
@@ -7717,7 +7592,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultCompanies
@@ -7770,7 +7645,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultString
@@ -7823,7 +7698,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultStrings
@@ -7876,7 +7751,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPersonData
@@ -7929,7 +7804,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TPersonData
@@ -8027,7 +7902,7 @@ namespace Orion
                 this.idField = value;
             }
         }
-
+        
         /// <remarks/>
         public string LastName
         {
@@ -8040,7 +7915,7 @@ namespace Orion
                 this.lastNameField = value;
             }
         }
-
+        
         /// <remarks/>
         public string FirstName
         {
@@ -8053,7 +7928,7 @@ namespace Orion
                 this.firstNameField = value;
             }
         }
-
+        
         /// <remarks/>
         public string MiddleName
         {
@@ -8066,7 +7941,7 @@ namespace Orion
                 this.middleNameField = value;
             }
         }
-
+        
         /// <remarks/>
         public System.DateTime BirthDate
         {
@@ -8079,7 +7954,7 @@ namespace Orion
                 this.birthDateField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Company
         {
@@ -8092,7 +7967,7 @@ namespace Orion
                 this.companyField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Department
         {
@@ -8105,7 +7980,7 @@ namespace Orion
                 this.departmentField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Position
         {
@@ -8118,7 +7993,7 @@ namespace Orion
                 this.positionField = value;
             }
         }
-
+        
         /// <remarks/>
         public int CompanyId
         {
@@ -8131,7 +8006,7 @@ namespace Orion
                 this.companyIdField = value;
             }
         }
-
+        
         /// <remarks/>
         public int DepartmentId
         {
@@ -8144,7 +8019,7 @@ namespace Orion
                 this.departmentIdField = value;
             }
         }
-
+        
         /// <remarks/>
         public int PositionId
         {
@@ -8157,7 +8032,7 @@ namespace Orion
                 this.positionIdField = value;
             }
         }
-
+        
         /// <remarks/>
         public string TabNum
         {
@@ -8170,7 +8045,7 @@ namespace Orion
                 this.tabNumField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Phone
         {
@@ -8183,7 +8058,7 @@ namespace Orion
                 this.phoneField = value;
             }
         }
-
+        
         /// <remarks/>
         public string HomePhone
         {
@@ -8196,7 +8071,7 @@ namespace Orion
                 this.homePhoneField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Address
         {
@@ -8209,9 +8084,9 @@ namespace Orion
                 this.addressField = value;
             }
         }
-
+        
         /// <remarks/>
-        [System.Xml.Serialization.SoapElementAttribute(DataType = "base64Binary")]
+        [System.Xml.Serialization.SoapElementAttribute(DataType="base64Binary")]
         public byte[] Photo
         {
             get
@@ -8223,7 +8098,7 @@ namespace Orion
                 this.photoField = value;
             }
         }
-
+        
         /// <remarks/>
         public int AccessLevelId
         {
@@ -8236,7 +8111,7 @@ namespace Orion
                 this.accessLevelIdField = value;
             }
         }
-
+        
         /// <remarks/>
         public int Status
         {
@@ -8249,7 +8124,7 @@ namespace Orion
                 this.statusField = value;
             }
         }
-
+        
         /// <remarks/>
         public int ContactIdIndex
         {
@@ -8262,7 +8137,7 @@ namespace Orion
                 this.contactIdIndexField = value;
             }
         }
-
+        
         /// <remarks/>
         public bool IsLockedDayCrossing
         {
@@ -8275,7 +8150,7 @@ namespace Orion
                 this.isLockedDayCrossingField = value;
             }
         }
-
+        
         /// <remarks/>
         public bool IsFreeShedule
         {
@@ -8288,7 +8163,7 @@ namespace Orion
                 this.isFreeSheduleField = value;
             }
         }
-
+        
         /// <remarks/>
         public string ExternalId
         {
@@ -8301,7 +8176,7 @@ namespace Orion
                 this.externalIdField = value;
             }
         }
-
+        
         /// <remarks/>
         public bool IsInArchive
         {
@@ -8314,7 +8189,7 @@ namespace Orion
                 this.isInArchiveField = value;
             }
         }
-
+        
         /// <remarks/>
         public int DocumentType
         {
@@ -8327,7 +8202,7 @@ namespace Orion
                 this.documentTypeField = value;
             }
         }
-
+        
         /// <remarks/>
         public string DocumentSerials
         {
@@ -8340,7 +8215,7 @@ namespace Orion
                 this.documentSerialsField = value;
             }
         }
-
+        
         /// <remarks/>
         public string DocumentNumber
         {
@@ -8353,7 +8228,7 @@ namespace Orion
                 this.documentNumberField = value;
             }
         }
-
+        
         /// <remarks/>
         public System.DateTime DocumentIssueDate
         {
@@ -8366,7 +8241,7 @@ namespace Orion
                 this.documentIssueDateField = value;
             }
         }
-
+        
         /// <remarks/>
         public System.DateTime DocumentEndingDate
         {
@@ -8379,7 +8254,7 @@ namespace Orion
                 this.documentEndingDateField = value;
             }
         }
-
+        
         /// <remarks/>
         public string DocumentIsser
         {
@@ -8392,7 +8267,7 @@ namespace Orion
                 this.documentIsserField = value;
             }
         }
-
+        
         /// <remarks/>
         public string DocumentIsserCode
         {
@@ -8405,7 +8280,7 @@ namespace Orion
                 this.documentIsserCodeField = value;
             }
         }
-
+        
         /// <remarks/>
         public int Sex
         {
@@ -8418,7 +8293,7 @@ namespace Orion
                 this.sexField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Birthplace
         {
@@ -8431,7 +8306,7 @@ namespace Orion
                 this.birthplaceField = value;
             }
         }
-
+        
         /// <remarks/>
         public string EmailList
         {
@@ -8444,7 +8319,7 @@ namespace Orion
                 this.emailListField = value;
             }
         }
-
+        
         /// <remarks/>
         public System.DateTime ArchivingTimeStamp
         {
@@ -8457,7 +8332,7 @@ namespace Orion
                 this.archivingTimeStampField = value;
             }
         }
-
+        
         /// <remarks/>
         public bool IsInBlackList
         {
@@ -8470,7 +8345,7 @@ namespace Orion
                 this.isInBlackListField = value;
             }
         }
-
+        
         /// <remarks/>
         public bool IsDismissed
         {
@@ -8483,7 +8358,7 @@ namespace Orion
                 this.isDismissedField = value;
             }
         }
-
+        
         /// <remarks/>
         public string BlackListComment
         {
@@ -8496,7 +8371,7 @@ namespace Orion
                 this.blackListCommentField = value;
             }
         }
-
+        
         /// <remarks/>
         public System.DateTime ChangeTime
         {
@@ -8509,7 +8384,7 @@ namespace Orion
                 this.changeTimeField = value;
             }
         }
-
+        
         /// <remarks/>
         public string Itn
         {
@@ -8522,7 +8397,7 @@ namespace Orion
                 this.itnField = value;
             }
         }
-
+        
         /// <remarks/>
         public string DismissedComment
         {
@@ -8538,7 +8413,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultPersons
@@ -8591,17 +8466,17 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
-    public partial class TOperationResultEntryPoints
+    public partial class TOperationResultEntryPoint
     {
         
         private bool successField;
         
         private TServiceError serviceErrorField;
         
-        private TEntryPoint[] operationResultField;
+        private TEntryPoint operationResultField;
         
         /// <remarks/>
         public bool Success
@@ -8630,7 +8505,7 @@ namespace Orion
         }
         
         /// <remarks/>
-        public TEntryPoint[] OperationResult
+        public TEntryPoint OperationResult
         {
             get
             {
@@ -8644,7 +8519,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TEntryPoint
@@ -8757,7 +8632,60 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
+    public partial class TOperationResultEntryPoints
+    {
+        
+        private bool successField;
+        
+        private TServiceError serviceErrorField;
+        
+        private TEntryPoint[] operationResultField;
+        
+        /// <remarks/>
+        public bool Success
+        {
+            get
+            {
+                return this.successField;
+            }
+            set
+            {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TServiceError ServiceError
+        {
+            get
+            {
+                return this.serviceErrorField;
+            }
+            set
+            {
+                this.serviceErrorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TEntryPoint[] OperationResult
+        {
+            get
+            {
+                return this.operationResultField;
+            }
+            set
+            {
+                this.operationResultField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TAccessZone
@@ -8795,7 +8723,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAccessZones
@@ -8848,7 +8776,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAccessLevel
@@ -8901,7 +8829,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TAccessLevel
@@ -8969,7 +8897,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultAccessLevels
@@ -9022,7 +8950,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultInt
@@ -9075,7 +9003,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TEventAccessFlags
@@ -9218,7 +9146,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TEvent
@@ -9601,7 +9529,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultEvents
@@ -9654,7 +9582,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TEventType
@@ -9767,7 +9695,7 @@ namespace Orion
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="urn:OrionProIntf")]
     public partial class TOperationResultEventTypes
@@ -9820,7 +9748,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceInfo", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetServiceInfoRequest
@@ -9832,7 +9760,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceInfoResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetServiceInfoResponse
@@ -9852,7 +9780,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventTypes", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventTypesRequest
@@ -9872,7 +9800,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventTypesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventTypesResponse
@@ -9892,7 +9820,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEvents", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsRequest
@@ -9948,7 +9876,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsResponse
@@ -9968,7 +9896,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsCountRequest
@@ -10016,7 +9944,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsCountResponse
@@ -10036,7 +9964,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevels", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelsRequest
@@ -10064,7 +9992,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevelsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelsResponse
@@ -10084,7 +10012,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevelById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelByIdRequest
@@ -10108,7 +10036,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevelByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelByIdResponse
@@ -10128,7 +10056,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevelsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelsCountRequest
@@ -10148,7 +10076,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessLevelsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessLevelsCountResponse
@@ -10168,7 +10096,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessZones", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessZonesRequest
@@ -10188,7 +10116,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccessZonesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAccessZonesResponse
@@ -10208,7 +10136,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPoints", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEntryPointsRequest
@@ -10236,7 +10164,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPointsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEntryPointsResponse
@@ -10256,7 +10184,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPointsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEntryPointsCountRequest
@@ -10276,7 +10204,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPointsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEntryPointsCountResponse
@@ -10296,7 +10224,51 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPointById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetEntryPointByIdRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int Id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public string Token;
+        
+        public GetEntryPointByIdRequest()
+        {
+        }
+        
+        public GetEntryPointByIdRequest(int Id, string Token)
+        {
+            this.Id = Id;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetEntryPointByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetEntryPointByIdResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultEntryPoint @return;
+        
+        public GetEntryPointByIdResponse()
+        {
+        }
+        
+        public GetEntryPointByIdResponse(Orion.TOperationResultEntryPoint @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersons", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsRequest
@@ -10340,7 +10312,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsResponse
@@ -10360,27 +10332,39 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsCountRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public string[] Filter;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public bool IsEmployees;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
+        public bool IsVisitors;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=3)]
         public string Token;
         
         public GetPersonsCountRequest()
         {
         }
         
-        public GetPersonsCountRequest(string Token)
+        public GetPersonsCountRequest(string[] Filter, bool IsEmployees, bool IsVisitors, string Token)
         {
+            this.Filter = Filter;
+            this.IsEmployees = IsEmployees;
+            this.IsVisitors = IsVisitors;
             this.Token = Token;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsCountResponse
@@ -10400,7 +10384,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByIdRequest
@@ -10428,7 +10412,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByIdResponse
@@ -10448,7 +10432,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByExternalId", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByExternalIdRequest
@@ -10476,7 +10460,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByExternalIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByExternalIdResponse
@@ -10496,7 +10480,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByTabNumber", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByTabNumberRequest
@@ -10524,7 +10508,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByTabNumberResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByTabNumberResponse
@@ -10544,7 +10528,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPerson", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonRequest
@@ -10568,7 +10552,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPersonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonResponse
@@ -10588,7 +10572,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdatePerson", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdatePersonRequest
@@ -10612,7 +10596,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdatePersonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdatePersonResponse
@@ -10632,7 +10616,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonPassList", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonPassListRequest
@@ -10656,7 +10640,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonPassListResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonPassListResponse
@@ -10676,7 +10660,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByPassRequest
@@ -10708,7 +10692,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonByPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonByPassResponse
@@ -10728,7 +10712,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonPassListByPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonPassListByPassRequest
@@ -10756,7 +10740,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonPassListByPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonPassListByPassResponse
@@ -10776,7 +10760,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="PutPassWithAccLevels", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class PutPassWithAccLevelsRequest
@@ -10820,7 +10804,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="PutPassWithAccLevelsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class PutPassWithAccLevelsResponse
@@ -10840,7 +10824,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="PutPassWithEntryPoints", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class PutPassWithEntryPointsRequest
@@ -10904,7 +10888,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="PutPassWithEntryPointsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class PutPassWithEntryPointsResponse
@@ -10924,7 +10908,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPassRequest
@@ -10956,7 +10940,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPassResponse
@@ -10976,7 +10960,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPerson", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPersonRequest
@@ -11004,7 +10988,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPersonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPersonResponse
@@ -11024,7 +11008,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePassRequest
@@ -11034,21 +11018,25 @@ namespace Orion
         public string CardNo;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public int CodeType;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
         public string Token;
         
         public DeletePassRequest()
         {
         }
         
-        public DeletePassRequest(string CardNo, string Token)
+        public DeletePassRequest(string CardNo, int CodeType, string Token)
         {
             this.CardNo = CardNo;
+            this.CodeType = CodeType;
             this.Token = Token;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePassResponse
@@ -11068,7 +11056,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePerson", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonRequest
@@ -11092,7 +11080,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonResponse
@@ -11112,7 +11100,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StopPerson", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class StopPersonRequest
@@ -11140,7 +11128,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StopPersonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class StopPersonResponse
@@ -11160,7 +11148,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompanies", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompaniesRequest
@@ -11188,7 +11176,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompaniesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompaniesResponse
@@ -11208,7 +11196,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompanyById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompanyByIdRequest
@@ -11232,7 +11220,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompanyByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompanyByIdResponse
@@ -11252,7 +11240,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchCompany", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchCompanyRequest
@@ -11276,7 +11264,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchCompanyResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchCompanyResponse
@@ -11296,7 +11284,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateCompany", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateCompanyRequest
@@ -11320,7 +11308,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateCompanyResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateCompanyResponse
@@ -11340,7 +11328,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateCompany", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateCompanyRequest
@@ -11364,7 +11352,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateCompanyResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateCompanyResponse
@@ -11384,7 +11372,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteCompany", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteCompanyRequest
@@ -11408,7 +11396,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteCompanyResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteCompanyResponse
@@ -11428,7 +11416,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartments", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDepartmentsRequest
@@ -11448,7 +11436,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartmentsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDepartmentsResponse
@@ -11468,7 +11456,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartmentById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDepartmentByIdRequest
@@ -11492,7 +11480,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartmentByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDepartmentByIdResponse
@@ -11512,7 +11500,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchDepartment", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchDepartmentRequest
@@ -11536,7 +11524,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchDepartmentResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchDepartmentResponse
@@ -11556,7 +11544,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateDepartment", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateDepartmentRequest
@@ -11580,7 +11568,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateDepartmentResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateDepartmentResponse
@@ -11600,7 +11588,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateDepartment", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateDepartmentRequest
@@ -11624,7 +11612,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateDepartmentResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateDepartmentResponse
@@ -11644,7 +11632,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteDepartment", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteDepartmentRequest
@@ -11668,7 +11656,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteDepartmentResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteDepartmentResponse
@@ -11688,7 +11676,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompanyDepartments", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompanyDepartmentsRequest
@@ -11712,7 +11700,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCompanyDepartmentsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCompanyDepartmentsResponse
@@ -11732,7 +11720,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPositions", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPositionsRequest
@@ -11752,7 +11740,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPositionsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPositionsResponse
@@ -11772,7 +11760,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPositionById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPositionByIdRequest
@@ -11796,7 +11784,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPositionByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPositionByIdResponse
@@ -11816,7 +11804,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchPosition", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchPositionRequest
@@ -11840,7 +11828,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SearchPositionResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SearchPositionResponse
@@ -11860,7 +11848,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreatePosition", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreatePositionRequest
@@ -11884,7 +11872,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreatePositionResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreatePositionResponse
@@ -11904,7 +11892,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdatePosition", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdatePositionRequest
@@ -11928,7 +11916,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdatePositionResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdatePositionResponse
@@ -11948,7 +11936,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePosition", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePositionRequest
@@ -11972,7 +11960,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePositionResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePositionResponse
@@ -11992,7 +11980,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonByPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonByPassRequest
@@ -12020,7 +12008,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonByPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonByPassResponse
@@ -12040,7 +12028,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StopPersonByPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class StopPersonByPassRequest
@@ -12072,7 +12060,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="StopPersonByPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class StopPersonByPassResponse
@@ -12092,7 +12080,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPersonByPass", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPersonByPassRequest
@@ -12124,7 +12112,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="BlockPersonByPassResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class BlockPersonByPassResponse
@@ -12144,7 +12132,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateTimeWindow", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateTimeWindowRequest
@@ -12168,7 +12156,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateTimeWindowResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateTimeWindowResponse
@@ -12188,7 +12176,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteTimeWindow", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteTimeWindowRequest
@@ -12212,7 +12200,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteTimeWindowResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteTimeWindowResponse
@@ -12232,7 +12220,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetTimeWindows", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetTimeWindowsRequest
@@ -12252,7 +12240,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetTimeWindowsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetTimeWindowsResponse
@@ -12272,7 +12260,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetTimeWindowById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetTimeWindowByIdRequest
@@ -12296,7 +12284,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetTimeWindowByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetTimeWindowByIdResponse
@@ -12316,7 +12304,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditTimeWindow", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditTimeWindowRequest
@@ -12340,7 +12328,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditTimeWindowResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditTimeWindowResponse
@@ -12360,7 +12348,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddTimeInterval", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddTimeIntervalRequest
@@ -12388,7 +12376,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddTimeIntervalResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddTimeIntervalResponse
@@ -12408,7 +12396,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditTimeInterval", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditTimeIntervalRequest
@@ -12432,7 +12420,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditTimeIntervalResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditTimeIntervalResponse
@@ -12452,7 +12440,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteTimeInterval", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteTimeIntervalRequest
@@ -12476,7 +12464,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteTimeIntervalResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteTimeIntervalResponse
@@ -12496,7 +12484,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccessLevel", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateAccessLevelRequest
@@ -12520,7 +12508,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccessLevelResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CreateAccessLevelResponse
@@ -12540,7 +12528,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAccessLevel", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAccessLevelRequest
@@ -12564,7 +12552,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAccessLevelResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAccessLevelResponse
@@ -12584,7 +12572,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAccessLevelItem", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAccessLevelItemRequest
@@ -12612,7 +12600,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAccessLevelItemResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAccessLevelItemResponse
@@ -12632,7 +12620,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditAccessLevelItem", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditAccessLevelItemRequest
@@ -12656,7 +12644,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditAccessLevelItemResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditAccessLevelItemResponse
@@ -12676,7 +12664,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAccessLevelItem", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAccessLevelItemRequest
@@ -12700,7 +12688,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAccessLevelItemResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAccessLevelItemResponse
@@ -12720,7 +12708,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditAccessLevel", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditAccessLevelRequest
@@ -12744,7 +12732,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="EditAccessLevelResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class EditAccessLevelResponse
@@ -12764,7 +12752,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeyData", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeyDataRequest
@@ -12792,7 +12780,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeyDataResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeyDataResponse
@@ -12812,7 +12800,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeyDataById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeyDataByIdRequest
@@ -12836,7 +12824,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeyDataByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeyDataByIdResponse
@@ -12856,27 +12844,35 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeysCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeysCountRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int CodeType;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public int PersonId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
         public string Token;
         
         public GetKeysCountRequest()
         {
         }
         
-        public GetKeysCountRequest(string Token)
+        public GetKeysCountRequest(int CodeType, int PersonId, string Token)
         {
+            this.CodeType = CodeType;
+            this.PersonId = PersonId;
             this.Token = Token;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeysCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeysCountResponse
@@ -12896,27 +12892,35 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeys", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeysRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
-        public int Offset;
+        public int CodeType;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
-        public int Count;
+        public int PersonId;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
+        public int Offset;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=3)]
+        public int Count;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=4)]
         public string Token;
         
         public GetKeysRequest()
         {
         }
         
-        public GetKeysRequest(int Offset, int Count, string Token)
+        public GetKeysRequest(int CodeType, int PersonId, int Offset, int Count, string Token)
         {
+            this.CodeType = CodeType;
+            this.PersonId = PersonId;
             this.Offset = Offset;
             this.Count = Count;
             this.Token = Token;
@@ -12924,7 +12928,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetKeysResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetKeysResponse
@@ -12944,7 +12948,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddKey", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddKeyRequest
@@ -12968,7 +12972,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddKeyResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddKeyResponse
@@ -12988,7 +12992,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateKeyData", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateKeyDataRequest
@@ -13012,7 +13016,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateKeyDataResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateKeyDataResponse
@@ -13032,7 +13036,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetComPorts", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetComPortsRequest
@@ -13052,7 +13056,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetComPortsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetComPortsResponse
@@ -13072,7 +13076,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetComputers", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetComputersRequest
@@ -13092,7 +13096,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetComputersResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetComputersResponse
@@ -13112,7 +13116,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDevices", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDevicesRequest
@@ -13132,7 +13136,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDevicesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDevicesResponse
@@ -13152,7 +13156,51 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceByIdRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int Id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public string Token;
+        
+        public GetDeviceByIdRequest()
+        {
+        }
+        
+        public GetDeviceByIdRequest(int Id, string Token)
+        {
+            this.Id = Id;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceByIdResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultDevice @return;
+        
+        public GetDeviceByIdResponse()
+        {
+        }
+        
+        public GetDeviceByIdResponse(Orion.TOperationResultDevice @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDevicesItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDevicesItemsRequest
@@ -13176,7 +13224,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDevicesItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDevicesItemsResponse
@@ -13196,7 +13244,95 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceItemsRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int DeviceId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public string Token;
+        
+        public GetDeviceItemsRequest()
+        {
+        }
+        
+        public GetDeviceItemsRequest(int DeviceId, string Token)
+        {
+            this.DeviceId = DeviceId;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceItemsResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultDeviceItems @return;
+        
+        public GetDeviceItemsResponse()
+        {
+        }
+        
+        public GetDeviceItemsResponse(Orion.TOperationResultDeviceItems @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceItemById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceItemByIdRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int Id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public string Token;
+        
+        public GetDeviceItemByIdRequest()
+        {
+        }
+        
+        public GetDeviceItemByIdRequest(int Id, string Token)
+        {
+            this.Id = Id;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDeviceItemByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetDeviceItemByIdResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultDeviceItem @return;
+        
+        public GetDeviceItemByIdResponse()
+        {
+        }
+        
+        public GetDeviceItemByIdResponse(Orion.TOperationResultDeviceItem @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSections", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsRequest
@@ -13220,7 +13356,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsResponse
@@ -13240,7 +13376,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionsGroups", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsGroupsRequest
@@ -13264,7 +13400,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionsGroupsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsGroupsResponse
@@ -13284,7 +13420,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsRequest
@@ -13304,7 +13440,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsResponse
@@ -13324,7 +13460,179 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsByTimeOfChange", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetItemsByTimeOfChangeRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public System.DateTime BeginTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public System.DateTime EndTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
+        public string Token;
+        
+        public GetItemsByTimeOfChangeRequest()
+        {
+        }
+        
+        public GetItemsByTimeOfChangeRequest(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            this.BeginTime = BeginTime;
+            this.EndTime = EndTime;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsByTimeOfChangeResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetItemsByTimeOfChangeResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultItems @return;
+        
+        public GetItemsByTimeOfChangeResponse()
+        {
+        }
+        
+        public GetItemsByTimeOfChangeResponse(Orion.TOperationResultItems @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertWiegandToTouchMemory", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class ConvertWiegandToTouchMemoryRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public long Code;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public int CodeSize;
+        
+        public ConvertWiegandToTouchMemoryRequest()
+        {
+        }
+        
+        public ConvertWiegandToTouchMemoryRequest(long Code, int CodeSize)
+        {
+            this.Code = Code;
+            this.CodeSize = CodeSize;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertWiegandToTouchMemoryResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class ConvertWiegandToTouchMemoryResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultString @return;
+        
+        public ConvertWiegandToTouchMemoryResponse()
+        {
+        }
+        
+        public ConvertWiegandToTouchMemoryResponse(Orion.TOperationResultString @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertPinToTouchMemory", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class ConvertPinToTouchMemoryRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public string Pin;
+        
+        public ConvertPinToTouchMemoryRequest()
+        {
+        }
+        
+        public ConvertPinToTouchMemoryRequest(string Pin)
+        {
+            this.Pin = Pin;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertPinToTouchMemoryResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class ConvertPinToTouchMemoryResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultString @return;
+        
+        public ConvertPinToTouchMemoryResponse()
+        {
+        }
+        
+        public ConvertPinToTouchMemoryResponse(Orion.TOperationResultString @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetPinFromTouchMemory", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetPinFromTouchMemoryRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public string Code;
+        
+        public GetPinFromTouchMemoryRequest()
+        {
+        }
+        
+        public GetPinFromTouchMemoryRequest(string Code)
+        {
+            this.Code = Code;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetPinFromTouchMemoryResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetPinFromTouchMemoryResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultString @return;
+        
+        public GetPinFromTouchMemoryResponse()
+        {
+        }
+        
+        public GetPinFromTouchMemoryResponse(Orion.TOperationResultString @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionsGroupsItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsGroupsItemsRequest
@@ -13348,7 +13656,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionsGroupsItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionsGroupsItemsResponse
@@ -13368,7 +13676,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionItemsRequest
@@ -13392,7 +13700,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetSectionItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetSectionItemsResponse
@@ -13412,7 +13720,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonsWithEmptyPassList", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsWithEmptyPassListRequest
@@ -13432,7 +13740,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonsWithEmptyPassListResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonsWithEmptyPassListResponse
@@ -13452,7 +13760,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SendPasswordToEmail", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SendPasswordToEmailRequest
@@ -13476,7 +13784,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SendPasswordToEmailResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SendPasswordToEmailResponse
@@ -13496,7 +13804,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroups", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupsRequest
@@ -13516,7 +13824,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroupsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupsResponse
@@ -13536,7 +13844,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroupById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupByIdRequest
@@ -13560,7 +13868,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroupByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupByIdResponse
@@ -13580,7 +13888,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroupsByEventTypeId", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupsByEventTypeIdRequest
@@ -13604,7 +13912,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetEventsGroupsByEventTypeIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetEventsGroupsByEventTypeIdResponse
@@ -13624,7 +13932,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonCustomFields", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonCustomFieldsRequest
@@ -13648,7 +13956,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonCustomFieldsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonCustomFieldsResponse
@@ -13668,7 +13976,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetPersonCustomFieldValue", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SetPersonCustomFieldValueRequest
@@ -13696,7 +14004,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetPersonCustomFieldValueResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class SetPersonCustomFieldValueResponse
@@ -13716,7 +14024,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetVisits", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetVisitsRequest
@@ -13736,7 +14044,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetVisitsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetVisitsResponse
@@ -13756,7 +14064,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetVisitById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetVisitByIdRequest
@@ -13780,7 +14088,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetVisitByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetVisitByIdResponse
@@ -13800,7 +14108,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddVisit", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddVisitRequest
@@ -13824,7 +14132,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddVisitResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddVisitResponse
@@ -13844,7 +14152,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteVisit", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteVisitRequest
@@ -13868,7 +14176,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteVisitResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteVisitResponse
@@ -13888,7 +14196,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateVisit", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateVisitRequest
@@ -13912,7 +14220,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateVisitResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateVisitResponse
@@ -13932,7 +14240,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDbChangeLogItemsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDbChangeLogItemsCountRequest
@@ -13952,7 +14260,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDbChangeLogItemsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDbChangeLogItemsCountResponse
@@ -13972,7 +14280,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDbChangeLogItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDbChangeLogItemsRequest
@@ -14004,7 +14312,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDbChangeLogItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetDbChangeLogItemsResponse
@@ -14024,7 +14332,103 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetChangedPersons", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetChangedPersonsRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public System.DateTime BeginTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public System.DateTime EndTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
+        public string Token;
+        
+        public GetChangedPersonsRequest()
+        {
+        }
+        
+        public GetChangedPersonsRequest(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            this.BeginTime = BeginTime;
+            this.EndTime = EndTime;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetChangedPersonsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetChangedPersonsResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultDbChangeLogItems @return;
+        
+        public GetChangedPersonsResponse()
+        {
+        }
+        
+        public GetChangedPersonsResponse(Orion.TOperationResultDbChangeLogItems @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetChangedEntryPoints", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetChangedEntryPointsRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public System.DateTime BeginTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public System.DateTime EndTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=2)]
+        public string Token;
+        
+        public GetChangedEntryPointsRequest()
+        {
+        }
+        
+        public GetChangedEntryPointsRequest(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            this.BeginTime = BeginTime;
+            this.EndTime = EndTime;
+            this.Token = Token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetChangedEntryPointsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
+    public partial class GetChangedEntryPointsResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public Orion.TOperationResultDbChangeLogItems @return;
+        
+        public GetChangedEntryPointsResponse()
+        {
+        }
+        
+        public GetChangedEntryPointsResponse(Orion.TOperationResultDbChangeLogItems @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCars", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarsRequest
@@ -14044,7 +14448,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCarsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarsResponse
@@ -14064,7 +14468,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCarById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarByIdRequest
@@ -14088,7 +14492,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCarByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarByIdResponse
@@ -14108,7 +14512,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddCar", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddCarRequest
@@ -14132,7 +14536,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddCarResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddCarResponse
@@ -14152,7 +14556,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteCar", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteCarRequest
@@ -14176,7 +14580,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteCarResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteCarResponse
@@ -14196,7 +14600,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateCar", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateCarRequest
@@ -14220,7 +14624,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateCarResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateCarResponse
@@ -14240,7 +14644,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPersonCar", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonCarRequest
@@ -14268,7 +14672,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPersonCarResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonCarResponse
@@ -14288,7 +14692,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonCar", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonCarRequest
@@ -14316,7 +14720,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonCarResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonCarResponse
@@ -14336,7 +14740,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonCars", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonCarsRequest
@@ -14360,7 +14764,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonCarsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonCarsResponse
@@ -14380,7 +14784,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCarPersons", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarPersonsRequest
@@ -14404,7 +14808,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetCarPersonsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetCarPersonsResponse
@@ -14424,7 +14828,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetThings", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetThingsRequest
@@ -14444,7 +14848,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetThingsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetThingsResponse
@@ -14464,7 +14868,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetThingById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetThingByIdRequest
@@ -14488,7 +14892,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetThingByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetThingByIdResponse
@@ -14508,7 +14912,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddThing", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddThingRequest
@@ -14532,7 +14936,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddThingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddThingResponse
@@ -14552,7 +14956,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteThing", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteThingRequest
@@ -14576,7 +14980,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteThingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteThingResponse
@@ -14596,7 +15000,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateThing", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateThingRequest
@@ -14620,7 +15024,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="UpdateThingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class UpdateThingResponse
@@ -14640,7 +15044,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPersonThing", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonThingRequest
@@ -14668,7 +15072,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddPersonThingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddPersonThingResponse
@@ -14688,7 +15092,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonThing", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonThingRequest
@@ -14716,7 +15120,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeletePersonThingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeletePersonThingResponse
@@ -14736,7 +15140,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonThings", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonThingsRequest
@@ -14760,7 +15164,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetPersonThingsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetPersonThingsResponse
@@ -14780,7 +15184,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetLoginToken", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetLoginTokenRequest
@@ -14804,7 +15208,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetLoginTokenResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetLoginTokenResponse
@@ -14824,7 +15228,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ExtendTokenExpiration", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class ExtendTokenExpirationRequest
@@ -14844,7 +15248,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ExtendTokenExpirationResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class ExtendTokenExpirationResponse
@@ -14864,7 +15268,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsForLogin", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsForLoginRequest
@@ -14892,7 +15296,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsForLoginResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsForLoginResponse
@@ -14912,7 +15316,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsStates", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsStatesRequest
@@ -14936,7 +15340,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetItemsStatesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetItemsStatesResponse
@@ -14956,7 +15360,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ControlItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class ControlItemsRequest
@@ -14992,7 +15396,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ControlItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class ControlItemsResponse
@@ -15012,7 +15416,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetADCValues", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetADCValuesRequest
@@ -15044,7 +15448,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetADCValuesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetADCValuesResponse
@@ -15064,7 +15468,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetScripts", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetScriptsRequest
@@ -15084,7 +15488,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetScriptsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetScriptsResponse
@@ -15104,7 +15508,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReaderItems", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReaderItemsRequest
@@ -15136,7 +15540,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReaderItemsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReaderItemsResponse
@@ -15156,7 +15560,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReaderItemsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReaderItemsCountRequest
@@ -15180,7 +15584,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetReaderItemsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetReaderItemsCountResponse
@@ -15200,7 +15604,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannels", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelsRequest
@@ -15228,7 +15632,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannelsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelsResponse
@@ -15248,7 +15652,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannelsCount", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelsCountRequest
@@ -15268,7 +15672,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannelsCountResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelsCountResponse
@@ -15288,7 +15692,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannelById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelByIdRequest
@@ -15312,7 +15716,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRecognitionChannelByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRecognitionChannelByIdResponse
@@ -15332,7 +15736,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasonTypes", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonTypesRequest
@@ -15352,7 +15756,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasonTypesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonTypesResponse
@@ -15372,7 +15776,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasonTypeById", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonTypeByIdRequest
@@ -15396,7 +15800,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasonTypeByIdResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonTypeByIdResponse
@@ -15416,7 +15820,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceReasonType", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAbsenceReasonTypeRequest
@@ -15440,7 +15844,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceReasonTypeResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAbsenceReasonTypeResponse
@@ -15460,7 +15864,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAbsenceReasonType", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAbsenceReasonTypeRequest
@@ -15484,7 +15888,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAbsenceReasonTypeResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAbsenceReasonTypeResponse
@@ -15504,7 +15908,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasons", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonsRequest
@@ -15528,7 +15932,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetAbsenceReasonsResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetAbsenceReasonsResponse
@@ -15548,7 +15952,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceReason", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAbsenceReasonRequest
@@ -15572,7 +15976,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddAbsenceReasonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddAbsenceReasonResponse
@@ -15592,7 +15996,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAbsenceReason", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAbsenceReasonRequest
@@ -15616,7 +16020,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteAbsenceReasonResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class DeleteAbsenceReasonResponse
@@ -15636,7 +16040,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddExternalEvent", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddExternalEventRequest
@@ -15660,7 +16064,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="AddExternalEventResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class AddExternalEventResponse
@@ -15680,7 +16084,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRemoteControlCategories", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRemoteControlCategoriesRequest
@@ -15700,7 +16104,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetRemoteControlCategoriesResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetRemoteControlCategoriesResponse
@@ -15720,7 +16124,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetBioPrintFromReader", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetBioPrintFromReaderRequest
@@ -15748,7 +16152,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetBioPrintFromReaderResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class GetBioPrintFromReaderResponse
@@ -15768,7 +16172,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CancelBioPrintReading", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CancelBioPrintReadingRequest
@@ -15796,7 +16200,7 @@ namespace Orion
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CancelBioPrintReadingResponse", WrapperNamespace="urn:OrionProIntf-IOrionPro", IsWrapped=true)]
     public partial class CancelBioPrintReadingResponse
@@ -15815,13 +16219,13 @@ namespace Orion
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     public interface IOrionProChannel : Orion.IOrionPro, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     public partial class OrionProClient : System.ServiceModel.ClientBase<Orion.IOrionPro>, Orion.IOrionPro
     {
         
@@ -16028,6 +16432,20 @@ namespace Orion
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetEntryPointByIdResponse> Orion.IOrionPro.GetEntryPointByIdAsync(Orion.GetEntryPointByIdRequest request)
+        {
+            return base.Channel.GetEntryPointByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetEntryPointByIdResponse> GetEntryPointByIdAsync(int Id, string Token)
+        {
+            Orion.GetEntryPointByIdRequest inValue = new Orion.GetEntryPointByIdRequest();
+            inValue.Id = Id;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetEntryPointByIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<Orion.GetPersonsResponse> Orion.IOrionPro.GetPersonsAsync(Orion.GetPersonsRequest request)
         {
             return base.Channel.GetPersonsAsync(request);
@@ -16052,9 +16470,12 @@ namespace Orion
             return base.Channel.GetPersonsCountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.GetPersonsCountResponse> GetPersonsCountAsync(string Token)
+        public System.Threading.Tasks.Task<Orion.GetPersonsCountResponse> GetPersonsCountAsync(string[] Filter, bool IsEmployees, bool IsVisitors, string Token)
         {
             Orion.GetPersonsCountRequest inValue = new Orion.GetPersonsCountRequest();
+            inValue.Filter = Filter;
+            inValue.IsEmployees = IsEmployees;
+            inValue.IsVisitors = IsVisitors;
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).GetPersonsCountAsync(inValue);
         }
@@ -16257,10 +16678,11 @@ namespace Orion
             return base.Channel.DeletePassAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.DeletePassResponse> DeletePassAsync(string CardNo, string Token)
+        public System.Threading.Tasks.Task<Orion.DeletePassResponse> DeletePassAsync(string CardNo, int CodeType, string Token)
         {
             Orion.DeletePassRequest inValue = new Orion.DeletePassRequest();
             inValue.CardNo = CardNo;
+            inValue.CodeType = CodeType;
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).DeletePassAsync(inValue);
         }
@@ -16838,9 +17260,11 @@ namespace Orion
             return base.Channel.GetKeysCountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.GetKeysCountResponse> GetKeysCountAsync(string Token)
+        public System.Threading.Tasks.Task<Orion.GetKeysCountResponse> GetKeysCountAsync(int CodeType, int PersonId, string Token)
         {
             Orion.GetKeysCountRequest inValue = new Orion.GetKeysCountRequest();
+            inValue.CodeType = CodeType;
+            inValue.PersonId = PersonId;
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).GetKeysCountAsync(inValue);
         }
@@ -16851,9 +17275,11 @@ namespace Orion
             return base.Channel.GetKeysAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Orion.GetKeysResponse> GetKeysAsync(int Offset, int Count, string Token)
+        public System.Threading.Tasks.Task<Orion.GetKeysResponse> GetKeysAsync(int CodeType, int PersonId, int Offset, int Count, string Token)
         {
             Orion.GetKeysRequest inValue = new Orion.GetKeysRequest();
+            inValue.CodeType = CodeType;
+            inValue.PersonId = PersonId;
             inValue.Offset = Offset;
             inValue.Count = Count;
             inValue.Token = Token;
@@ -16928,6 +17354,20 @@ namespace Orion
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetDeviceByIdResponse> Orion.IOrionPro.GetDeviceByIdAsync(Orion.GetDeviceByIdRequest request)
+        {
+            return base.Channel.GetDeviceByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetDeviceByIdResponse> GetDeviceByIdAsync(int Id, string Token)
+        {
+            Orion.GetDeviceByIdRequest inValue = new Orion.GetDeviceByIdRequest();
+            inValue.Id = Id;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetDeviceByIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<Orion.GetDevicesItemsResponse> Orion.IOrionPro.GetDevicesItemsAsync(Orion.GetDevicesItemsRequest request)
         {
             return base.Channel.GetDevicesItemsAsync(request);
@@ -16939,6 +17379,34 @@ namespace Orion
             inValue.ItemTypes = ItemTypes;
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).GetDevicesItemsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetDeviceItemsResponse> Orion.IOrionPro.GetDeviceItemsAsync(Orion.GetDeviceItemsRequest request)
+        {
+            return base.Channel.GetDeviceItemsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetDeviceItemsResponse> GetDeviceItemsAsync(int DeviceId, string Token)
+        {
+            Orion.GetDeviceItemsRequest inValue = new Orion.GetDeviceItemsRequest();
+            inValue.DeviceId = DeviceId;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetDeviceItemsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetDeviceItemByIdResponse> Orion.IOrionPro.GetDeviceItemByIdAsync(Orion.GetDeviceItemByIdRequest request)
+        {
+            return base.Channel.GetDeviceItemByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetDeviceItemByIdResponse> GetDeviceItemByIdAsync(int Id, string Token)
+        {
+            Orion.GetDeviceItemByIdRequest inValue = new Orion.GetDeviceItemByIdRequest();
+            inValue.Id = Id;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetDeviceItemByIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -16980,6 +17448,61 @@ namespace Orion
             Orion.GetItemsRequest inValue = new Orion.GetItemsRequest();
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).GetItemsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetItemsByTimeOfChangeResponse> Orion.IOrionPro.GetItemsByTimeOfChangeAsync(Orion.GetItemsByTimeOfChangeRequest request)
+        {
+            return base.Channel.GetItemsByTimeOfChangeAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetItemsByTimeOfChangeResponse> GetItemsByTimeOfChangeAsync(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            Orion.GetItemsByTimeOfChangeRequest inValue = new Orion.GetItemsByTimeOfChangeRequest();
+            inValue.BeginTime = BeginTime;
+            inValue.EndTime = EndTime;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetItemsByTimeOfChangeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.ConvertWiegandToTouchMemoryResponse> Orion.IOrionPro.ConvertWiegandToTouchMemoryAsync(Orion.ConvertWiegandToTouchMemoryRequest request)
+        {
+            return base.Channel.ConvertWiegandToTouchMemoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.ConvertWiegandToTouchMemoryResponse> ConvertWiegandToTouchMemoryAsync(long Code, int CodeSize)
+        {
+            Orion.ConvertWiegandToTouchMemoryRequest inValue = new Orion.ConvertWiegandToTouchMemoryRequest();
+            inValue.Code = Code;
+            inValue.CodeSize = CodeSize;
+            return ((Orion.IOrionPro)(this)).ConvertWiegandToTouchMemoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.ConvertPinToTouchMemoryResponse> Orion.IOrionPro.ConvertPinToTouchMemoryAsync(Orion.ConvertPinToTouchMemoryRequest request)
+        {
+            return base.Channel.ConvertPinToTouchMemoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.ConvertPinToTouchMemoryResponse> ConvertPinToTouchMemoryAsync(string Pin)
+        {
+            Orion.ConvertPinToTouchMemoryRequest inValue = new Orion.ConvertPinToTouchMemoryRequest();
+            inValue.Pin = Pin;
+            return ((Orion.IOrionPro)(this)).ConvertPinToTouchMemoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetPinFromTouchMemoryResponse> Orion.IOrionPro.GetPinFromTouchMemoryAsync(Orion.GetPinFromTouchMemoryRequest request)
+        {
+            return base.Channel.GetPinFromTouchMemoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetPinFromTouchMemoryResponse> GetPinFromTouchMemoryAsync(string Code)
+        {
+            Orion.GetPinFromTouchMemoryRequest inValue = new Orion.GetPinFromTouchMemoryRequest();
+            inValue.Code = Code;
+            return ((Orion.IOrionPro)(this)).GetPinFromTouchMemoryAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17203,6 +17726,36 @@ namespace Orion
             inValue.Count = Count;
             inValue.Token = Token;
             return ((Orion.IOrionPro)(this)).GetDbChangeLogItemsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetChangedPersonsResponse> Orion.IOrionPro.GetChangedPersonsAsync(Orion.GetChangedPersonsRequest request)
+        {
+            return base.Channel.GetChangedPersonsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetChangedPersonsResponse> GetChangedPersonsAsync(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            Orion.GetChangedPersonsRequest inValue = new Orion.GetChangedPersonsRequest();
+            inValue.BeginTime = BeginTime;
+            inValue.EndTime = EndTime;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetChangedPersonsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Orion.GetChangedEntryPointsResponse> Orion.IOrionPro.GetChangedEntryPointsAsync(Orion.GetChangedEntryPointsRequest request)
+        {
+            return base.Channel.GetChangedEntryPointsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Orion.GetChangedEntryPointsResponse> GetChangedEntryPointsAsync(System.DateTime BeginTime, System.DateTime EndTime, string Token)
+        {
+            Orion.GetChangedEntryPointsRequest inValue = new Orion.GetChangedEntryPointsRequest();
+            inValue.BeginTime = BeginTime;
+            inValue.EndTime = EndTime;
+            inValue.Token = Token;
+            return ((Orion.IOrionPro)(this)).GetChangedEntryPointsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -11,8 +11,7 @@ namespace FlussonicOrion.OrionPro.Models
         public string EmployeeUserName { get; set; }
         public string EmployeePassword { get; set; }
         public int TokenLifetime { get; set; }
-        public int EmployeesUpdatingInterval { get; set; }
-        public int VisitorsUpdatingInterval { get; set; }
         public bool UseCache { get; set; }
+        public int CacheUpdatingInterval { get; set; }
     }
 }

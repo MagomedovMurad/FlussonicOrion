@@ -55,10 +55,10 @@ namespace FlussonicOrion
             try
             {
                 _serviceSettingsController.Initialize();
+                await _orionClient.Initialize(_serviceSettingsController.Settings.OrionSettings);
 
                 _videoSourceManager.Initialize(_serviceSettingsController.Settings.AccesspointsSettings);
                 _accessPointsManager.Initialize();
-                await _orionClient.Initialize(_serviceSettingsController.Settings.OrionSettings);
 
                 var httpServer = new HttpServer(_serviceSettingsController.Settings.ServerSettings.ServerPort);
                 httpServer.Start();

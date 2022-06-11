@@ -2,6 +2,7 @@
 using FlussonicOrion.Filters;
 using FlussonicOrion.OrionPro;
 using FlussonicOrion.OrionPro.DataSources;
+using FlussonicOrion.OrionPro.Models;
 using FlussonicOrion.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -44,8 +45,8 @@ namespace FlussonicOrion.Managers
             try
             {
                 var orionSettings = _serviceSettingsController.Settings.OrionSettings;
-                _dataSource = orionSettings.UseCache ? _scopeFactory.Resolve<OrionCacheDataSource>() : _scopeFactory.Resolve<OrionClientDataSource>();
-                _dataSource.Initialize(orionSettings.EmployeesUpdatingInterval, orionSettings.VisitorsUpdatingInterval);
+                _dataSource = CreateDataSource(orionSettings);
+                _dataSource.Initialize();
                 _accessController = new AccessController(_dataSource);
 
                 var accessPoints = _serviceSettingsController
@@ -67,7 +68,20 @@ namespace FlussonicOrion.Managers
                 _logger.LogError(ex, "Ошибка при инициализации AccessPointManager");
             }
         }
+        public AccessPointController GetAcceessPoint(int id)
+        {
+            return _accessPoints.FirstOrDefault(x => x.Id == id);
+        }
 
+        private IOrionDataSource CreateDataSource(OrionSettings orionSettings)
+        {
+            var logger = _scopeFactory.Resolve<ILogger<IOrionDataSource>>();
+
+            if (orionSettings.UseCache)
+                return new OrionCacheDataSource(orionSettings.CacheUpdatingInterval, _orionClient, logger);
+            else
+                return new OrionClientDataSource(_orionClient, logger);
+        }
         private IFilter CreateFilter(int accessPointId, FilterType filterType)
         {
             switch (filterType)
@@ -81,10 +95,6 @@ namespace FlussonicOrion.Managers
                 default: 
                     throw new InvalidCastException($"Тип фильтра {filterType} не поддерживается");
             }
-        }
-        public AccessPointController GetAcceessPoint(int id)
-        {
-            return _accessPoints.FirstOrDefault(x => x.Id == id);
         }
     }
 }

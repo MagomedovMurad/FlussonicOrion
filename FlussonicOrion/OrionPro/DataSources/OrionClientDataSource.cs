@@ -1,4 +1,5 @@
 ﻿using FlussonicOrion.OrionPro.Enums;
+using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Linq;
@@ -8,13 +9,16 @@ namespace FlussonicOrion.OrionPro.DataSources
 {
     public class OrionClientDataSource : IOrionDataSource
     {
-        private IOrionClient _orionClient;
-        public OrionClientDataSource(IOrionClient orionClient)
+        private readonly IOrionClient _orionClient;
+        private readonly ILogger<IOrionDataSource> _logger;
+
+        public OrionClientDataSource(IOrionClient orionClient, ILogger<IOrionDataSource> logger)
         {
             _orionClient = orionClient;
+            _logger = logger;
         }
 
-        public TKeyData GetKeyByPersonIdAndComment(int personId, string comment)
+        public TKeyData GetKeyByPersonId(int personId)
         {
             var personData = new TPersonData();
             personData.Id = personId;
@@ -23,34 +27,29 @@ namespace FlussonicOrion.OrionPro.DataSources
             var tasks = passList.Select(x => _orionClient.GetKeyData(x, 0));
 
             var keys = Task.WhenAll(tasks).Result;
-            return keys.FirstOrDefault(x => x.Comment.Contains(comment, StringComparison.InvariantCultureIgnoreCase));
-        }
 
+            var key = keys.FirstOrDefault(x => x.Comment.Contains("flussonic", StringComparison.InvariantCultureIgnoreCase));
+            if(key is null)
+                key = keys.FirstOrDefault();
+
+            return key;
+        }
         public TAccessLevel GetAccessLevel(int id)
         {
             return _orionClient.GetAccessLevelById(id).Result;
         }
-
-        public TCompany GetCompany(int id)
-        {
-            return _orionClient.GetCompany(id).Result;
-        }
-
         public TKeyData GetKeyByCode(string code)
         {
             return _orionClient.GetKeyData(code, (int)CodeType.CarNumber).Result;
         }
-
         public TPersonData GetPerson(int id)
         {
             return _orionClient.GetPersonById(id).Result;
         }
-
         public TTimeWindow GetTimeWindow(int id)
         {
             return _orionClient.GetTimeWindowById(id).Result;
         }
-
         public TVisitData GetActualVisitByRegNumber(string regNumber)
         {
             var visits = _orionClient.GetVisits().Result;
@@ -59,11 +58,10 @@ namespace FlussonicOrion.OrionPro.DataSources
                                               DateTime.Now <= x.VisitEndDateTime);
         }
 
-        public void Initialize(int employeeInterval, int visitorsInterval)
+        public void Initialize()
         {
             
         }
-
         public void Dispose()
         {
             

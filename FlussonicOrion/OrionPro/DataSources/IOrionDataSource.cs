@@ -4,7 +4,7 @@ namespace FlussonicOrion.OrionPro.DataSources
 {
     public interface IOrionDataSource
     {
-        void Initialize(int employeeInterval, int visitorsInterval);
+        void Initialize();
         void Dispose();
 
         TVisitData GetActualVisitByRegNumber(string regNumber);
@@ -12,7 +12,6 @@ namespace FlussonicOrion.OrionPro.DataSources
         TPersonData GetPerson(int id);
         TAccessLevel GetAccessLevel(int id);
         TTimeWindow GetTimeWindow(int id);
-        TCompany GetCompany(int id);
-        TKeyData GetKeyByPersonIdAndComment(int personId, string comment);
+        TKeyData GetKeyByPersonId(int personId);
     }
 }
