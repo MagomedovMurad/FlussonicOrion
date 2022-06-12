@@ -12,33 +12,10 @@ namespace FlussonicOrion.OrionPro.DataSources
 {
     public class OrionCacheDataSource: IOrionDataSource
     {
+        #region Fields
         private readonly ILogger<IOrionDataSource> _logger;
         private readonly IOrionClient _orionClient;
         private readonly int _updateInterval;
-
-        #region Timers
-        private System.Timers.Timer _personsTimer;
-        private System.Timers.Timer _visitorsTimer;
-        private System.Timers.Timer _keysTimer;
-        private System.Timers.Timer _accessLevelsTimer;
-        private System.Timers.Timer _timeWindowsTimer;
-        #endregion
-
-        #region Items list
-        private IEnumerable<TPersonData> _persons;
-        private IEnumerable<TVisitData> _visitors;
-        private IEnumerable<TKeyData> _keys;
-        private IEnumerable<TAccessLevel> _accessLevels;
-        private IEnumerable<TTimeWindow> _timeWindows;
-        #endregion
-
-        #region Locks
-        private ReaderWriterLockSlim _personsLock = new ReaderWriterLockSlim();
-        private ReaderWriterLockSlim _visitorsLock = new ReaderWriterLockSlim();
-        private ReaderWriterLockSlim _keysLock = new ReaderWriterLockSlim();
-        private ReaderWriterLockSlim _accessLevelsLock = new ReaderWriterLockSlim();
-        private ReaderWriterLockSlim _timeWindowsLock = new ReaderWriterLockSlim();
-        #endregion
 
         private Dictionary<string, string> _cyrillicToLatin = new Dictionary<string, string>()
         {
@@ -55,13 +32,42 @@ namespace FlussonicOrion.OrionPro.DataSources
             { "У", "Y"},
             { "Х", "X"}
         };
+        #endregion
+
+        #region Timers
+        private System.Timers.Timer _personsTimer;
+        private System.Timers.Timer _visitorsTimer;
+        private System.Timers.Timer _keysTimer;
+        private System.Timers.Timer _accessLevelsTimer;
+        private System.Timers.Timer _timeWindowsTimer;
+        #endregion
+
+        #region Items lists
+        private IEnumerable<TPersonData> _persons;
+        private IEnumerable<TVisitData> _visitors;
+        private IEnumerable<TKeyData> _keys;
+        private IEnumerable<TAccessLevel> _accessLevels;
+        private IEnumerable<TTimeWindow> _timeWindows;
+        #endregion
+
+        #region Locks
+        private ReaderWriterLockSlim _personsLock = new ReaderWriterLockSlim();
+        private ReaderWriterLockSlim _visitorsLock = new ReaderWriterLockSlim();
+        private ReaderWriterLockSlim _keysLock = new ReaderWriterLockSlim();
+        private ReaderWriterLockSlim _accessLevelsLock = new ReaderWriterLockSlim();
+        private ReaderWriterLockSlim _timeWindowsLock = new ReaderWriterLockSlim();
+        #endregion
+
+        #region Ctor
         public OrionCacheDataSource(int updateInterval, IOrionClient orionClient, ILogger<IOrionDataSource> logger)
         {
             _updateInterval = updateInterval;
             _orionClient = orionClient;
             _logger = logger;
         }
+        #endregion
 
+        #region Initialize/Dispose
         public void Initialize()
         {
             _logger.LogInformation("Запуск инициализации кэша данных Орион");
@@ -88,7 +94,9 @@ namespace FlussonicOrion.OrionPro.DataSources
             _accessLevelsTimer.Dispose();
             _timeWindowsTimer.Dispose();
         }
+        #endregion
 
+        #region IOrionDataSource
         public TVisitData GetActualVisitByRegNumber(string regNumber)
         {
             return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber))
@@ -117,8 +125,9 @@ namespace FlussonicOrion.OrionPro.DataSources
         {
             return ReadList(() => _timeWindows.FirstOrDefault(x => x.Id == id), _timeWindowsLock);
         }
+        #endregion
 
-        #region Sync
+        #region Updaters
         private void PersonUpdater(object sender, ElapsedEventArgs e)
         {
             LoadPersons().ContinueWith(t =>
@@ -173,7 +182,9 @@ namespace FlussonicOrion.OrionPro.DataSources
                 _timeWindowsTimer.Start();
             });
         }
+        #endregion
 
+        #region Loaders
         private async Task<IEnumerable<TPersonData>> LoadPersons()
         {
             var allPersons = new List<TPersonData>();
@@ -258,7 +269,9 @@ namespace FlussonicOrion.OrionPro.DataSources
             _logger.LogInformation($"Получение списка TTimeWindow: {timeWindows.Length} из {timeWindows.Length}");
             return timeWindows;
         }
+        #endregion
 
+        #region Utils
         private System.Timers.Timer CreateTimer(ElapsedEventHandler handler)
         {
             var timer = new System.Timers.Timer(_updateInterval * 1000);
@@ -266,7 +279,6 @@ namespace FlussonicOrion.OrionPro.DataSources
             timer.AutoReset = false;
             return timer;
         }
-
         private string ReplaceCirilicToLatin(string data)
         {
             var upperCaseText = data.Replace(" ","").ToUpper();
@@ -276,7 +288,6 @@ namespace FlussonicOrion.OrionPro.DataSources
 
             return upperCaseText;
         }
-
         private void UpdateList<T>(IEnumerable<T> actualItems, ref IEnumerable<T> list, ReaderWriterLockSlim lockSlim)
         {
             lockSlim.EnterWriteLock();
