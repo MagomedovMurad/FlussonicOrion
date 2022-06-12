@@ -93,6 +93,12 @@ namespace FlussonicOrion.OrionPro.DataSources
             _keysTimer.Dispose();
             _accessLevelsTimer.Dispose();
             _timeWindowsTimer.Dispose();
+
+            _personsLock.Dispose();
+            _visitorsLock.Dispose();
+            _keysLock.Dispose();
+            _accessLevelsLock.Dispose();
+            _timeWindowsLock.Dispose();
         }
         #endregion
 
