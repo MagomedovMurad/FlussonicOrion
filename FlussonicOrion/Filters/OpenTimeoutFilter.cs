@@ -4,7 +4,7 @@ using FlussonicOrion.OrionPro.Enums;
 using Microsoft.Extensions.Logging;
 using Orion;
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,14 +17,15 @@ namespace FlussonicOrion.Filters
 
         private int _accessPointId;
         private bool _inProcess;
-        private ConcurrentQueue<PassRequest> _passRequests;
         private object _requestsHandlingLock = new object();
+        private Queue<PassRequest> _passRequests;
         private FilterSettings _settings;
         private TimeSpan _requestedEventsInterval;
 
         public event EventHandler<PassRequest> NewRequest;
 
-        public OpenTimeoutFilter(int accessPointId, ILogger logger,
+        public OpenTimeoutFilter(int accessPointId, 
+                                 ILogger logger,
                                  IOrionClient orionClient,
                                  IServiceSettingsController serviceSettingsController)
         {
@@ -32,7 +33,7 @@ namespace FlussonicOrion.Filters
             _logger = logger;
             _orionClient = orionClient;
             _settings = serviceSettingsController.Settings.FilterSettings;
-            _passRequests = new ConcurrentQueue<PassRequest>();
+            _passRequests = new Queue<PassRequest>();
 
             var requestedEventsIntervalSec = new[]
             {
@@ -65,7 +66,7 @@ namespace FlussonicOrion.Filters
             {
                 if (_passRequests.Any(x => x.LicensePlate == licensePlate))
                 {
-                    _passRequests = new ConcurrentQueue<PassRequest>(_passRequests.Where(x => x.LicensePlate != licensePlate));
+                    _passRequests = new Queue<PassRequest>(_passRequests.Where(x => x.LicensePlate != licensePlate));
                     _logger.LogInformation($"Удален запрос с номером {licensePlate} т.к покинул кадр");
                 }
             });
@@ -73,8 +74,14 @@ namespace FlussonicOrion.Filters
 
         private async Task Next()
         {
-            if (_passRequests.TryPeek(out PassRequest request))
+            bool needAbort = false;
+            try
             {
+                PassRequest request = null;
+                WorkWithPassRequestsQueue(() => _passRequests.TryPeek(out request));
+                if (request is null)
+                    return;
+
                 var events = await GetEvents();
                 var sortedEvents = (events ?? new TEvent[0]).OrderByDescending(x => x.EventDate);
 
@@ -86,21 +93,23 @@ namespace FlussonicOrion.Filters
 
                 if (lastAccessGrantedEvent != null)
                 {
-                    var passEventIsLast = lastPassEvent?.EventDate > lastAccessGrantedEvent.EventDate;
-                    if (NeedAbort(lastAccessGrantedEvent.EventDate,
+                    var passEventIsLast = lastPassEvent?.EventDate >= lastAccessGrantedEvent.EventDate;
+                    needAbort = NeedAbort(lastAccessGrantedEvent.EventDate,
                              TimeSpan.FromSeconds(_settings.TimeAfterLastAccessGranted),
                              TimeSpan.FromSeconds(1),
                              "Ожидание после последнего предоставления доступа",
-                             !passEventIsLast))
+                             !passEventIsLast);
+                    if (needAbort)
                         return;
                 }
 
                 if (lastPassEvent != null)
                 {
-                    if (NeedAbort(lastPassEvent.EventDate,
+                    needAbort = NeedAbort(lastPassEvent.EventDate,
                               TimeSpan.FromSeconds(_settings.TimeAfterLastPass),
                               null,
-                              "Ожидание после последнего прохода"))
+                              "Ожидание после последнего прохода");
+                    if (needAbort)
                         return;
                 }
 
@@ -108,14 +117,21 @@ namespace FlussonicOrion.Filters
                 WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
                 NewRequest.Invoke(this, request);
             }
-
-            WorkWithPassRequestsQueue(() =>
+            catch (Exception ex)
             {
-                if (_passRequests.Count > 0)
-                    Task.Delay(TimeSpan.FromSeconds(_settings.EventLogDelay)).ContinueWith(t => Next());
-                else
-                    _inProcess = false;
-            });
+                _logger.LogError(ex, $"Непредвиденная ошибка при обработке номера");
+            }
+            finally
+            {
+                if (!needAbort)
+                    WorkWithPassRequestsQueue(() =>
+                    {
+                        if (_passRequests.Count > 0)
+                            Task.Delay(TimeSpan.FromSeconds(_settings.EventLogDelay)).ContinueWith(t => Next());
+                        else
+                            _inProcess = false;
+                    });
+            }
         }
         private bool NeedAbort(DateTime dateTime, TimeSpan time, TimeSpan? delay, string reason, params bool[] condition)
         {
@@ -134,7 +150,9 @@ namespace FlussonicOrion.Filters
         private void WorkWithPassRequestsQueue(Action action)
         {
             lock (_requestsHandlingLock)
+            {
                 action.Invoke();
+            }
         }
         private void RemoveCurrentRequest(PassRequest request)
         {

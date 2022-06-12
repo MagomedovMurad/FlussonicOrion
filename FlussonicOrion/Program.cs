@@ -22,7 +22,6 @@ namespace FlussonicOrion
                             .AddSingleton<IServiceSettingsController, ServiceSettingsController>()
                             .AddSingleton<IOrionClient, OrionClient>()
                             .AddSingleton<OrionClientDataSource, OrionClientDataSource>()
-                            .AddSingleton<OrionCacheDataSource, OrionCacheDataSource>()
                             .AddSingleton<IAccessPointsManager, AccessPointsManager>()
                             .AddSingleton<IVideoSourceManager, VideoSourceManager>();
                 });
