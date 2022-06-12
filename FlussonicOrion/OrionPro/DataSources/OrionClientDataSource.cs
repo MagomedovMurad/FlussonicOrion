@@ -9,15 +9,31 @@ namespace FlussonicOrion.OrionPro.DataSources
 {
     public class OrionClientDataSource : IOrionDataSource
     {
+        #region Fields
         private readonly IOrionClient _orionClient;
         private readonly ILogger<IOrionDataSource> _logger;
+        #endregion
 
+        #region Ctor
         public OrionClientDataSource(IOrionClient orionClient, ILogger<IOrionDataSource> logger)
         {
             _orionClient = orionClient;
             _logger = logger;
         }
+        #endregion
 
+        #region Initialize/Dispose
+        public void Initialize()
+        {
+
+        }
+        public void Dispose()
+        {
+
+        }
+        #endregion
+
+        #region IOrionDataSource
         public TKeyData GetKeyByPersonId(int personId)
         {
             var personData = new TPersonData();
@@ -57,14 +73,6 @@ namespace FlussonicOrion.OrionPro.DataSources
                          .FirstOrDefault(x => DateTime.Now >= x.VisitDate &&
                                               DateTime.Now <= x.VisitEndDateTime);
         }
-
-        public void Initialize()
-        {
-            
-        }
-        public void Dispose()
-        {
-            
-        }
+        #endregion
     }
 }
