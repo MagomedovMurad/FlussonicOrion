@@ -12,11 +12,11 @@ namespace FlussonicOrion.Controllers
     {
         private ILogger _logger;
         private IOrionClient _orionClient;
-        private IAccessController _accessController;
+        private AccessController _accessController;
         private IFilter _filter;
         public int Id;
 
-        public AccessPointController(int id, IFilter filter, ILogger logger, IAccessController accessController, IOrionClient orionClient)
+        public AccessPointController(int id, IFilter filter, ILogger logger, AccessController accessController, IOrionClient orionClient)
         {
             Id = id;
             _filter = filter;
@@ -35,12 +35,12 @@ namespace FlussonicOrion.Controllers
             _filter.RemoveRequest(licensePlate);
         }
 
-        private void Filter_NewRequest(object sender, PassRequest request)
+        private void Filter_NewRequest(string identifier, PassageDirection direction)
         {
-            var result = _accessController.CheckAccess(request.LicensePlate, Id, request.Direction);
+            var result = _accessController.CheckAccessByLicensePlate(identifier, Id, direction);
             if (result.AccessAllowed)
             {
-                _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(request.Direction), result.Person.Id).Wait();
+                _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id).Wait();
                 _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person}");
             }
             else
@@ -48,7 +48,7 @@ namespace FlussonicOrion.Controllers
                 SaveAccessDeniedEvent(result);
             }
 
-            SaveAccessResultEvent(result, request.LicensePlate);
+            SaveAccessResultEvent(result, identifier);
         }
 
         private async void SaveAccessResultEvent(AccessRequestResult result, string licensePlate)

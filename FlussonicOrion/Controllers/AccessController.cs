@@ -1,18 +1,13 @@
 ﻿using FlussonicOrion.Models;
 using FlussonicOrion.OrionPro.DataSources;
-using FlussonicOrion.OrionPro.Enums;
+using FlussonicOrion.Utils;
 using Orion;
 using System;
 using System.Linq;
 
 namespace FlussonicOrion.Controllers
 {
-    public interface IAccessController
-    {
-        AccessRequestResult CheckAccess(string number, int itemId, PassageDirection direction);
-    }
-
-    public class AccessController: IAccessController
+    public class AccessController
     {
         private readonly IOrionDataSource _orionDataSource;
 
@@ -20,57 +15,99 @@ namespace FlussonicOrion.Controllers
         {
             _orionDataSource = dataSource;
         }
-        
-        public AccessRequestResult CheckAccess(string licensePlate, int itemId, PassageDirection direction)
+
+        public AccessRequestResult CheckAccessByPersonnelNumber(string personnelNumber, int itemId, PassageDirection direction)
         {
-            var key = _orionDataSource.GetKeyByCode(licensePlate);
-            if (key != null)
-                return CheckAccessByKey(key, itemId, direction);
+            TPersonData person = null;
+            TKeyData key = null;
+            try
+            {
+                person = _orionDataSource.GetPersonByTabNum(personnelNumber);
+                if (person == null)
+                    throw new AccessDeniedException("Нет сотрудника");
+                CheckPerson(person);
 
-            var visit = _orionDataSource.GetActualVisitByRegNumber(licensePlate);
-            if(visit == null)
-                return new AccessRequestResult(false, "Не найден", null, null, 0);
+                key = _orionDataSource.GetKeyByPersonId(person.Id);
+                if (key == null)
+                    throw new AccessDeniedException("Ключ не найден");
+                CheckKey(key);
 
-            key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
-            if (key != null)
-                return CheckAccessByKey(key, itemId, direction);
+                CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
 
-            return new AccessRequestResult(false, "Ключ не найден", null, null, 0);
+                return new AccessRequestResult(true, string.Empty, person, key.Id);
+            }
+            catch (AccessDeniedException ex)
+            {
+                return new AccessRequestResult(false, ex.Reason, person, key?.Id ?? 0);
+            }
         }
-        private AccessRequestResult CheckAccessByKey(TKeyData key, int itemId, PassageDirection direction)
+        public AccessRequestResult CheckAccessByLicensePlate(string licensePlate, int itemId, PassageDirection direction)
         {
-            var person = _orionDataSource.GetPerson(key.PersonId);
-            
+            TPersonData person = null;
+            TKeyData key = null;
+            try
+            {
+                key = _orionDataSource.GetKeyByCode(licensePlate);
+                if (key != null)
+                {
+                    person = _orionDataSource.GetPersonById(key.PersonId);
+                    CheckPerson(person);
+                    CheckKey(key);
+                    CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                    return new AccessRequestResult(true, string.Empty, person, key.Id);
+                }
+
+                var visit = _orionDataSource.GetActualVisitByRegNumber(licensePlate);
+                if (visit == null)
+                    throw new AccessDeniedException("Не найден");
+                key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
+                if (key != null)
+                {
+                    person = _orionDataSource.GetPersonById(key.PersonId);
+                    CheckPerson(person);
+                    CheckKey(key);
+                    CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                    return new AccessRequestResult(true, string.Empty, person, key.Id);
+                }
+                throw new AccessDeniedException("Не найден");
+
+            }
+            catch (AccessDeniedException ex)
+            {
+                return new AccessRequestResult(false, ex.Reason, person, key?.Id ?? 0);
+            }
+        }
+
+        private void CheckPerson(TPersonData person)
+        {
             if (person.IsInArchive)
-                return new AccessRequestResult(false, "В архиве", person, key.StartDate, key.Id);
+                throw new AccessDeniedException("В архиве");
             else if (person.IsInBlackList)
-                return new AccessRequestResult(false, $"В черном списке", person, key.StartDate, key.Id);
-            else if (key.IsBlocked)
-                return new AccessRequestResult(false, "Заблокирован", person, key.StartDate, key.Id);
-            else if (key.IsInStopList)
-                return new AccessRequestResult(false, "В стоп-листе", person, key.StartDate, key.Id);
-            else if (key.StartDate > DateTime.Now)
-                return new AccessRequestResult(false, $"Ключ не активен", person, key.StartDate, key.Id);
-            else if (key.EndDate < DateTime.Now)
-                return new AccessRequestResult(false, $"Ключ истек", person, key.StartDate, key.Id);
-            else 
-                return CheckAccessLevel(key.AccessLevelId, itemId, person, key, direction);
+                throw new AccessDeniedException("В черном списке");
         }
-        private AccessRequestResult CheckAccessLevel(int accessLevelId, int itemId, TPersonData person, TKeyData key, PassageDirection direction)
+        private void CheckKey(TKeyData key)
+        {
+            if (key.IsBlocked)
+                throw new AccessDeniedException("Заблокирован");
+            else if (key.IsInStopList)
+                throw new AccessDeniedException("В стоп-листе");
+            else if (key.StartDate > DateTime.Now)
+                throw new AccessDeniedException("Ключ не активен");
+            else if (key.EndDate < DateTime.Now)
+                throw new AccessDeniedException("Ключ истек");
+        }
+        private void CheckAccessLevelAndTimeWindow(int accessLevelId, int itemId, PassageDirection direction)
         {
             var accessLevel = _orionDataSource.GetAccessLevel(accessLevelId);
-            var accessLevelItems = accessLevel.Items
-                                              .Where(x => x.ItemType == ItemType.ACCESSPOINT.ToString() 
-                                                          && (x.ItemId == itemId || x.ItemId == 0))
-                                              .ToArray();
+            var accessLevelItems = accessLevel.Items.Where(x => x.ItemId == itemId || x.ItemId == 0).ToArray();
             if (accessLevelItems.Length == 0)
-                return new AccessRequestResult(false, $"Уровнем доступа", person, key.StartDate, key.Id);
+                throw new AccessDeniedException("Уровнем доступа");
 
-            var isAccess = accessLevelItems.Select(x => CheckWindowAccess(x, direction)).Any(x => x);
-            if (!isAccess)
-                return new AccessRequestResult(false, $"Временным окном", person, key.StartDate, key.Id);
+            foreach (var accessLevelItem in accessLevelItems)
+                if (CheckWindowAccess(accessLevelItem, direction))
+                    return;
 
-            return new AccessRequestResult(true, string.Empty, person, key.StartDate, key.Id);
+            throw new AccessDeniedException("Временным окном");
         }
         private bool CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
         {

@@ -9,7 +9,8 @@ namespace FlussonicOrion.OrionPro.DataSources
 
         TVisitData GetActualVisitByRegNumber(string regNumber);
         TKeyData GetKeyByCode(string code);
-        TPersonData GetPerson(int id);
+        TPersonData GetPersonById(int id);
+        TPersonData GetPersonByTabNum(string tabNum);
         TAccessLevel GetAccessLevel(int id);
         TTimeWindow GetTimeWindow(int id);
         TKeyData GetKeyByPersonId(int personId);

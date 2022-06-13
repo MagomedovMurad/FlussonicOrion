@@ -58,9 +58,13 @@ namespace FlussonicOrion.OrionPro.DataSources
         {
             return _orionClient.GetKeyData(code, (int)CodeType.CarNumber).Result;
         }
-        public TPersonData GetPerson(int id)
+        public TPersonData GetPersonById(int id)
         {
             return _orionClient.GetPersonById(id).Result;
+        }
+        public TPersonData GetPersonByTabNum(string tabNum)
+        {
+            return _orionClient.GetPersonByTabNum(tabNum).Result;
         }
         public TTimeWindow GetTimeWindow(int id)
         {

@@ -119,7 +119,7 @@ namespace FlussonicOrion.OrionPro.DataSources
                                                             x.Comment.Contains("flussonic", 
                                                                                StringComparison.InvariantCultureIgnoreCase)), _keysLock);
         }
-        public TPersonData GetPerson(int id)
+        public TPersonData GetPersonById(int id)
         {
             return ReadList(() => _persons.FirstOrDefault(x => x.Id.Equals(id)), _personsLock);
         }
@@ -317,6 +317,11 @@ namespace FlussonicOrion.OrionPro.DataSources
             {
                 lockSlim.ExitReadLock();
             }
+        }
+
+        public TPersonData GetPersonByTabNum(string tabNum)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

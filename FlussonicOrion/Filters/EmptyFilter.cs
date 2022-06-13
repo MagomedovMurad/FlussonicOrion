@@ -1,24 +1,20 @@
 ﻿using FlussonicOrion.Models;
-using System;
+using FlussonicOrion.Utils;
 
 namespace FlussonicOrion.Filters
 {
     internal class EmptyFilter : IFilter
     {
-        public event EventHandler<PassRequest> NewRequest;
+        public event PassRequestHandler NewRequest;
 
         public void AddRequest(string licensePlate, PassageDirection direction)
         {
-            var request = new PassRequest();
-            request.LicensePlate = licensePlate;
-            request.EnterInFrameTime = DateTime.Now;
-            request.Direction = direction;
-            NewRequest.Invoke(this, request);
+            NewRequest.Invoke(licensePlate, direction);
         }
 
         public void RemoveRequest(string licensePlate)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -2,9 +2,6 @@
 using FlussonicOrion.OrionPro.Models;
 using Orion;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FlussonicOrion.OrionPro
@@ -20,6 +17,7 @@ namespace FlussonicOrion.OrionPro
         Task<TPersonData[]> GetPersons(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors);
         Task<string[]> GetPersonPassList(TPersonData personData);
         Task<TPersonData> GetPersonById(int id);
+        Task<TPersonData> GetPersonByTabNum(string tabNum);
         Task<TTimeWindow[]> GetTimeWindows();
         Task<TTimeWindow> GetTimeWindowById(int id);
         Task<TKeyData> GetKeyData(string code, int codeType);

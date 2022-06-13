@@ -22,7 +22,7 @@ namespace FlussonicOrion.Managers
     {
         private ILogger _logger;
         private IOrionDataSource _dataSource;
-        private IAccessController _accessController;
+        private AccessController _accessController;
         private IServiceScopeFactory _scopeFactory;
         private List<AccessPointController> _accessPoints;
         private IServiceSettingsController _serviceSettingsController;

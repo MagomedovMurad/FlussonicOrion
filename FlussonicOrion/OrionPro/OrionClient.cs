@@ -124,6 +124,7 @@ namespace FlussonicOrion.OrionPro
         private delegate Task<GetPersonsResponse> GetPersonsDel(bool withoutPhoto, int offset, int count, string[] filter, bool isEmployees, bool isVisitors, string token);
         private delegate Task<GetPersonPassListResponse> GetPersonPassListDel(TPersonData personData, string token);
         private delegate Task<GetPersonByIdResponse> GetPersonByIdDel(int id, bool withoutPhoto, string token);
+        private delegate Task<GetPersonByTabNumberResponse> GetPersonByTabNumberDel(string tabNumber, bool withoutPhoto, string token);
         private delegate Task<GetPersonsCountResponse> GetPersonsCountDel(string[] filter, bool isEmployees, bool isVisitors, string token);
         private delegate Task<GetTimeWindowsResponse> GetTimeWindowsDel(string token);
         private delegate Task<GetTimeWindowByIdResponse> GetTimeWindowByIdDel(int id, string token);
@@ -146,6 +147,10 @@ namespace FlussonicOrion.OrionPro
         public async Task<TPersonData> GetPersonById(int id)
         {
             return await Execute<GetPersonByIdResponse, TPersonData>((GetPersonByIdDel)_client.GetPersonByIdAsync, false, id, true);
+        }
+        public async Task<TPersonData> GetPersonByTabNum(string tabNum)
+        {
+            return await Execute<GetPersonByTabNumberResponse, TPersonData>((GetPersonByTabNumberDel)_client.GetPersonByTabNumberAsync, false, tabNum, true);
         }
         public async Task<string[]> GetPersonPassList(TPersonData personData)
         {

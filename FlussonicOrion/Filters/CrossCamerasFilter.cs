@@ -1,6 +1,7 @@
 ﻿using FlussonicOrion.Models;
 using FlussonicOrion.OrionPro;
 using FlussonicOrion.OrionPro.Enums;
+using FlussonicOrion.Utils;
 using Microsoft.Extensions.Logging;
 using Orion;
 using System;
@@ -23,7 +24,7 @@ namespace FlussonicOrion.Filters
         private FilterSettings _settings;
         private TimeSpan _requestedEventsInterval; 
 
-        public event EventHandler<PassRequest> NewRequest;
+        public event PassRequestHandler NewRequest;
 
         public CrossCamerasFilter(int accessPointId, ILogger logger, 
                                   IOrionClient orionClient, 
@@ -145,7 +146,7 @@ namespace FlussonicOrion.Filters
                 //Обработать запрос
                 _lastPassRequest = request;
                 WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
-                NewRequest.Invoke(this, request);
+                NewRequest.Invoke(request.LicensePlate, request.Direction);
             }
             catch (Exception ex)
             {
