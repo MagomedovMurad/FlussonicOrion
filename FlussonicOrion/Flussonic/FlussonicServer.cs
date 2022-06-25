@@ -9,12 +9,12 @@ namespace FlussonicOrion
 {
     public class FlussonicServer: IFlussonic
     {
-        private ILogger _logger;
+        private ILogger<FlussonicServer> _logger;
         private HttpServer _httpServer;
         public event EventHandler<FlussonicEvent> NewEvent;
 
 
-        public FlussonicServer(HttpServer server, ILogger logger)
+        public FlussonicServer(HttpServer server, ILogger<FlussonicServer> logger)
         {
             _logger = logger;
             _httpServer = server;

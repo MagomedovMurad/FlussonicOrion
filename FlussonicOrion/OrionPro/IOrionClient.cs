@@ -8,8 +8,10 @@ namespace FlussonicOrion.OrionPro
 {
     public interface IOrionClient
     {
+        #region Initialize/Dispose
         Task Initialize(OrionSettings settings);
         void Dispose();
+        #endregion
 
         #region Queries
         Task<TVisitData[]> GetVisits();

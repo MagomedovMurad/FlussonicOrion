@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +8,10 @@ namespace FlussonicOrion.OrionPro
 {
     public class EntryPointsHelper
     {
-        private ILogger _logger;
+        private ILogger<EntryPointsHelper> _logger;
         private HttpServer _server;
         private IOrionClient _orionClient;
-        public EntryPointsHelper(HttpServer server, IOrionClient orionClient, ILogger logger)
+        public EntryPointsHelper(HttpServer server, IOrionClient orionClient, ILogger<EntryPointsHelper> logger)
         {
             _orionClient = orionClient;
             _server = server;

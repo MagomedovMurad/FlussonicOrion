@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace FlussonicOrion.Controllers
 {
-    public class AccessController
+    public class AccessChecker
     {
         private readonly IOrionDataSource _orionDataSource;
 
-        public AccessController(IOrionDataSource dataSource)
+        public AccessChecker(IOrionDataSource dataSource)
         {
             _orionDataSource = dataSource;
         }
@@ -60,17 +60,17 @@ namespace FlussonicOrion.Controllers
                 var visit = _orionDataSource.GetActualVisitByRegNumber(licensePlate);
                 if (visit == null)
                     throw new AccessDeniedException("Не найден");
-                key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
-                if (key != null)
-                {
-                    person = _orionDataSource.GetPersonById(key.PersonId);
-                    CheckPerson(person);
-                    CheckKey(key);
-                    CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
-                    return new AccessRequestResult(true, string.Empty, person, key.Id);
-                }
-                throw new AccessDeniedException("Не найден");
 
+                person = _orionDataSource.GetPersonById(visit.PersonId);
+                CheckPerson(person);
+
+                key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
+                if (key == null)
+                    throw new AccessDeniedException("Ключ не найден");
+
+                CheckKey(key);
+                CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                return new AccessRequestResult(true, string.Empty, person, key.Id);
             }
             catch (AccessDeniedException ex)
             {

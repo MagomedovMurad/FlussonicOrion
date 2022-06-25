@@ -1,5 +1,4 @@
-﻿using FlussonicOrion.OrionPro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -12,20 +11,20 @@ namespace FlussonicOrion
     {
         private HttpListener _httpListener;
         private bool _started;
-        private int _port;
-        public Dictionary<string, Func<string, HttpResponse>> _subscriptions;
+        private Dictionary<string, Func<string, HttpResponse>> _subscriptions;
         private List<string> _prefixes;
+        private IServiceSettingsController _serviceSettingsController;
 
-        public HttpServer(int port)
+        public HttpServer(IServiceSettingsController serviceSettingsController)
         {
-            _port = port;
+            _serviceSettingsController = serviceSettingsController;
             _subscriptions = new Dictionary<string, Func<string, HttpResponse>>();
             _prefixes = new List<string>();
         }
         
         public void Subscribe(string prefix, Func<string, HttpResponse> func)
         {
-            prefix = prefix.Replace("port", _port.ToString());
+            prefix = prefix.Replace("port", _serviceSettingsController.Settings.ServerSettings.ServerPort.ToString());
             _prefixes.Add(prefix);
             var url = new Uri(prefix.Replace("+", "127.0.0.1"));
             _subscriptions.Add(url.AbsolutePath.Remove(url.AbsolutePath.Length -1), func);

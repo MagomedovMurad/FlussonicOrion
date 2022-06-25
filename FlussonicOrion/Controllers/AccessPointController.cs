@@ -12,11 +12,11 @@ namespace FlussonicOrion.Controllers
     {
         private ILogger _logger;
         private IOrionClient _orionClient;
-        private AccessController _accessController;
+        private AccessChecker _accessController;
         private IFilter _filter;
         public int Id;
 
-        public AccessPointController(int id, IFilter filter, ILogger logger, AccessController accessController, IOrionClient orionClient)
+        public AccessPointController(int id, IFilter filter, ILogger logger, AccessChecker accessController, IOrionClient orionClient)
         {
             Id = id;
             _filter = filter;

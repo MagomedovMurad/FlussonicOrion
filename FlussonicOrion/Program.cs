@@ -23,7 +23,10 @@ namespace FlussonicOrion
                             .AddSingleton<IOrionClient, OrionClient>()
                             .AddSingleton<OrionClientDataSource, OrionClientDataSource>()
                             .AddSingleton<IAccessPointsManager, AccessPointsManager>()
-                            .AddSingleton<IVideoSourceManager, VideoSourceManager>();
+                            .AddSingleton<IVideoSourceManager, VideoSourceManager>()
+                            .AddSingleton<HttpServer>()
+                            .AddSingleton<EntryPointsHelper>()
+                            .AddSingleton<FlussonicServer>();
                 });
     }
 }

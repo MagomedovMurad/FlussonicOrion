@@ -4,11 +4,11 @@ using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace FlussonicOrion.OrionPro
 {
@@ -19,8 +19,8 @@ namespace FlussonicOrion.OrionPro
         private OrionProClient _client;
         private EndpointAddress _remoteAddress;
         private OrionSettings _settings;
-        private Timer _timer;
         private string _token;
+        private IDisposable _subscription;
 
         #endregion
 
@@ -35,31 +35,28 @@ namespace FlussonicOrion.OrionPro
         {
             _settings = settings;
             _remoteAddress = new EndpointAddress($"http://{settings.IPAddress}:{settings.Port}/soap/IOrionPro");
-
-            InitializeClient();
-            await InitializeToken(_settings.TokenLifetime);
-
+            _client = CreateClient(settings.ModuleUserName, settings.ModulePassword);
+            _token = await CreateToken();
+            StartTokenExpirationExtending(settings.TokenLifetime);
             _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
-        private void InitializeClient()
+        private OrionProClient CreateClient(string moduleUserName, string modulePassword)
         {
             var binding = CreateBinding();
 
-            _client = new OrionProClient(binding, _remoteAddress);
-            if (_settings.ModuleUserName != null && _settings.ModulePassword != null)
+            var client = new OrionProClient(binding, _remoteAddress);
+            if (moduleUserName != null && modulePassword != null)
             {
-                _client.ClientCredentials.UserName.UserName = _settings.ModuleUserName;
-                _client.ClientCredentials.UserName.Password = _settings.ModulePassword;
+                client.ClientCredentials.UserName.UserName = moduleUserName;
+                client.ClientCredentials.UserName.Password = modulePassword;
             }
+            return client;
         }
-        private async Task InitializeToken(int tokenLifetime)
+        private async Task<string> CreateToken()
         {
-            StopTokenExpirationExtending();
             var hash = GetMd5Hash(_settings.EmployeePassword);
-            _token = await Execute<GetLoginTokenResponse, string>((GetLoginTokenDel)_client.GetLoginTokenAsync, false, _settings.EmployeeUserName, hash);
-            StartTokenExpirationExtending(tokenLifetime);
+            return await Execute<GetLoginTokenResponse, string>((GetLoginTokenDel)_client.GetLoginTokenAsync, false, _settings.EmployeeUserName, hash);
         }
-
         private BasicHttpBinding CreateBinding()
         {
             var binding = new BasicHttpBinding();
@@ -71,25 +68,8 @@ namespace FlussonicOrion.OrionPro
         }
         private void StartTokenExpirationExtending(int tokenLifetime)
         {
-            _timer = new Timer();
-            _timer.Elapsed += Timer_Elapsed;
-            _timer.Interval = (tokenLifetime - 1) * 1000;
-            _timer.Start();
-        }
-        private void StopTokenExpirationExtending()
-        {
-            if (_timer == null)
-                return;
-
-            _timer.Elapsed -= Timer_Elapsed;
-            _timer.Dispose();
-        }
-
-        private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            _timer.Enabled = false;
-            await ExtendTokenExpiration();
-            _timer.Enabled = true;
+            _subscription = Observable.Timer(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(tokenLifetime - 1))
+                                      .Subscribe(async x => await ExtendTokenExpiration());
         }
         private async Task ExtendTokenExpiration()
         {
@@ -257,7 +237,7 @@ namespace FlussonicOrion.OrionPro
                 {
                     if (parsedResult.ServiceError.InnerExceptionMessage == "Token not found" && !isRepeat)
                     {
-                        await InitializeToken(_settings.TokenLifetime);
+                        _token = await CreateToken();
                         return await Execute<Y,T>(@delegate, true, args);
                     }
 
@@ -288,12 +268,7 @@ namespace FlussonicOrion.OrionPro
 
         public void Dispose()
         {
-            if (_timer != null)
-            {
-                _timer.Elapsed -= Timer_Elapsed;
-                _timer.Stop();
-                _timer.Dispose();
-            }
+            _subscription?.Dispose();
             _client?.Close();
         }
         #endregion
