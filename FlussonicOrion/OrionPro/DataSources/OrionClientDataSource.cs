@@ -40,13 +40,15 @@ namespace FlussonicOrion.OrionPro.DataSources
             personData.Id = personId;
             personData.Photo = new byte[0];
             var passList = _orionClient.GetPersonPassList(personData).Result;
-            var tasks = passList.Select(x => _orionClient.GetKeyData(x, 0));
+            var tasks = passList?.Select(x => _orionClient.GetKeyData(x, 0));
 
-            var keys = Task.WhenAll(tasks).Result;
+            TKeyData[] keys = null;
+            if (tasks != null)
+                keys = Task.WhenAll(tasks).Result;
 
-            var key = keys.FirstOrDefault(x => x.Comment.Contains("flussonic", StringComparison.InvariantCultureIgnoreCase));
+            var key = keys?.FirstOrDefault(x => x.Comment.Contains("flussonic", StringComparison.InvariantCultureIgnoreCase));
             if(key is null)
-                key = keys.FirstOrDefault();
+                key = keys?.FirstOrDefault();
 
             return key;
         }
@@ -73,6 +75,8 @@ namespace FlussonicOrion.OrionPro.DataSources
         public TVisitData GetActualVisitByRegNumber(string regNumber)
         {
             var visits = _orionClient.GetVisits().Result;
+            if (visits == null)
+                return null;
             return visits.Where(x => x.CarNumber.Equals(regNumber))
                          .FirstOrDefault(x => DateTime.Now >= x.VisitDate &&
                                               DateTime.Now <= x.VisitEndDateTime);

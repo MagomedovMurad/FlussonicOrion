@@ -62,9 +62,12 @@ namespace FlussonicOrion.Controllers
                     throw new AccessDeniedException("Не найден");
 
                 person = _orionDataSource.GetPersonById(visit.PersonId);
+                if(person == null)
+                    throw new AccessDeniedException("Не найден");
+
                 CheckPerson(person);
 
-                key = _orionDataSource.GetKeyByPersonId(visit.PersonId);
+                key = _orionDataSource.GetKeyByPersonId(person.Id);
                 if (key == null)
                     throw new AccessDeniedException("Ключ не найден");
 
