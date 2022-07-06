@@ -123,6 +123,10 @@ namespace FlussonicOrion.OrionPro.DataSources
         {
             return ReadList(() => _persons.FirstOrDefault(x => x.Id.Equals(id)), _personsLock);
         }
+        public TPersonData GetPersonByTabNum(string tabNum)
+        {
+            return ReadList(() => _persons.FirstOrDefault(x => x.TabNum.Equals(tabNum)), _personsLock);
+        }
         public TAccessLevel GetAccessLevel(int id)
         {
             return ReadList(() => _accessLevels.FirstOrDefault(x => x.Id == id), _accessLevelsLock);
@@ -317,11 +321,6 @@ namespace FlussonicOrion.OrionPro.DataSources
             {
                 lockSlim.ExitReadLock();
             }
-        }
-
-        public TPersonData GetPersonByTabNum(string tabNum)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }
