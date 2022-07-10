@@ -5,6 +5,8 @@ using FlussonicOrion.OrionPro.Enums;
 using FlussonicOrion.Utils;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace FlussonicOrion.Controllers
 {
@@ -23,7 +25,7 @@ namespace FlussonicOrion.Controllers
             _logger = logger;
             _accessController = accessController;
             _orionClient = orionClient;
-            _filter.NewRequest += Filter_NewRequest;
+            _filter.Subscribe(Filter_NewRequest);
         }
 
         public void OnEnter(string licensePlate, PassageDirection direction)
@@ -35,30 +37,30 @@ namespace FlussonicOrion.Controllers
             _filter.RemoveRequest(licensePlate);
         }
 
-        private void Filter_NewRequest(string identifier, PassageDirection direction)
+        private async Task Filter_NewRequest(string identifier, PassageDirection direction)
         {
-            var result = _accessController.CheckAccessByLicensePlate(identifier, Id, direction);
+            var result = await _accessController.CheckAccessByLicensePlate(identifier, Id, direction);
             if (result.AccessAllowed)
             {
-                _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id).Wait();
+                await _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id);
                 _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person}");
             }
             else
             {
-                SaveAccessDeniedEvent(result);
+                await SaveAccessDeniedEvent(result);
             }
 
-            SaveAccessResultEvent(result, identifier);
+            await SaveAccessResultEvent(result, identifier);
         }
 
-        private async void SaveAccessResultEvent(AccessRequestResult result, string licensePlate)
+        private async Task SaveAccessResultEvent(AccessRequestResult result, string licensePlate)
         {
+
             var access = result.AccessAllowed ? "Доступ" : "Запрет";
             var company = result.Person?.Company ?? "";
             var fullName = result.Person is null ? "" : $"{result.Person.LastName} {result.Person.FirstName[0]}.{result.Person.MiddleName[0]}.";
 
             var eventText = ShortStringHelper.CreateSring(licensePlate, access, company, fullName, result.Reason);
-
             await _orionClient.AddExternalEvent(
                     0,
                     Id,
@@ -70,7 +72,7 @@ namespace FlussonicOrion.Controllers
 
             _logger.LogInformation($"Сохранено событие: {eventText}");
         }
-        private async void SaveAccessDeniedEvent(AccessRequestResult result)
+        private async Task SaveAccessDeniedEvent(AccessRequestResult result)
         {
             await _orionClient.AddExternalEvent(
                 0,
@@ -80,6 +82,7 @@ namespace FlussonicOrion.Controllers
                 result.KeyId,
                 result.Person?.Id ?? 0, 
                 null);
+            _logger.LogInformation($"Сохранено событие: AccessDenied");
         }
 
         private ActionType Convert(PassageDirection passageDirection)

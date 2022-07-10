@@ -103,35 +103,35 @@ namespace FlussonicOrion.OrionPro.DataSources
         #endregion
 
         #region IOrionDataSource
-        public TVisitData GetActualVisitByRegNumber(string regNumber)
+        public Task<TVisitData> GetActualVisitByRegNumber(string regNumber)
         {
             return ReadList(() => _visitors.Where(x => x.CarNumber.Equals(regNumber))
                                            .FirstOrDefault(x => DateTime.Now >= x.VisitDate &&
                                                                 DateTime.Now <= x.VisitEndDateTime), _visitorsLock);
         }
-        public TKeyData GetKeyByCode(string code)
+        public Task<TKeyData> GetKeyByCode(string code)
         {
             return ReadList(() => _keys.FirstOrDefault(x => x.Code.Equals(code)), _keysLock);
         }
-        public TKeyData GetKeyByPersonId(int personId)
+        public Task<TKeyData> GetKeyByPersonId(int personId)
         {
             return ReadList(() => _keys.FirstOrDefault(x => x.PersonId.Equals(personId) && 
                                                             x.Comment.Contains("flussonic", 
                                                                                StringComparison.InvariantCultureIgnoreCase)), _keysLock);
         }
-        public TPersonData GetPersonById(int id)
+        public Task<TPersonData> GetPersonById(int id)
         {
             return ReadList(() => _persons.FirstOrDefault(x => x.Id.Equals(id)), _personsLock);
         }
-        public TPersonData GetPersonByTabNum(string tabNum)
+        public Task<TPersonData> GetPersonByTabNum(string tabNum)
         {
             return ReadList(() => _persons.FirstOrDefault(x => x.TabNum.Equals(tabNum)), _personsLock);
         }
-        public TAccessLevel GetAccessLevel(int id)
+        public Task<TAccessLevel> GetAccessLevel(int id)
         {
             return ReadList(() => _accessLevels.FirstOrDefault(x => x.Id == id), _accessLevelsLock);
         }
-        public TTimeWindow GetTimeWindow(int id)
+        public Task<TTimeWindow> GetTimeWindow(int id)
         {
             return ReadList(() => _timeWindows.FirstOrDefault(x => x.Id == id), _timeWindowsLock);
         }
@@ -310,12 +310,12 @@ namespace FlussonicOrion.OrionPro.DataSources
                 lockSlim.ExitWriteLock();
             }
         }
-        private T ReadList<T>(Func<T> func, ReaderWriterLockSlim lockSlim)
+        private Task<T> ReadList<T>(Func<T> func, ReaderWriterLockSlim lockSlim)
         {
             lockSlim.EnterReadLock();
             try
             {
-                return func.Invoke();
+                return Task.FromResult(func.Invoke());
             }
             finally
             {

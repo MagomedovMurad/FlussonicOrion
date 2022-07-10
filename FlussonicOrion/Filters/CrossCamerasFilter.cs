@@ -24,7 +24,14 @@ namespace FlussonicOrion.Filters
         private FilterSettings _settings;
         private TimeSpan _requestedEventsInterval; 
 
-        public event PassRequestHandler NewRequest;
+        //public event PassRequestHandler NewRequest;
+
+
+        private Func<string, PassageDirection, Task> _handler;
+        public void Subscribe(Func<string, PassageDirection, Task> handler)
+        {
+            _handler = handler;
+        }
 
         public CrossCamerasFilter(int accessPointId, ILogger logger, 
                                   IOrionClient orionClient, 
@@ -64,7 +71,7 @@ namespace FlussonicOrion.Filters
                 if (!_inProcess)
                 {
                     _inProcess = true;
-                    Next();
+                    Next().ConfigureAwait(false);
                 }
             });
         }
@@ -146,7 +153,7 @@ namespace FlussonicOrion.Filters
                 //Обработать запрос
                 _lastPassRequest = request;
                 WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
-                NewRequest.Invoke(request.LicensePlate, request.Direction);
+                await _handler.Invoke(request.LicensePlate, request.Direction);
             }
             catch (Exception ex)
             {
@@ -206,7 +213,7 @@ namespace FlussonicOrion.Filters
                 DateTime.Now - _requestedEventsInterval,
                 DateTime.Now + TimeSpan.FromSeconds(5),
                 eventTypes, 0, 0, null,
-                entryPoints, null, null); ;
+                entryPoints, null, null);
         }
     }
 }

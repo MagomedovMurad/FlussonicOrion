@@ -40,6 +40,7 @@ namespace FlussonicOrion.OrionPro
             StartTokenExpirationExtending(settings.TokenLifetime);
             _logger.LogInformation($"OrionClient инициализирован. Token: {_token}");
         }
+
         private OrionProClient CreateClient(string moduleUserName, string modulePassword)
         {
             var binding = CreateBinding();

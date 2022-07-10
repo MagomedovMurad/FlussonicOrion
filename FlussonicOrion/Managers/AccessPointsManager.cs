@@ -70,7 +70,7 @@ namespace FlussonicOrion.Managers
 
         private void Flussonic_NewEvent(object sender, FlussonicEvent e)
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
                 try
                 {

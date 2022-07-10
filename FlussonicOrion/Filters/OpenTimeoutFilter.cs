@@ -1,7 +1,6 @@
 ﻿using FlussonicOrion.Models;
 using FlussonicOrion.OrionPro;
 using FlussonicOrion.OrionPro.Enums;
-using FlussonicOrion.Utils;
 using Microsoft.Extensions.Logging;
 using Orion;
 using System;
@@ -23,7 +22,7 @@ namespace FlussonicOrion.Filters
         private FilterSettings _settings;
         private TimeSpan _requestedEventsInterval;
 
-        public event PassRequestHandler NewRequest;
+        private Func<string, PassageDirection, Task> _handler;
 
         public OpenTimeoutFilter(int accessPointId, 
                                  ILogger logger,
@@ -42,6 +41,11 @@ namespace FlussonicOrion.Filters
                 _settings.TimeAfterLastPass
             }.Max() + 10;
             _requestedEventsInterval = TimeSpan.FromSeconds(requestedEventsIntervalSec);
+        }
+
+        public void Subscribe(Func<string, PassageDirection, Task> handler)
+        {
+            _handler = handler;
         }
 
         public void AddRequest(string licensePlate, PassageDirection direction)
@@ -116,7 +120,7 @@ namespace FlussonicOrion.Filters
 
                 //Обработать запрос
                 WorkWithPassRequestsQueue(() => RemoveCurrentRequest(request));
-                NewRequest.Invoke(request.LicensePlate, request.Direction);
+                await _handler.Invoke(request.LicensePlate, request.Direction);
             }
             catch (Exception ex)
             {

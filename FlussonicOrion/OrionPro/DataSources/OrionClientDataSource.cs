@@ -34,12 +34,12 @@ namespace FlussonicOrion.OrionPro.DataSources
         #endregion
 
         #region IOrionDataSource
-        public TKeyData GetKeyByPersonId(int personId)
+        public async Task<TKeyData> GetKeyByPersonId(int personId)
         {
             var personData = new TPersonData();
             personData.Id = personId;
             personData.Photo = new byte[0];
-            var passList = _orionClient.GetPersonPassList(personData).Result;
+            var passList = await _orionClient.GetPersonPassList(personData);
             var tasks = passList?.Select(x => _orionClient.GetKeyData(x, 0));
 
             TKeyData[] keys = null;
@@ -52,29 +52,29 @@ namespace FlussonicOrion.OrionPro.DataSources
 
             return key;
         }
-        public TAccessLevel GetAccessLevel(int id)
+        public async Task<TAccessLevel> GetAccessLevel(int id)
         {
-            return _orionClient.GetAccessLevelById(id).Result;
+            return await _orionClient.GetAccessLevelById(id);
         }
-        public TKeyData GetKeyByCode(string code)
+        public async Task<TKeyData> GetKeyByCode(string code)
         {
-            return _orionClient.GetKeyData(code, (int)CodeType.CarNumber).Result;
+            return await _orionClient.GetKeyData(code, (int)CodeType.CarNumber);
         }
-        public TPersonData GetPersonById(int id)
+        public async Task<TPersonData> GetPersonById(int id)
         {
-            return _orionClient.GetPersonById(id).Result;
+            return await _orionClient.GetPersonById(id);
         }
-        public TPersonData GetPersonByTabNum(string tabNum)
+        public async Task <TPersonData> GetPersonByTabNum(string tabNum)
         {
-            return _orionClient.GetPersonByTabNum(tabNum).Result;
+            return await _orionClient.GetPersonByTabNum(tabNum);
         }
-        public TTimeWindow GetTimeWindow(int id)
+        public async Task<TTimeWindow> GetTimeWindow(int id)
         {
-            return _orionClient.GetTimeWindowById(id).Result;
+            return await _orionClient.GetTimeWindowById(id);
         }
-        public TVisitData GetActualVisitByRegNumber(string regNumber)
+        public async Task<TVisitData> GetActualVisitByRegNumber(string regNumber)
         {
-            var visits = _orionClient.GetVisits().Result;
+            var visits = await _orionClient.GetVisits();
             if (visits == null)
                 return null;
             return visits.Where(x => x.CarNumber.Equals(regNumber))

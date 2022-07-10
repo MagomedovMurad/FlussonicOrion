@@ -4,6 +4,7 @@ using FlussonicOrion.Utils;
 using Orion;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FlussonicOrion.Controllers
 {
@@ -16,23 +17,23 @@ namespace FlussonicOrion.Controllers
             _orionDataSource = dataSource;
         }
 
-        public AccessRequestResult CheckAccessByPersonnelNumber(string personnelNumber, int itemId, PassageDirection direction)
+        public async Task<AccessRequestResult> CheckAccessByPersonnelNumber(string personnelNumber, int itemId, PassageDirection direction)
         {
             TPersonData person = null;
             TKeyData key = null;
             try
             {
-                person = _orionDataSource.GetPersonByTabNum(personnelNumber);
+                person = await _orionDataSource.GetPersonByTabNum(personnelNumber);
                 if (person == null)
                     throw new AccessDeniedException("Нет сотрудника");
                 CheckPerson(person);
 
-                key = _orionDataSource.GetKeyByPersonId(person.Id);
+                key = await _orionDataSource.GetKeyByPersonId(person.Id);
                 if (key == null)
                     throw new AccessDeniedException("Ключ не найден");
                 CheckKey(key);
 
-                CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                await CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
 
                 return new AccessRequestResult(true, string.Empty, person, key.Id);
             }
@@ -41,38 +42,38 @@ namespace FlussonicOrion.Controllers
                 return new AccessRequestResult(false, ex.Reason, person, key?.Id ?? 0);
             }
         }
-        public AccessRequestResult CheckAccessByLicensePlate(string licensePlate, int itemId, PassageDirection direction)
+        public async Task<AccessRequestResult> CheckAccessByLicensePlate(string licensePlate, int itemId, PassageDirection direction)
         {
             TPersonData person = null;
             TKeyData key = null;
             try
             {
-                key = _orionDataSource.GetKeyByCode(licensePlate);
+                key = await _orionDataSource.GetKeyByCode(licensePlate);
                 if (key != null)
                 {
-                    person = _orionDataSource.GetPersonById(key.PersonId);
+                    person = await _orionDataSource.GetPersonById(key.PersonId);
                     CheckPerson(person);
                     CheckKey(key);
-                    CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                    await CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
                     return new AccessRequestResult(true, string.Empty, person, key.Id);
                 }
 
-                var visit = _orionDataSource.GetActualVisitByRegNumber(licensePlate);
+                var visit = await _orionDataSource.GetActualVisitByRegNumber(licensePlate);
                 if (visit == null)
                     throw new AccessDeniedException("Не найден");
 
-                person = _orionDataSource.GetPersonById(visit.PersonId);
+                person = await _orionDataSource.GetPersonById(visit.PersonId);
                 if(person == null)
                     throw new AccessDeniedException("Не найден");
 
                 CheckPerson(person);
 
-                key = _orionDataSource.GetKeyByPersonId(person.Id);
+                key = await _orionDataSource.GetKeyByPersonId(person.Id);
                 if (key == null)
                     throw new AccessDeniedException("Ключ не найден");
 
                 CheckKey(key);
-                CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
+                await CheckAccessLevelAndTimeWindow(key.AccessLevelId, itemId, direction);
                 return new AccessRequestResult(true, string.Empty, person, key.Id);
             }
             catch (AccessDeniedException ex)
@@ -99,22 +100,22 @@ namespace FlussonicOrion.Controllers
             else if (key.EndDate < DateTime.Now)
                 throw new AccessDeniedException("Ключ истек");
         }
-        private void CheckAccessLevelAndTimeWindow(int accessLevelId, int itemId, PassageDirection direction)
+        private async Task CheckAccessLevelAndTimeWindow(int accessLevelId, int itemId, PassageDirection direction)
         {
-            var accessLevel = _orionDataSource.GetAccessLevel(accessLevelId);
+            var accessLevel = await _orionDataSource.GetAccessLevel(accessLevelId);
             var accessLevelItems = accessLevel.Items.Where(x => x.ItemId == itemId || x.ItemId == 0).ToArray();
             if (accessLevelItems.Length == 0)
                 throw new AccessDeniedException("Уровнем доступа");
 
             foreach (var accessLevelItem in accessLevelItems)
-                if (CheckWindowAccess(accessLevelItem, direction))
+                if (await CheckWindowAccess(accessLevelItem, direction))
                     return;
 
             throw new AccessDeniedException("Временным окном");
         }
-        private bool CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
+        private async Task<bool> CheckWindowAccess(TAccessLevelItem accessLevelItem, PassageDirection direction)
         {
-            var timeWindow = _orionDataSource.GetTimeWindow(accessLevelItem.TimeWindowId);
+            var timeWindow = await _orionDataSource.GetTimeWindow(accessLevelItem.TimeWindowId);
             var timeIntervals = timeWindow.TimeIntervals.Where(x => x.StartTime.TimeOfDay <= DateTime.Now.TimeOfDay
                                                      && x.EndTime.TimeOfDay >= DateTime.Now.TimeOfDay).ToArray();
 
