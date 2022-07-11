@@ -5,12 +5,12 @@
   "OrionSettings": {
     "IPAddress": "127.0.0.1",
     "Port": 8090,
-    "ModuleUserName": "orionintegration",
-    "ModulePassword": "orionintegration",
-    "EmployeeUserName": "remoteorion",
-    "EmployeePassword": "remoteorion",
+    "ModuleUserName": "skip",
+    "ModulePassword": "master123",
+    "EmployeeUserName": "out_skip",
+    "EmployeePassword": "master26pn",
     "TokenLifetime": 300,
-    "UseCache": false,
+    "UseCache": true,
     "CacheUpdatingInterval": 60
   },
   "AccesspointsSettings": [
@@ -18,7 +18,7 @@
       "AccesspointId": 1,
       "EnterCamId": "cam1",
       "ExitCamId": "cam2",
-      "FilterType": "Crosscam"
+      "FilterType": "Empty"
     }
   ],
   "FilterSettings": {

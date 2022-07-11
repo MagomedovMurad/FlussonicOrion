@@ -76,7 +76,7 @@ namespace FlussonicOrion
         public void Stop()
         {
             _started = false;
-            _httpListener.Close();
+            _httpListener?.Close();
         }
 
         private string GetStreamData(Stream stream, Encoding encoding)

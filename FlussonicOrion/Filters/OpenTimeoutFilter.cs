@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Orion;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -61,7 +62,7 @@ namespace FlussonicOrion.Filters
                 if (!_inProcess)
                 {
                     _inProcess = true;
-                    Next();
+                    Next().ConfigureAwait(false);
                 }
             });
         }
