@@ -34,8 +34,8 @@ namespace FlussonicOrion.OrionPro
         #endregion
 
         #region Commands
-        Task AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text);
-        Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId);
+        Task<TExternalEvent> AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text);
+        Task<TItem[]> ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId);
         #endregion
     }
 }

@@ -41,8 +41,9 @@ namespace FlussonicOrion.Controllers
             var result = await _accessController.CheckAccessByLicensePlate(identifier, Id, direction);
             if (result.AccessAllowed)
             {
-                await _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id);
-                _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person}");
+                var response = await _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id);
+                if (response != null)
+                    _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person}");
             }
             else
             {
@@ -60,7 +61,7 @@ namespace FlussonicOrion.Controllers
             var fullName = result.Person is null ? "" : $"{result.Person.LastName} {result.Person.FirstName[0]}.{result.Person.MiddleName[0]}.";
 
             var eventText = ShortStringHelper.CreateSring(licensePlate, access, company, fullName, result.Reason);
-            await _orionClient.AddExternalEvent(
+            var response = await _orionClient.AddExternalEvent(
                     0,
                     Id,
                     ItemType.ACCESSPOINT,
@@ -69,11 +70,12 @@ namespace FlussonicOrion.Controllers
                     result.Person?.Id ?? 0,
                     eventText);
 
-            _logger.LogInformation($"Сохранено событие: {eventText}");
+            if (response != null)
+                _logger.LogInformation($"Сохранено событие: {eventText}");
         }
         private async Task SaveAccessDeniedEvent(AccessRequestResult result)
         {
-            await _orionClient.AddExternalEvent(
+            var response = await _orionClient.AddExternalEvent(
                 0,
                 Id,
                 ItemType.ACCESSPOINT, 
@@ -81,7 +83,8 @@ namespace FlussonicOrion.Controllers
                 result.KeyId,
                 result.Person?.Id ?? 0, 
                 null);
-            _logger.LogInformation($"Сохранено событие: AccessDenied");
+            if (response != null)
+                _logger.LogInformation($"Сохранено событие: AccessDenied");
         }
 
         private ActionType Convert(PassageDirection passageDirection)

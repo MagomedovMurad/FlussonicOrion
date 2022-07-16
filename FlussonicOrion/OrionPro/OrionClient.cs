@@ -69,7 +69,7 @@ namespace FlussonicOrion.OrionPro
         }
         private void StartTokenExpirationExtending(int tokenLifetime)
         {
-            _subscription = Observable.Timer(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(tokenLifetime - 1))
+            _subscription = Observable.Interval(TimeSpan.FromSeconds(tokenLifetime - 1))
                                       .Subscribe(async x => await ExtendTokenExpiration());
         }
         private async Task ExtendTokenExpiration()
@@ -196,7 +196,7 @@ namespace FlussonicOrion.OrionPro
         #endregion
 
         #region Commands
-        public async Task AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text)
+        public async Task<TExternalEvent> AddExternalEvent(int id, int itemId, ItemType itemType, int eventTypeId, int keyId, int personId, string text)
         {
             var externalEvent = new TExternalEvent()
             {
@@ -210,9 +210,9 @@ namespace FlussonicOrion.OrionPro
                 Text = text
             };
 
-            await Execute<AddExternalEventResponse, TExternalEvent>((AddExternalEventDel)_client.AddExternalEventAsync, 0, externalEvent);
+            return await Execute<AddExternalEventResponse, TExternalEvent>((AddExternalEventDel)_client.AddExternalEventAsync, 0, externalEvent);
         }
-        public async Task ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
+        public async Task<TItem[]> ControlAccesspoint(int accesspointId, AccesspointCommand commandId, ActionType action, int personId)
         {
             var accesspoint = new TItem()
             {
@@ -221,7 +221,7 @@ namespace FlussonicOrion.OrionPro
                 Timestamp = DateTime.Now
             };
             
-            await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, 0, new[] { accesspoint }, (int)commandId, (int)action, personId);
+            return await Execute<ControlItemsResponse, TItem[]>((ControlItemsDel)_client.ControlItemsAsync, 0, new[] { accesspoint }, (int)commandId, (int)action, personId);
         }
         #endregion
 
