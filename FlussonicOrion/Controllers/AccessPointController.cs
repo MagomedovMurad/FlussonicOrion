@@ -43,7 +43,7 @@ namespace FlussonicOrion.Controllers
             {
                 var response = await _orionClient.ControlAccesspoint(Id, AccesspointCommand.ProvisionOfAccess, Convert(direction), result.Person.Id);
                 if (response != null)
-                    _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person}");
+                    _logger.LogInformation($"Отправлена команда на открытие двери {Id} для {result.Person.FirstName} {result.Person.MiddleName} {result.Person.LastName}");
             }
             else
             {
@@ -55,7 +55,6 @@ namespace FlussonicOrion.Controllers
 
         private async Task SaveAccessResultEvent(AccessRequestResult result, string licensePlate)
         {
-
             var access = result.AccessAllowed ? "Доступ" : "Запрет";
             var company = result.Person?.Company ?? "";
             var fullName = result.Person is null ? "" : $"{result.Person.LastName} {result.Person.FirstName[0]}.{result.Person.MiddleName[0]}.";
